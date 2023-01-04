@@ -66,7 +66,7 @@ RUN \
     /config/media \
     /app/obico/backend/static_build/media && \
   echo "**** cleanup ****" && \
-  apt-get remove --purge \
+  apt-get remove -y --purge \
     curl \
     gcc \
     git \
