@@ -38,6 +38,7 @@ RUN \
 			jq -r '.[0].sha' | cut -c1-8); \
 	fi && \
 	git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/ && \
+  cd /tmp/obico-server && \
   git checkout ${OBICO_VERSION} && \
   mv \
     /tmp/obico-server/backend \
