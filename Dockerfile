@@ -23,7 +23,7 @@ RUN \
     curl \
     gcc \
     git \
-    jq && \
+    jq \
     libpq-dev \
     python3.7-dev \
     wget && \
