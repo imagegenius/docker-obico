@@ -1,0 +1,27 @@
+---
+
+# jenkins variables
+project_name: docker-obico
+external_type: na
+custom_version_command: curl -sL https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release | jq -r '.[0].sha' | cut -c1-8
+release_type: prerelease
+release_tag: latest
+branch: main
+repo_vars:
+  - BUILD_VERSION_ARG = 'OBICO_VERSION'
+  - USER = 'hydazz'
+  - REPO = 'docker-obico'
+  - CONTAINER_NAME = 'obico'
+  - DOCKERHUB_IMAGE = 'hydaz/obico'
+  - DEV_DOCKERHUB_IMAGE = 'dev/obico'
+  - PR_DOCKERHUB_IMAGE = 'pipepr/obico'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH = 'false'
+  - CI = 'false'
+  - CI_WEB = 'true'
+  - CI_PORT = '3334'
+  - CI_SSL = 'false'
+  - CI_DELAY = '120'
+  - CI_DOCKERENV = 'TZ=Europe/London'
+  - CI_AUTH = ''
+  - CI_WEBPATH = ''
