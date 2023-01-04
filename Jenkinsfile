@@ -21,9 +21,9 @@ pipeline {
     DOCKERHUB_IMAGE = 'hydaz/obico'
     DEV_DOCKERHUB_IMAGE = 'dev/obico'
     PR_DOCKERHUB_IMAGE = 'pipepr/obico'
-    DIST_IMAGE = 'alpine'
+    DIST_IMAGE = 'ubuntu'
     MULTIARCH = 'false'
-    CI = 'false'
+    CI = 'true'
     CI_WEB = 'true'
     CI_PORT = '3334'
     CI_SSL = 'false'
@@ -795,7 +795,7 @@ pipeline {
                      "target_commitish": "main",\
                      "name": "'${META_TAG}'",\
                      "body": "**Image Changes:**\\n\\n'${RELEASE_NOTES}'\\n\\n**Remote Changes:**\\n\\n' > start
-              printf '","draft": false,"prerelease": true}' >> releasebody.json
+              printf '","draft": false,"prerelease": false}' >> releasebody.json
               paste -d'\\0' start releasebody.json > releasebody.json.done
               curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/${USER}/${REPO}/releases -d @releasebody.json.done'''
       }
