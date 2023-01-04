@@ -6,6 +6,7 @@
 [![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=hyde.services&message=GitHub%20Package&logo=github)](https://github.com/hydazz/docker-obico/packages)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.hyde.services%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-obico%2Fjob%2Fmain%2F&logo=jenkins)](https://jenkins.hyde.services/job/Docker-Pipeline-Builders/job/docker-obico/job/main/)
 ![Image Size](https://img.shields.io/docker/image-size/hydaz/obico.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
+[![CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.hyde.services%2Fobico%2Flatest%2Fci-status.yml)](https://ci-tests.hyde.services/hydazz/obico/latest/index.html)
 
 [Obico](https://www.obico.io/) - Community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.
 
@@ -27,7 +28,17 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-Nothing to see here, seeing if creating a signle obico-server image is feasable without rewriting everything.
+Please report any issues with the container [here](https://github.com/hydazz/docker-obico/issues)!
+
+The webui is at `<your ip>:3334`.
+
+**After starting the container, it is important to configure obico-server (Django) to ensure that all assets are properly loaded. Follow steps 1-2 under 'Login as Django admin' and 'Configure Django site' in the [Obico Server Configuration](https://www.obico.io/docs/server-guides/configure/#login-as-django-admin) guide closely. These steps will guide you through setting up login credentials and configuring the domain name to match the IP used to access the container, or your FQDN if using a reverse proxy.**
+
+You can also use environment variables to set various configurations, such as email settings. A list of available environment variables can be found [here](https://github.com/TheSpaghettiDetective/obico-server/blob/release/docker-compose.yml#L13-L40).
+
+Note: Some assets, such as the database (obico configuration) and media files (such as timelapses), are mounted to `/config` and will persist through container recreation. I am still working on identifying all assets that require persistence."
+
+Obico do not publish versioning for obico-server, so we use the latest commit hash to identify the current version.
 
 ## Usage
 
@@ -45,8 +56,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+      - TZ=Europe/London
     volumes:
+      - path_to_data:/config
     ports:
+      - 3334:3334
     restart: unless-stopped
 ```
 
@@ -57,6 +71,9 @@ docker run -d \
   --name=obico \
   -e PUID=1000 \
   -e PGID=1000 \
+  -e TZ=Europe/London \
+  -p 3334:3334 \
+  -v path_to_data:/config \
   --restart unless-stopped \
   ghcr.io/hydazz/obico:latest
 ```
@@ -67,8 +84,11 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
+| `-p 3334` | WebUI Port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e TZ=Europe/London` | Specify a timezone to use eg. Europe/London. |
+| `-v /config` | Contains django database, logs and timelapses |
 
 
 ## Umask for running applications
@@ -134,4 +154,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
-* **1.02.23:** - Initial Release.
+* **1.05.23:** - Initial Working Release.
+* **1.04.23:** - Initial Release.
