@@ -8,10 +8,7 @@ LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ENV REDIS_URL="redis://localhost:6379" \
-  DATABASE_URL="sqlite:////config/db.sqlite3" \
-  INTERNAL_MEDIA_HOST="http://localhost:3334" \
-  ML_API_HOST="http://localhost:3333"
+ENV DEBIAN_FRONTEND="noninteractive"
 
 # this is a really messy dockerfile but it works
 RUN \
@@ -68,6 +65,12 @@ RUN \
   rm -rf \
     /tmp/* \
     /root/.cache
+
+# environment settings
+ENV REDIS_URL="redis://localhost:6379" \
+  DATABASE_URL="sqlite:////config/db.sqlite3" \
+  INTERNAL_MEDIA_HOST="http://localhost:3334" \
+  ML_API_HOST="http://localhost:3333"
 
 # copy local files
 COPY root/ /
