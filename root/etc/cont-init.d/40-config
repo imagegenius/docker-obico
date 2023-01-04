@@ -6,6 +6,10 @@ mkdir -p \
     /config/log/redis \
     /run/obico
 
+s6-setuidgid abc \
+	python3.7 manage.py migrate && \
+	python3.7 manage.py collectstatic -v 2 --noinput
+
 # permissions
 chown -R abc:abc \
     /config \
