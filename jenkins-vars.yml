@@ -15,7 +15,7 @@ repo_vars:
   - DOCKERHUB_IMAGE = 'hydaz/obico'
   - DEV_DOCKERHUB_IMAGE = 'dev/obico'
   - PR_DOCKERHUB_IMAGE = 'pipepr/obico'
-  - DIST_IMAGE = 'alpine'
+  - DIST_IMAGE = 'ubuntu'
   - MULTIARCH = 'false'
   - CI = 'false'
   - CI_WEB = 'true'

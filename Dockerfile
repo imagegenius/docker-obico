@@ -1,4 +1,4 @@
-FROM hydaz/baseimage-alpine:latest
+FROM hydaz/baseimage-ubuntu:latest
 
 # set version label
 ARG BUILD_DATE
@@ -8,52 +8,44 @@ LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
 # environment settings
-ENV \
-  PIPFLAGS="--no-cache-dir --find-links https://packages.hyde.services/wheels/alpine-3.16/" \
-  PYTHONPATH="${PYTHONPATH}:/pip-packages" \
-  REDIS_URL="redis://localhost:6379" \
-  DATABASE_URL="sqlite:////app/db.sqlite3" \
+ENV REDIS_URL="redis://localhost:6379" \
+  DATABASE_URL="sqlite:////config/db.sqlite3" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333"
 
 # this is a really messy dockerfile but it works
 RUN \
-	echo "**** install build packages ****" && \
-	apk add --no-cache --virtual=build-dependencies \
-		jq \
-    musl-dev \
-    build-base \
-    ninja \
-    postgresql-dev \
-    zlib-dev \
-    python3-dev \
-    jpeg-dev \
-    libffi-dev && \
-	echo "**** install packages ****" && \
-	apk add -U --upgrade --no-cache \
-		vim \
+  echo "**** install build packages ****" && \
+  apt-get update && \
+  apt-get install -y --no-install-recommends software-properties-common && \
+  add-apt-repository ppa:deadsnakes/ppa && \
+  apt-get install -y --no-install-recommends \
+    curl \
+    gcc \
+    git \
+    jq && \
+    libpq-dev \
+    python3.7-dev \
+    wget && \
+  echo "**** install packages ****" && \
+  apt-get install -y --no-install-recommends \
     ffmpeg \
-    postgresql-libs \
-    libxrender \
-    libsm \
-    fontconfig \
-    py3-pip \
-    wget \
-    git && \
-  mkdir -p /pip-packages && \
-  pip install --target /pip-packages --no-cache-dir --upgrade \
-    distlib && \
-  pip install --no-cache-dir --upgrade \
-    setuptools \
-    wheel && \
-	echo "**** install obico-server ****" && \
-	mkdir -p \
-		/app/obico && \
-	if [ -z ${OBICO_VERSION+x} ]; then \
+    libfontconfig1 \
+    libsm6 \
+    libxrender1 \
+    postgresql \
+    python3-pip \
+    python3-setuptools \
+    python3.7-distutils \
+    redis && \
+  echo "**** install obico-server ****" && \
+  mkdir -p \
+    /app/obico && \
+  if [ -z ${OBICO_VERSION+x} ]; then \
 		OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | \
 			jq -r '.[0].sha' | cut -c1-8); \
-	fi && \
-	git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
+  fi && \
+  git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   cd /tmp/obico-server && \
   git checkout ${OBICO_VERSION} && \
   mv \
@@ -61,26 +53,21 @@ RUN \
     /tmp/obico-server/frontend \
     /tmp/obico-server/ml_api \
     /app/obico/ && \
-	echo "**** setup backend ****" && \
-  cd /app/obico/backend/ && \
-  pip install ${PIPFLAGS} \
-    -r requirements.txt && \
-	echo "**** setup frontend ****" && \
-	echo "**** setup ml_api ****" && \
-  cd /app/obico/ml_api/ && \
-  pip install ${PIPFLAGS} \
-    -r requirements_x86_64.txt && \
-  wget --quiet -O model/model.weights $(cat model/model.weights.url | tr -d '\r') && \
+  python3.7 -m pip install \
+    -r /app/obico/backend/requirements.txt && \
+  python3.7 -m pip install \
+    -r /app/obico/ml_api/requirements_x86_64.txt && \
+  python3.7 -m pip install packaging && \
+  wget --quiet -O /app/obico/ml_api/model/model.weights $(cat /app/obico/ml_api/model/model.weights.url | tr -d '\r') && \
+  mkdir -p /app/model && \
+  mv /app/obico/ml_api/model/names /app/model/ && \
   echo "**** cleanup ****" && \
-  apk del --purge \
-    build-dependencies && \
-  for cleanfiles in *.pyc *.pyo; do \
+  for cleanfiles in *.pyc *.pyo; do
     find /usr/lib/python3.* -iname "${cleanfiles}" -exec rm -f '{}' + \
     ; done && \
   rm -rf \
     /tmp/* \
     /root/.cache
-
 
 # copy local files
 COPY root/ /
