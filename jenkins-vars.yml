@@ -17,7 +17,7 @@ repo_vars:
   - PR_DOCKERHUB_IMAGE = 'pipepr/obico'
   - DIST_IMAGE = 'ubuntu'
   - MULTIARCH = 'false'
-  - CI = 'false'
+  - CI = 'true'
   - CI_WEB = 'true'
   - CI_PORT = '3334'
   - CI_SSL = 'false'

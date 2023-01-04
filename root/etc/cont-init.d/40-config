@@ -3,17 +3,21 @@
 
 # make folders
 mkdir -p \
-    /config/log/redis \
-    /run/obico
+	/config/log/redis \
+	/config/media \
+	/run/obico
 
-cd /app/obico/backend
+if [ ! -f "/.setup" ]; then
+	touch "/.setup"
+	cd /app/obico/backend
 
-s6-setuidgid abc \
-	python3.7 manage.py migrate && \
-	python3.7 manage.py collectstatic -v 2 --noinput
+	s6-setuidgid abc \
+		python3.7 manage.py migrate &&
+		python3.7 manage.py collectstatic -v 2 --noinput
+fi
 
 # permissions
 chown -R abc:abc \
-    /config \
-    /app \
-    /run/obico
+	/config \
+	/app \
+	/run/obico
