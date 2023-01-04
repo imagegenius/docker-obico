@@ -7,15 +7,22 @@ ARG OBICO_VERSION
 LABEL build_version="Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydaz"
 
+# environment settings
+ENV \
+  PIPFLAGS="--no-cache-dir --find-links https://packages.hyde.services/wheels/alpine-3.16/" \
+  PYTHONPATH="${PYTHONPATH}:/pip-packages"
+
 # this is a really messy dockerfile but it works
 RUN \
 	echo "**** install build packages ****" && \
 	apk add --no-cache --virtual=build-dependencies \
 		jq \
-    g++ \
     musl-dev \
+    build-base \
+    ninja \
     postgresql-dev \
     zlib-dev \
+    python3-dev \
     jpeg-dev \
     libffi-dev && \
 	echo "**** install packages ****" && \
@@ -37,7 +44,7 @@ RUN \
 		OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | \
 			jq -r '.[0].sha' | cut -c1-8); \
 	fi && \
-	git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/ && \
+	git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   cd /tmp/obico-server && \
   git checkout ${OBICO_VERSION} && \
   mv \
@@ -52,7 +59,6 @@ RUN \
 	echo "**** setup ml_api ****" && \
   cd /app/obico/ml_api/ && \
   pip3 install -r requirements_x86_64.txt && \
-  pip3 install -r requirements.txt && \
   wget --quiet -O model/model.weights $(cat model/model.weights.url | tr -d '\r') && \
 	echo "**** cleanup ****" && \
 	apk del --purge \
