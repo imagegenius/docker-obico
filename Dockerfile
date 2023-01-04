@@ -60,7 +60,7 @@ RUN \
 	echo "**** setup backend ****" && \
   cd /app/obico/backend/ && \
   pip install ${PIPFLAGS} \
-    -r requirements_all.txt && \
+    -r requirements.txt && \
 	echo "**** setup frontend ****" && \
 	echo "**** setup ml_api ****" && \
   cd /app/obico/ml_api/ && \
