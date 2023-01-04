@@ -34,9 +34,14 @@ RUN \
     libsm \
     fontconfig \
     py3-pip \
-    py3-setuptools \
     wget \
     git && \
+  mkdir -p /pip-packages && \
+  pip install --target /pip-packages --no-cache-dir --upgrade \
+    distlib && \
+  pip install --no-cache-dir --upgrade \
+    setuptools \
+    wheel && \
 	echo "**** install obico-server ****" && \
 	mkdir -p \
 		/app/obico && \
@@ -54,17 +59,23 @@ RUN \
     /app/obico/ && \
 	echo "**** setup backend ****" && \
   cd /app/obico/backend/ && \
-  pip3 install -r requirements.txt && \
+  pip install ${PIPFLAGS} \
+    -r requirements_all.txt && \
 	echo "**** setup frontend ****" && \
 	echo "**** setup ml_api ****" && \
   cd /app/obico/ml_api/ && \
-  pip3 install -r requirements_x86_64.txt && \
+  pip install ${PIPFLAGS} \
+    -r requirements_x86_64.txt && \
   wget --quiet -O model/model.weights $(cat model/model.weights.url | tr -d '\r') && \
-	echo "**** cleanup ****" && \
-	apk del --purge \
-		build-dependencies && \
-	rm -rf \
-		/tmp/*
+  echo "**** cleanup ****" && \
+  apk del --purge \
+    build-dependencies && \
+  for cleanfiles in *.pyc *.pyo; do \
+    find /usr/lib/python3.* -iname "${cleanfiles}" -exec rm -f '{}' + \
+    ; done && \
+  rm -rf \
+    /tmp/* \
+    /root/.cache
 
 
 # copy local files
