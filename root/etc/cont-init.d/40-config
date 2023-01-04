@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# make folders
+mkdir -p \
+    /config/log/redis \
+    /run/obico
+
+# permissions
+chown -R abc:abc \
+    /config \
+    /app \
+    /run/obico

@@ -10,7 +10,11 @@ LABEL maintainer="hydaz"
 # environment settings
 ENV \
   PIPFLAGS="--no-cache-dir --find-links https://packages.hyde.services/wheels/alpine-3.16/" \
-  PYTHONPATH="${PYTHONPATH}:/pip-packages"
+  PYTHONPATH="${PYTHONPATH}:/pip-packages" \
+  REDIS_URL="redis://localhost:6379" \
+  DATABASE_URL="sqlite:////app/db.sqlite3" \
+  INTERNAL_MEDIA_HOST="http://localhost:3334" \
+  ML_API_HOST="http://localhost:3333"
 
 # this is a really messy dockerfile but it works
 RUN \
