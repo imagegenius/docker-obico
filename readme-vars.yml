@@ -14,14 +14,22 @@ available_architectures:
 
 # development version
 development_versions: false
+development_versions_items:
+  - { tag: "latest", desc: "Latest obico-server release with an Ubuntu base." }
 
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_net: false
 param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use eg. Europe/London." }
 param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "path_to_data", desc: "Contains django database, logs and timelapses" }
 param_usage_include_ports: true
+param_ports:
+  - { external_port: "3334", internal_port: "3334", port_desc: "WebUI Port" }
 param_device_map: false
 cap_add_param: false
 
@@ -36,8 +44,19 @@ optional_block_1: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Nothing to see here, seeing if creating a signle obico-server image is feasable without rewriting everything.
+  Please report any issues with the container [here](https://github.com/hydazz/docker-obico/issues)!
+
+  The webui is at `<your ip>:3334`.
+
+  **After starting the container, it is important to configure obico-server (Django) to ensure that all assets are properly loaded. Follow steps 1-2 under 'Login as Django admin' and 'Configure Django site' in the [Obico Server Configuration](https://www.obico.io/docs/server-guides/configure/#login-as-django-admin) guide closely. These steps will guide you through setting up login credentials and configuring the domain name to match the IP used to access the container, or your FQDN if using a reverse proxy.**
+
+  You can also use environment variables to set various configurations, such as email settings. A list of available environment variables can be found [here](https://github.com/TheSpaghettiDetective/obico-server/blob/release/docker-compose.yml#L13-L40).
+
+  Note: Some assets, such as the database (obico configuration) and media files (such as timelapses), are mounted to `/config` and will persist through container recreation. I am still working on identifying all assets that require persistence."
+
+  Obico do not publish versioning for obico-server, so we use the latest commit hash to identify the current version.
 
 # changelog
 changelogs:
-  - { date: "1.02.23:", desc: "Initial Release." }
+  - { date: "1.05.23:", desc: "Initial Working Release." }
+  - { date: "1.04.23:", desc: "Initial Release." }

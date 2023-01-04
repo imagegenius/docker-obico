@@ -4,7 +4,7 @@
 project_name: docker-obico
 external_type: na
 custom_version_command: curl -sL https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release | jq -r '.[0].sha' | cut -c1-8
-release_type: prerelease
+release_type: stable
 release_tag: latest
 branch: main
 repo_vars:
