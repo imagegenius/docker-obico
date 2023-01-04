@@ -62,7 +62,7 @@ RUN \
   mkdir -p /app/model && \
   mv /app/obico/ml_api/model/names /app/model/ && \
   echo "**** cleanup ****" && \
-  for cleanfiles in *.pyc *.pyo; do
+  for cleanfiles in *.pyc *.pyo; do \
     find /usr/lib/python3.* -iname "${cleanfiles}" -exec rm -f '{}' + \
     ; done && \
   rm -rf \
