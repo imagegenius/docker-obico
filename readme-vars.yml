@@ -5,7 +5,7 @@ project_name: obico
 project_url: "https://www.obico.io/"
 project_logo: "https://www.obico.io/wwwimg/logo.svg"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) - Community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world."
-project_github_repo_url: "https://github.com/hydazz/docker-{{ project_name }}"
+project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name }}"
 project_blurb_optional_extras_enabled: false
 
 # supported architectures
@@ -44,7 +44,7 @@ optional_block_1: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Please report any issues with the container [here](https://github.com/hydazz/docker-obico/issues)!
+  Please report any issues with the container [here](https://github.com/imagegenius/docker-obico/issues)!
 
   The webui is at `<your ip>:3334`.
 

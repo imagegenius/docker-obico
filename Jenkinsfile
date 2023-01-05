@@ -15,10 +15,10 @@ pipeline {
     BUILDS_DISCORD=credentials('build_webhook_url')
     GITHUB_TOKEN=credentials('github_token')
     BUILD_VERSION_ARG = 'OBICO_VERSION'
-    USER = 'hydazz'
-    REPO = 'docker-obico'
+    IG_USER = 'imagegenius'
+    IG_REPO = 'docker-obico'
     CONTAINER_NAME = 'obico'
-    DOCKERHUB_IMAGE = 'hydaz/obico'
+    DOCKERHUB_IMAGE = 'imagegenius/obico'
     DEV_DOCKERHUB_IMAGE = 'dev/obico'
     PR_DOCKERHUB_IMAGE = 'pipepr/obico'
     DIST_IMAGE = 'ubuntu'
@@ -222,7 +222,7 @@ pipeline {
           sh '''curl -sL https://raw.githubusercontent.com/linuxserver/docker-shellcheck/master/checkrun.sh | /bin/bash'''
           sh '''#! /bin/bash
                 set -e
-                docker pull ghcr.io/hydazz/dev-spaces-file-upload:latest
+                docker pull ghcr.io/imagegenius/dev-spaces-file-upload:latest
                 docker run --rm \
                 -e DESTINATION=\"${IMAGE}/${META_TAG}/shellcheck-result.xml\" \
                 -e FILE_NAME="shellcheck-result.xml" \
@@ -230,7 +230,7 @@ pipeline {
                 -v ${WORKSPACE}:/mnt \
                 -e SECRET_KEY=\"${S3_SECRET}\" \
                 -e ACCESS_KEY=\"${S3_KEY}\" \
-                -t ghcr.io/hydazz/dev-spaces-file-upload:latest \
+                -t ghcr.io/imagegenius/dev-spaces-file-upload:latest \
                 python /upload.py'''
         }
       }
@@ -248,8 +248,8 @@ pipeline {
         sh '''#! /bin/bash
               set -e
               TEMPDIR=$(mktemp -d)
-              docker pull ghcr.io/hydazz/jenkins-builder:latest
-              docker run --rm -e CONTAINER_NAME=${CONTAINER_NAME} -e GITHUB_BRANCH=main -v ${TEMPDIR}:/ansible/jenkins ghcr.io/hydazz/jenkins-builder:latest 
+              docker pull ghcr.io/imagegenius/jenkins-builder:latest
+              docker run --rm -e CONTAINER_NAME=${CONTAINER_NAME} -e GITHUB_BRANCH=main -v ${TEMPDIR}:/ansible/jenkins ghcr.io/imagegenius/jenkins-builder:latest 
               # Stage 1 - Jenkinsfile update
               if [[ "$(md5sum Jenkinsfile | awk '{ print $1 }')" != "$(md5sum ${TEMPDIR}/docker-${CONTAINER_NAME}/Jenkinsfile | awk '{ print $1 }')" ]]; then
                 mkdir -p ${TEMPDIR}/repo
@@ -292,10 +292,10 @@ pipeline {
                 echo "false" > /tmp/${COMMIT_SHA}-${BUILD_NUMBER}
               fi
               mkdir -p ${TEMPDIR}/unraid
-              git clone https://github.com/hydazz/docker-templates.git ${TEMPDIR}/unraid/docker-templates
-              git clone https://github.com/hydazz/templates.git ${TEMPDIR}/unraid/templates
-              if [[ -f ${TEMPDIR}/unraid/docker-templates/hydaz/img/${CONTAINER_NAME}.png ]]; then
-                sed -i "s|main/hydaz/img/default.png|main/hydaz/img/${CONTAINER_NAME}.png|" ${TEMPDIR}/docker-${CONTAINER_NAME}/.jenkins-external/${CONTAINER_NAME}.xml
+              git clone https://github.com/imagegenius/docker-templates.git ${TEMPDIR}/unraid/docker-templates
+              git clone https://github.com/imagegenius/templates.git ${TEMPDIR}/unraid/templates
+              if [[ -f ${TEMPDIR}/unraid/docker-templates/imagegenius/img/${CONTAINER_NAME}.png ]]; then
+                sed -i "s|main/imagegenius/img/default.png|main/imagegenius/img/${CONTAINER_NAME}.png|" ${TEMPDIR}/docker-${CONTAINER_NAME}/.jenkins-external/${CONTAINER_NAME}.xml
               fi
               if [[ ("${BRANCH_NAME}" == "master") || ("${BRANCH_NAME}" == "main") ]] && [[ (! -f ${TEMPDIR}/unraid/templates/unraid/${CONTAINER_NAME}.xml) || ("$(md5sum ${TEMPDIR}/unraid/templates/unraid/${CONTAINER_NAME}.xml | awk '{ print $1 }')" != "$(md5sum ${TEMPDIR}/docker-${CONTAINER_NAME}/.jenkins-external/${CONTAINER_NAME}.xml | awk '{ print $1 }')") ]]; then
                 cd ${TEMPDIR}/unraid/templates/
@@ -310,7 +310,7 @@ pipeline {
                   git add unraid/${CONTAINER_NAME}.xml
                   git commit -m 'Bot Updating Unraid Template'
                 fi
-                git push https://Jenkins-CI:${GITHUB_TOKEN}@github.com/hydazz/templates.git --all
+                git push https://Jenkins-CI:${GITHUB_TOKEN}@github.com/imagegenius/templates.git --all
               fi
               rm -Rf ${TEMPDIR}'''
         script{
@@ -352,8 +352,8 @@ pipeline {
         sh "docker build \
           --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
           --label \"org.opencontainers.image.authors=hyde.services\" \
-          --label \"org.opencontainers.image.url=https://github.com/hydazz/docker-obico/packages\" \
-          --label \"org.opencontainers.image.source=https://github.com/hydazz/docker-obico\" \
+          --label \"org.opencontainers.image.url=https://github.com/imagegenius/docker-obico/packages\" \
+          --label \"org.opencontainers.image.source=https://github.com/imagegenius/docker-obico\" \
           --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-hz${TAG_NUMBER}\" \
           --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.vendor=hyde.services\" \
@@ -381,8 +381,8 @@ pipeline {
             sh "docker build \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
               --label \"org.opencontainers.image.authors=hyde.services\" \
-              --label \"org.opencontainers.image.url=https://github.com/hydazz/docker-obico/packages\" \
-              --label \"org.opencontainers.image.source=https://github.com/hydazz/docker-obico\" \
+              --label \"org.opencontainers.image.url=https://github.com/imagegenius/docker-obico/packages\" \
+              --label \"org.opencontainers.image.source=https://github.com/imagegenius/docker-obico\" \
               --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-hz${TAG_NUMBER}\" \
               --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.vendor=hyde.services\" \
@@ -404,8 +404,8 @@ pipeline {
             sh "docker buildx build --platform=linux/arm/v7 --output \"type=docker\" \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
               --label \"org.opencontainers.image.authors=hyde.services\" \
-              --label \"org.opencontainers.image.url=https://github.com/hydazz/docker-obico/packages\" \
-              --label \"org.opencontainers.image.source=https://github.com/hydazz/docker-obico\" \
+              --label \"org.opencontainers.image.url=https://github.com/imagegenius/docker-obico/packages\" \
+              --label \"org.opencontainers.image.source=https://github.com/imagegenius/docker-obico\" \
               --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-hz${TAG_NUMBER}\" \
               --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.vendor=hyde.services\" \
@@ -415,13 +415,13 @@ pipeline {
               --label \"org.opencontainers.image.description=[Obico](https://www.obico.io/) - Community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.\" \
               --no-cache --pull -f Dockerfile.armhf -t ${IMAGE}:arm32v7-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
-            sh "docker tag ${IMAGE}:arm32v7-${META_TAG} ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}"
+            sh "docker tag ${IMAGE}:arm32v7-${META_TAG} ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}"
             retry(5) {
-              sh "docker push ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}"
+              sh "docker push ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}"
             }
             sh '''docker rmi \
                   ${IMAGE}:arm32v7-${META_TAG} \
-                  ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} || :'''
+                  ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} || :'''
           }
         }
         stage('Build ARM64') {
@@ -434,8 +434,8 @@ pipeline {
             sh "docker buildx build --platform=linux/arm64 --output \"type=docker\" \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
               --label \"org.opencontainers.image.authors=hyde.services\" \
-              --label \"org.opencontainers.image.url=https://github.com/hydazz/docker-obico/packages\" \
-              --label \"org.opencontainers.image.source=https://github.com/hydazz/docker-obico\" \
+              --label \"org.opencontainers.image.url=https://github.com/imagegenius/docker-obico/packages\" \
+              --label \"org.opencontainers.image.source=https://github.com/imagegenius/docker-obico\" \
               --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-hz${TAG_NUMBER}\" \
               --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.vendor=hyde.services\" \
@@ -445,13 +445,13 @@ pipeline {
               --label \"org.opencontainers.image.description=[Obico](https://www.obico.io/) - Community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.\" \
               --no-cache --pull -f Dockerfile.aarch64 -t ${IMAGE}:arm64v8-${META_TAG} \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
-            sh "docker tag ${IMAGE}:arm64v8-${META_TAG} ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}"
+            sh "docker tag ${IMAGE}:arm64v8-${META_TAG} ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}"
             retry(5) {
-              sh "docker push ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}"
+              sh "docker push ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}"
             }
             sh '''docker rmi \
                   ${IMAGE}:arm64v8-${META_TAG} \
-                  ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} || :'''
+                  ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} || :'''
           }
         }
       }
@@ -581,12 +581,12 @@ pipeline {
           }
           sh '''#! /bin/bash
                 set -e
-                docker pull ghcr.io/hydazz/ci:latest
+                docker pull ghcr.io/imagegenius/ci:latest
                 if [ "${MULTIARCH}" == "true" ]; then
-                  docker pull ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
-                  docker pull ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
-                  docker tag ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
-                  docker tag ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
+                  docker pull ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
+                  docker pull ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
+                  docker tag ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
+                  docker tag ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                 fi
                 docker run --rm \
                 --shm-size=1gb \
@@ -604,7 +604,7 @@ pipeline {
                 -e WEB_SCREENSHOT=\"${CI_WEB}\" \
                 -e WEB_AUTH=\"${CI_AUTH}\" \
                 -e WEB_PATH=\"${CI_WEBPATH}\" \
-                -t ghcr.io/hydazz/ci:latest \
+                -t ghcr.io/imagegenius/ci:latest \
                 python3 test_build.py'''
         }
       }
@@ -683,10 +683,10 @@ pipeline {
                   echo $DOCKERPASS | docker login -u $DOCKERUSER --password-stdin
                   echo $GITHUB_TOKEN | docker login ghcr.io -u Jenkins-CI --password-stdin
                   if [ "${CI}" == "false" ]; then
-                    docker pull ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
-                    docker pull ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
-                    docker tag ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
-                    docker tag ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
+                    docker pull ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER}
+                    docker pull ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER}
+                    docker tag ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm32v7-${META_TAG}
+                    docker tag ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} ${IMAGE}:arm64v8-${META_TAG}
                   fi
                   for MANIFESTIMAGE in "${IMAGE}" "${GITHUBIMAGE}"; do
                     docker tag ${IMAGE}:amd64-${META_TAG} ${MANIFESTIMAGE}:amd64-${META_TAG}
@@ -764,8 +764,8 @@ pipeline {
                   fi
                 done
                 docker rmi \
-                ghcr.io/hydazz/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} \
-                ghcr.io/hydazz/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} || :
+                ghcr.io/imagegenius/dev-buildcache:arm32v7-${COMMIT_SHA}-${BUILD_NUMBER} \
+                ghcr.io/imagegenius/dev-buildcache:arm64v8-${COMMIT_SHA}-${BUILD_NUMBER} || :
              '''
         }
       }
@@ -818,8 +818,8 @@ pipeline {
           sh '''#! /bin/bash
                 set -e
                 TEMPDIR=$(mktemp -d)
-                docker pull ghcr.io/hydazz/jenkins-builder:latest
-                docker run --rm -e CONTAINER_NAME=${CONTAINER_NAME} -e GITHUB_BRANCH="${BRANCH_NAME}" -v ${TEMPDIR}:/ansible/jenkins ghcr.io/hydazz/jenkins-builder:latest
+                docker pull ghcr.io/imagegenius/jenkins-builder:latest
+                docker run --rm -e CONTAINER_NAME=${CONTAINER_NAME} -e GITHUB_BRANCH="${BRANCH_NAME}" -v ${TEMPDIR}:/ansible/jenkins ghcr.io/imagegenius/jenkins-builder:latest
                 docker pull ghcr.io/linuxserver/readme-sync
                 docker run --rm=true \
                   -e DOCKERHUB_USERNAME=$DOCKERUSER \
