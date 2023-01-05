@@ -6,7 +6,7 @@ external_type: na
 custom_version_command: curl -sL https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release | jq -r '.[0].sha' | cut -c1-8
 release_type: stable
 release_tag: latest
-branch: main
+ig_branch: main
 repo_vars:
   - BUILD_VERSION_ARG = 'OBICO_VERSION'
   - LS_USER = 'imagegenius'
