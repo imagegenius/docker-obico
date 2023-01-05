@@ -9,8 +9,8 @@ release_tag: latest
 ig_branch: main
 repo_vars:
   - BUILD_VERSION_ARG = 'OBICO_VERSION'
-  - LS_USER = 'imagegenius'
-  - LS_REPO = 'docker-obico'
+  - IG_USER = 'imagegenius'
+  - IG_REPO = 'docker-obico'
   - CONTAINER_NAME = 'obico'
   - DOCKERHUB_IMAGE = 'imagegenius/obico'
   - DEV_DOCKERHUB_IMAGE = 'igdev/obico'
