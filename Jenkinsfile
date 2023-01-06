@@ -438,7 +438,7 @@ pipeline {
             sh '''#! /bin/bash
                   echo $GITHUB_TOKEN | docker login ghcr.io -u ImageGenius-CI --password-stdin
                '''
-            sh "docker buildx build --platform=linux/arm64 --output \"type=docker\" \
+            sh "docker build \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
               --label \"org.opencontainers.image.authors=imagegenius.io\" \
               --label \"org.opencontainers.image.url=https://github.com/imagegenius/docker-obico/packages\" \
