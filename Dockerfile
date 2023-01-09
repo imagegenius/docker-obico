@@ -30,9 +30,8 @@ RUN \
     libfontconfig1 \
     libsm6 \
     libxrender1 \
-    postgresql \
     python3-pip \
-    python3-setuptools \
+    python3.7 \
     python3.7-distutils \
     redis && \
   echo "**** install obico ****" && \
@@ -49,6 +48,8 @@ RUN \
     /tmp/obico-server/frontend \
     /tmp/obico-server/ml_api \
     /app/obico/ && \
+  python3.7 -m pip install \
+    setuptools && \
   python3.7 -m pip install \
     -r /app/obico/backend/requirements.txt && \
   python3.7 -m pip install \
@@ -74,10 +75,11 @@ RUN \
     libpq-dev \
     python3.7-dev \
     wget && \
+  apt-get autoremove -y --purge && \
   apt-get clean && \
   for cleanfiles in *.pyc *.pyo; do \
-    find /usr/lib/python3.* -iname "${cleanfiles}" -exec rm -f '{}' + \
-    ; done && \
+    find /usr/lib/python3.* -iname "${cleanfiles}" -exec rm -f '{}' + ; \
+    done && \
   rm -rf \
     /tmp/* \
     /root/.cache
