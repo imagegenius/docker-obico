@@ -8,7 +8,8 @@ LABEL build_version="ImageGenius Version:- ${VERSION} Build-date:- ${BUILD_DATE}
 LABEL maintainer="hydazz"
 
 # environment settings
-ENV DEBIAN_FRONTEND="noninteractive"
+ENV DEBIAN_FRONTEND="noninteractive"\
+  PYTHONPATH="${PYTHONPATH}:/pip-packages"
 
 # this is a really messy dockerfile but it works
 RUN \
@@ -47,14 +48,14 @@ RUN \
     /tmp/obico-server/backend \
     /tmp/obico-server/frontend \
     /tmp/obico-server/ml_api \
-    /app/obico/ && \
-  python3.7 -m pip install \
+      /app/obico/ && \
+  python3.7 -m pip install --no-cache-dir \
     setuptools && \
-  python3.7 -m pip install \
+  python3.7 -m pip install --no-cache-dir \
     -r /app/obico/backend/requirements.txt && \
-  python3.7 -m pip install \
+  python3.7 -m pip install --no-cache-dir \
     -r /app/obico/ml_api/requirements_x86_64.txt && \
-  python3.7 -m pip install \
+  python3.7 -m pip install --no-cache-dir \
     packaging \
     redis==3.2.0 && \
   echo "**** configure obico ****" && \
@@ -65,8 +66,11 @@ RUN \
   mv /app/obico/ml_api/model/names /app/model/ && \
   ln -s \
     /config/media \
-    /app/obico/backend/static_build/media && \
-  echo "**** cleanup ****" && \
+      /app/obico/backend/static_build/media && \
+	echo "**** cleanup ****" && \
+  for cleanfiles in *.pyc *.pyo; do \
+    find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete \
+  done && \
   apt-get remove -y --purge \
     curl \
     gcc \
@@ -76,12 +80,11 @@ RUN \
     python3.7-dev \
     wget && \
   apt-get autoremove -y --purge && \
-  apt-get clean && \
-  for cleanfiles in *.pyc *.pyo; do \
-    find /usr/lib/python3.* -iname "${cleanfiles}" -exec rm -f '{}' + ; \
-    done && \
-  rm -rf \
-    /tmp/* \
+	apt-get clean && \
+	rm -rf \
+		/tmp/* \
+		/var/lib/apt/lists/* \
+		/var/tmp/* \
     /root/.cache
 
 # environment settings
