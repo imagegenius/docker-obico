@@ -2,12 +2,14 @@
 
 # jenkins variables
 project_name: docker-obico
-external_type: na
-custom_version_command: curl -sL https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release | jq -r '.[0].sha' | cut -c1-8
+external_type: github_commit
 release_type: stable
 release_tag: latest
 ig_branch: main
 repo_vars:
+  - EXT_GIT_BRANCH = 'release'
+  - EXT_USER = 'TheSpaghettiDetective'
+  - EXT_REPO = 'obico-server'
   - BUILD_VERSION_ARG = 'OBICO_VERSION'
   - IG_USER = 'imagegenius'
   - IG_REPO = 'docker-obico'
