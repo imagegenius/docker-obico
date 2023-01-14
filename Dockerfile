@@ -39,7 +39,7 @@ RUN \
   mkdir -p \
     /app/obico && \
   if [ -z ${OBICO_VERSION+x} ]; then \
-		OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | jq -r '.[0].sha' | cut -c1-8); \
+    OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | jq -r '.[0].sha' | cut -c1-8); \
   fi && \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   cd /tmp/obico-server && \
@@ -49,14 +49,15 @@ RUN \
     /tmp/obico-server/frontend \
     /tmp/obico-server/ml_api \
       /app/obico/ && \
-  python3.7 -m pip install --no-cache-dir \
-    setuptools && \
+	python3.7 -m pip install --no-cache-dir --upgrade \
+    packaging \
+    setuptools \
+    wheel && \
   python3.7 -m pip install --no-cache-dir \
     -r /app/obico/backend/requirements.txt && \
   python3.7 -m pip install --no-cache-dir \
     -r /app/obico/ml_api/requirements_x86_64.txt && \
   python3.7 -m pip install --no-cache-dir \
-    packaging \
     redis==3.2.0 && \
   echo "**** configure obico ****" && \
   wget --quiet -O /app/obico/ml_api/model/model.weights $(cat /app/obico/ml_api/model/model.weights.url | tr -d '\r') && \
@@ -69,7 +70,7 @@ RUN \
       /app/obico/backend/static_build/media && \
 	echo "**** cleanup ****" && \
   for cleanfiles in *.pyc *.pyo; do \
-    find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete \
+    find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \
   done && \
   apt-get remove -y --purge \
     curl \
@@ -82,10 +83,9 @@ RUN \
   apt-get autoremove -y --purge && \
 	apt-get clean && \
 	rm -rf \
-		/tmp/* \
-		/var/lib/apt/lists/* \
-		/var/tmp/* \
-    /root/.cache
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
 
 # environment settings
 ENV REDIS_URL="redis://localhost:6379" \
