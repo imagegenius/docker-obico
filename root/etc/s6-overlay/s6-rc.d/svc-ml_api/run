@@ -4,4 +4,4 @@
 cd /app/obico/ml_api
 
 exec s6-setuidgid abc \
-	gunicorn --bind 0.0.0.0:3333 --workers 1 wsgi
+	gunicorn --bind 0.0.0.0:3333 --workers 1 wsgi >/config/log/obico/ml_api.log

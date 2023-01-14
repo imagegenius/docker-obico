@@ -3,17 +3,19 @@
 
 # make folders
 mkdir -p \
-	/config/log/redis \
+	/config/log/{redis,obico} \
 	/config/media \
 	/run/obico
 
 if [ ! -f "/.setup" ]; then
-	touch "/.setup"
+	echo "Initialising obico-server (First time setup)"
 	cd /app/obico/backend
 
 	s6-setuidgid abc \
-		python3.7 manage.py migrate &&
-		python3.7 manage.py collectstatic -v 2 --noinput
+		python3.7 manage.py migrate >/dev/null &&
+		python3.7 manage.py collectstatic -v 2 --noinput >/dev/null
+
+	touch "/.setup"
 fi
 
 # permissions
