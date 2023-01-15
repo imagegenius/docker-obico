@@ -4,4 +4,4 @@
 cd /app/obico/backend
 
 exec s6-setuidgid abc \
-	celery -A config worker --beat -l info -c 2 -Q realtime,celery >/config/log/obico/celery.log
+	celery -A config worker --beat -l info -c 2 -Q realtime,celery
