@@ -8,33 +8,35 @@ LABEL build_version="ImageGenius Version:- ${VERSION} Build-date:- ${BUILD_DATE}
 LABEL maintainer="hydazz"
 
 # environment settings
-ENV DEBIAN_FRONTEND="noninteractive"\
+ENV DEBIAN_FRONTEND="noninteractive" \
   PYTHONPATH="${PYTHONPATH}:/pip-packages"
 
 # this is a really messy dockerfile but it works
 RUN \
-  echo "**** install build packages ****" && \
+  echo "**** add python3.7 to apt ****" && \
+  echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list && \
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys f23c5a6cf475977595c89f51ba6932366a755776 && \
+  echo "**** install runtime packages ****" && \
   apt-get update && \
-  apt-get install -y --no-install-recommends software-properties-common && \
-  add-apt-repository ppa:deadsnakes/ppa && \
   apt-get install -y --no-install-recommends \
     curl \
+    ffmpeg \
     gcc \
     git \
     jq \
-    libpq-dev \
-    python3.7-dev \
-    wget && \
-  echo "**** install packages ****" && \
-  apt-get install -y --no-install-recommends \
-    ffmpeg \
     libfontconfig1 \
+    libpq-dev \
     libsm6 \
     libxrender1 \
-    python3-pip \
     python3.7 \
+    python3.7-dev \
     python3.7-distutils \
-    redis && \
+    redis-server && \
+  curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
+  python3.7 -m pip install --no-cache-dir --upgrade \
+    packaging \
+    setuptools \
+    wheel && \
   echo "**** install obico ****" && \
   mkdir -p \
     /app/obico && \
@@ -44,31 +46,48 @@ RUN \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   cd /tmp/obico-server && \
   git checkout ${OBICO_VERSION} && \
-  mv \
-    /tmp/obico-server/backend \
-    /tmp/obico-server/frontend \
-    /tmp/obico-server/ml_api \
-      /app/obico/ && \
-	python3.7 -m pip install --no-cache-dir --upgrade \
-    packaging \
-    setuptools \
-    wheel && \
   python3.7 -m pip install --no-cache-dir \
-    -r /app/obico/backend/requirements.txt && \
+    -r /tmp/obico-server/backend/requirements.txt && \
   python3.7 -m pip install --no-cache-dir \
-    -r /app/obico/ml_api/requirements_x86_64.txt && \
+    -r /tmp/obico-server/ml_api/requirements_x86_64.txt && \
   python3.7 -m pip install --no-cache-dir \
     redis==3.2.0 && \
+  echo "**** move files into place ****" && \
+  mkdir -p \
+    /app/obico/frontend \
+    /app/obico/ml_api && \
+  cd /tmp/obico-server/backend && \
+  cp -a \
+    api \
+    app \
+    config \
+    lib \
+    manage.py \
+    notifications \
+    /app/obico/backend && \
+  cd /tmp/obico-server/ml_api && \
+  cp -a \
+    bin \
+    lib \
+    model \
+    auth.py \
+    server.py \
+    wsgi.py \
+    /app/obico/ml_api && \
+  mv /tmp/obico-server/frontend \
+    /app/obico/frontend && \
   echo "**** configure obico ****" && \
-  wget --quiet -O /app/obico/ml_api/model/model.weights $(cat /app/obico/ml_api/model/model.weights.url | tr -d '\r') && \
+  curl -o \
+    /app/obico/ml_api/model/model.weights -L \
+    $(cat /app/obico/ml_api/model/model.weights.url | tr -d '\r') && \
   mkdir -p \
     /app/model \
     /app/obico/backend/static_build/ && \
   mv /app/obico/ml_api/model/names /app/model/ && \
   ln -s \
     /config/media \
-      /app/obico/backend/static_build/media && \
-	echo "**** cleanup ****" && \
+    /app/obico/backend/static_build/media && \
+  echo "**** cleanup ****" && \
   for cleanfiles in *.pyc *.pyo; do \
     find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \
   done && \
@@ -78,11 +97,10 @@ RUN \
     git \
     jq \
     libpq-dev \
-    python3.7-dev \
-    wget && \
+    python3.7-dev && \
   apt-get autoremove -y --purge && \
-	apt-get clean && \
-	rm -rf \
+  apt-get clean && \
+  rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/*
