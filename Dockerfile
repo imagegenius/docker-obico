@@ -9,7 +9,10 @@ LABEL maintainer="hydazz"
 
 # environment settings
 ENV DEBIAN_FRONTEND="noninteractive" \
-  PYTHONPATH="${PYTHONPATH}:/pip-packages"
+  REDIS_URL="redis://localhost:6379" \
+  DATABASE_URL="sqlite:////config/db.sqlite3" \
+  INTERNAL_MEDIA_HOST="http://localhost:3334" \
+  ML_API_HOST="http://localhost:3333"
 
 # this is a really messy dockerfile but it works
 RUN \
@@ -28,12 +31,15 @@ RUN \
     libpq-dev \
     libsm6 \
     libxrender1 \
+    python3-blinker \
+    python3-importlib-metadata \
+    python3-six \
     python3.7 \
     python3.7-dev \
     python3.7-distutils \
     redis-server && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
-  python3.7 -m pip install --no-cache-dir --upgrade \
+  pip install --upgrade \
     packaging \
     setuptools \
     wheel && \
@@ -46,15 +52,15 @@ RUN \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   cd /tmp/obico-server && \
   git checkout ${OBICO_VERSION} && \
-  python3.7 -m pip install --no-cache-dir \
+  pip install \
     -r /tmp/obico-server/backend/requirements.txt && \
-  python3.7 -m pip install --no-cache-dir \
+  pip install \
     -r /tmp/obico-server/ml_api/requirements_x86_64.txt && \
-  python3.7 -m pip install --no-cache-dir \
+  pip install \
     redis==3.2.0 && \
   echo "**** move files into place ****" && \
   mkdir -p \
-    /app/obico/frontend \
+    /app/obico/backend \
     /app/obico/ml_api && \
   cd /tmp/obico-server/backend && \
   cp -a \
@@ -87,6 +93,9 @@ RUN \
   ln -s \
     /config/media \
     /app/obico/backend/static_build/media && \
+  cd /app/obico/backend && \
+  python3.7 manage.py migrate && \
+  python3.7 manage.py collectstatic -v 2 --noinput && \
   echo "**** cleanup ****" && \
   for cleanfiles in *.pyc *.pyo; do \
     find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \
@@ -103,13 +112,8 @@ RUN \
   rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
-    /var/tmp/*
-
-# environment settings
-ENV REDIS_URL="redis://localhost:6379" \
-  DATABASE_URL="sqlite:////config/db.sqlite3" \
-  INTERNAL_MEDIA_HOST="http://localhost:3334" \
-  ML_API_HOST="http://localhost:3333"
+    /var/tmp/* \
+    /root/.cache
 
 # copy local files
 COPY root/ /
