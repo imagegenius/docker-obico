@@ -24,7 +24,7 @@ repo_vars:
   - CI_PORT = '3334'
   - CI_SSL = 'false'
   - CI_DELAY = '30'
-  - CI_DOCKERENV = 'TZ=Europe/London'
+  - CI_DOCKERENV = 'TZ=Australia/Melbourne'
   - CI_AUTH = ''
   - CI_WEBPATH = ''
 sponsor_links:
