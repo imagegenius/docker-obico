@@ -55,7 +55,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Australia/Melbourne
     volumes:
       - path_to_data:/config
     ports:
@@ -70,7 +70,7 @@ docker run -d \
   --name=obico \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Europe/London \
+  -e TZ=Australia/Melbourne \
   -p 3334:3334 \
   -v path_to_data:/config \
   --restart unless-stopped \
@@ -86,7 +86,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 3334` | WebUI Port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Europe/London` | Specify a timezone to use eg. Europe/London. |
+| `-e TZ=Australia/Melbourne` | Specify a timezone to use eg. Australia/Melbourne. |
 | `-v /config` | Contains django database, logs and timelapses |
 
 ## Environment variables from files (Docker secrets)
