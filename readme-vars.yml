@@ -24,6 +24,7 @@ param_usage_include_net: false
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Australia/Melbourne", desc: "Specify a timezone to use eg. Australia/Melbourne." }
+  - { env_var: "REDIS_URL", env_value: "redis://<ip>:<port>", desc: "Redis URL, eg. `redis://192.168.1.2:6379`" }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "path_to_data", desc: "Contains django database, logs and timelapses" }
@@ -42,12 +43,24 @@ opt_cap_add_param: false
 optional_block_1: false
 
 # unraid template
+unraid_requirement: "Redis"
 unraid_category: "Cloud: Tools:"
 
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
   Please report any issues with the container [here](https://github.com/imagegenius/docker-obico/issues)!
+
+  **You will need to create a Redis container to use with Obico**
+
+  ### You can use this command to start a Redis container.
+
+  ```bash
+  docker run -d \
+    --name=redis \
+    -p 6379:6379 \
+    redis
+  ```
 
   The webui is at `<your ip>:3334`.
 
@@ -61,6 +74,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "1.23.23:", desc: "BREAKING: removed redis" }
   - { date: "1.14.23:", desc: "Update to s6v3" }
   - { date: "1.05.23:", desc: "Initial Working Release." }
   - { date: "1.04.23:", desc: "Initial Release." }
