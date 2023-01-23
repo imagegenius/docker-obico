@@ -41,6 +41,9 @@ opt_param_device_map: false
 opt_cap_add_param: false
 optional_block_1: false
 
+# unraid template
+unraid_category: "Cloud: Tools:"
+
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
