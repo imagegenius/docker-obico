@@ -93,9 +93,6 @@ RUN \
   ln -s \
     /config/media \
     /app/obico/backend/static_build/media && \
-  cd /app/obico/backend && \
-  python3.7 manage.py migrate && \
-  python3.7 manage.py collectstatic -v 2 --noinput && \
   echo "**** cleanup ****" && \
   for cleanfiles in *.pyc *.pyo; do \
     find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \
