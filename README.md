@@ -173,6 +173,6 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
-* **1.14.23:** - Update to s6v3
-* **1.05.23:** - Initial Working Release.
-* **1.04.23:** - Initial Release.
+* **14.01.23:** - Update to s6v3
+* **05.01.23:** - Initial Working Release.
+* **04.01.23:** - Initial Release.
