@@ -12,7 +12,8 @@ if [ ! -f "/.setup" ]; then
 	cd /app/obico/backend
 
 	s6-setuidgid abc \
-		python3.7 manage.py migrate >/dev/null &&
+		python3.7 manage.py migrate >/dev/null
+	s6-setuidgid abc \	
 		python3.7 manage.py collectstatic -v 2 --noinput >/dev/null
 
 	touch "/.setup"
