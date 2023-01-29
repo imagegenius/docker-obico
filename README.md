@@ -6,7 +6,7 @@
 [![GitHub Package Repository](https://img.shields.io/static/v1.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=imagegenius.io&message=GitHub%20Package&logo=github)](https://github.com/imagegenius/docker-obico/packages)
 ![Image Size](https://img.shields.io/docker/image-size/imagegenius/obico/latest.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=docker)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.imagegenius.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-obico%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.imagegenius.io/job/Docker-Pipeline-Builders/job/docker-obico/job/main/)
-[![IG CI](https://img.shields.io/badge/dynamic/yaml?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fimagegenius%2Fobico%2Flatest%2Fci-status.yml)](https://ci-tests.imagegenius.io/imagegenius/obico/latest/index.html)
+[![IG CI](https://img.shields.io/badge/dynamic/yaml?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fimagegenius%2Fobico%2Flatest%2Fci-status.yml)](https://ci-tests.imagegenius.io/imagegenius/obico/latest-main/index.html)
 
 [Obico](https://www.obico.io/) - Community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.
 
@@ -57,7 +57,7 @@ services:
       - PGID=1000
       - TZ=Australia/Melbourne
     volumes:
-      - path_to_data:/config
+      - path_to_appdata:/config
     ports:
       - 3334:3334
     restart: unless-stopped
@@ -72,7 +72,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Australia/Melbourne \
   -p 3334:3334 \
-  -v path_to_data:/config \
+  -v path_to_appdata:/config \
   --restart unless-stopped \
   ghcr.io/imagegenius/obico:latest
 ```
