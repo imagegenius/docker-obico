@@ -14,7 +14,6 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333"
 
-# this is a really messy dockerfile but it works
 RUN \
   echo "**** add python3.7 to apt ****" && \
   echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list && \
