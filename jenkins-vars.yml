@@ -24,7 +24,7 @@ repo_vars:
   - CI_PORT = '3334'
   - CI_SSL = 'false'
   - CI_DELAY = '60'
-  - CI_DOCKERENV = 'CI_RUN=true|REDIS_URL=redis://localhost:6379'
+  - CI_DOCKERENV = 'CI_RUN=true|REDIS_URL=redis://localhost:6379|DOCKER_MODS=imagegenius/mods:universal-redis'
   - CI_AUTH = ''
   - CI_WEBPATH = ''
 sponsor_links:

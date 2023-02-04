@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+VARIABLES=("REDIS_URL")
+MESSAGES=("No Redis URL has been specified in the 'REDIS_URL' variable. (see https://github.com/imagegenius/docker-obico#redis)")
+
+for i in ${!VARIABLES[@]}; do
+	if [ -z "${!VARIABLES[$i]}" ]; then
+		echo "Error: ${MESSAGES[$i]}"
+		sleep infinity
+	fi
+done
+
+# conflicts of interest (docker-mods are running and we are not set to use them)
+if [[ "$DOCKER_MODS" == *"redis"* ]] && [[ "$REDIS_URL" != "redis://localhost:6379" ]]; then
+	echo "WARN: It looks like you're running the Redis docker mod, but 'REDIS_URL' is not set to 'redis://localhost:6379'."
+fi
