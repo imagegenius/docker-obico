@@ -13,7 +13,6 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333"
 
-# this is a really messy dockerfile but it works
 RUN \
   echo "**** add python3.7 to apt ****" && \
   echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list && \
@@ -91,9 +90,6 @@ RUN \
   ln -s \
     /config/media \
     /app/obico/backend/static_build/media && \
-  cd /app/obico/backend && \
-  python3.7 manage.py migrate && \
-  python3.7 manage.py collectstatic -v 2 --noinput && \
   echo "**** cleanup ****" && \
   for cleanfiles in *.pyc *.pyo; do \
     find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \

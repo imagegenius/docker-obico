@@ -15,7 +15,7 @@ available_architectures:
 # development version
 development_versions: false
 development_versions_items:
-  - { tag: "latest", desc: "Latest obico-server release with an Ubuntu base." }
+  - { tag: "latest", desc: "Latest Obico release with an Ubuntu base." }
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -27,7 +27,7 @@ param_env_vars:
   - { env_var: "REDIS_URL", env_value: "redis://<ip>:<port>", desc: "Redis URL, eg. `redis://192.168.1.2:6379`" }
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "path_to_data", desc: "Contains django database, logs and timelapses" }
+  - { vol_path: "/config", vol_host_path: "path_to_appdata", desc: "Contains django database, logs and timelapses" }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "3334", internal_port: "3334", port_desc: "WebUI Port" }
@@ -74,7 +74,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "1.23.23:", desc: "BREAKING: removed redis" }
-  - { date: "1.14.23:", desc: "Update to s6v3" }
-  - { date: "1.05.23:", desc: "Initial Working Release." }
-  - { date: "1.04.23:", desc: "Initial Release." }
+  - { date: "23.01.23:", desc: "BREAKING: removed redis" }
+  - { date: "14.01.23:", desc: "Update to s6v3" }
+  - { date: "05.01.23:", desc: "Initial Working Release." }
+  - { date: "04.01.23:", desc: "Initial Release." }
