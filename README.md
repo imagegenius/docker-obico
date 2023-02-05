@@ -28,15 +28,32 @@ This image supports the following architectures:
 
 ## Application Setup
 
-Please report any issues with the container [here](https://github.com/imagegenius/docker-obico/issues)!
+The WebUI can be found at `http://your-ip:3334`.
 
-The webui is at `<your ip>:3334`.
+**After starting the container, it is important to configure obico-server (Django) to ensure that all assets are properly loaded. 
 
-**After starting the container, it is important to configure obico-server (Django) to ensure that all assets are properly loaded. Follow steps 1-2 under 'Login as Django admin' and 'Configure Django site' in the [Obico Server Configuration](https://www.obico.io/docs/server-guides/configure/#login-as-django-admin) guide closely. These steps will guide you through setting up login credentials and configuring the domain name to match the IP used to access the container, or your FQDN if using a reverse proxy.**
+Follow steps 1-2 under 'Login as Django admin' and 'Configure Django site' in the [Obico Server Configuration](https://www.obico.io/docs/server-guides/configure/#login-as-django-admin) guide closely. These steps will guide you through setting up login credentials and configuring the domain name to match the IP used to access the container, or your FQDN if using a reverse proxy.
 
 You can also use environment variables to set various configurations, such as email settings. A list of available environment variables can be found [here](https://github.com/TheSpaghettiDetective/obico-server/blob/release/docker-compose.yml#L13-L40).
 
-Note: Some assets, such as the database (obico configuration) and media files (such as timelapses), are mounted to `/config` and will persist through container recreation. I am still working on identifying all assets that require persistence."
+Obico requires that you have Redis setup externally.
+
+Follow these steps if you need help setting up Redis.
+
+#### Redis:
+
+Redis can be ran within the container using a docker-mod or you can use an external Redis server/container.
+
+If you don't need to use Redis elsewhere add this environment variable: `DOCKER_MODS=imagegenius/mods:universal-redis`, and set `REDIS_URL` to `redis://localhost:6379`.
+
+Or within a seperate container:
+
+```bash
+docker run -d \
+  --name=redis \
+  -p 6379:6379 \
+  redis
+```
 
 Obico do not publish versioning for obico-server, so we use the latest commit hash to identify the current version.
 
@@ -57,6 +74,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Australia/Melbourne
+      - REDIS_URL=redis://<ip>:<port>
     volumes:
       - path_to_appdata:/config
     ports:
@@ -72,6 +90,7 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Australia/Melbourne \
+  -e REDIS_URL=redis://<ip>:<port> \
   -p 3334:3334 \
   -v path_to_appdata:/config \
   --restart unless-stopped \
@@ -88,6 +107,7 @@ To configure the container, pass variables at runtime using the format `<externa
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Australia/Melbourne` | Specify a timezone to use eg. Australia/Melbourne. |
+| `-e REDIS_URL=redis://<ip>:<port>` | Redis URL, eg. `redis://192.168.1.2:6379` |
 | `-v /config` | Contains django database, logs and timelapses |
 
 ## Umask for running applications
@@ -129,6 +149,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **23.01.23:** - BREAKING: removed redis
 * **14.01.23:** - Update to s6v3
 * **05.01.23:** - Initial Working Release.
 * **04.01.23:** - Initial Release.
