@@ -9,7 +9,6 @@ LABEL maintainer="hydazz"
 
 # environment settings
 ENV DEBIAN_FRONTEND="noninteractive" \
-  REDIS_URL="redis://localhost:6379" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333"
@@ -35,8 +34,7 @@ RUN \
     python3-six \
     python3.7 \
     python3.7-dev \
-    python3.7-distutils \
-    redis-server && \
+    python3.7-distutils && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
   pip install --upgrade \
     packaging \

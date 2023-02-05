@@ -3,7 +3,6 @@
 
 # make folders
 mkdir -p \
-	/config/log/redis \
 	/config/media \
 	/run/obico
 

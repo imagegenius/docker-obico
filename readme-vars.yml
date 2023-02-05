@@ -24,6 +24,7 @@ param_usage_include_net: false
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Australia/Melbourne", desc: "Specify a timezone to use eg. Australia/Melbourne." }
+  - { env_var: "REDIS_URL", env_value: "redis://<ip>:<port>", desc: "Redis URL, eg. `redis://192.168.1.2:6379`" }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "path_to_appdata", desc: "Contains django database, logs and timelapses" }
@@ -42,25 +43,44 @@ opt_cap_add_param: false
 optional_block_1: false
 
 # unraid template
+unraid_requirement: "Redis"
 unraid_category: "Cloud: Tools:"
 
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Please report any issues with the container [here](https://github.com/imagegenius/docker-obico/issues)!
+  The WebUI can be found at `http://your-ip:3334`.
 
-  The webui is at `<your ip>:3334`.
-
-  **After starting the container, it is important to configure obico-server (Django) to ensure that all assets are properly loaded. Follow steps 1-2 under 'Login as Django admin' and 'Configure Django site' in the [Obico Server Configuration](https://www.obico.io/docs/server-guides/configure/#login-as-django-admin) guide closely. These steps will guide you through setting up login credentials and configuring the domain name to match the IP used to access the container, or your FQDN if using a reverse proxy.**
+  **After starting the container, it is important to configure obico-server (Django) to ensure that all assets are properly loaded. 
+  
+  Follow steps 1-2 under 'Login as Django admin' and 'Configure Django site' in the [Obico Server Configuration](https://www.obico.io/docs/server-guides/configure/#login-as-django-admin) guide closely. These steps will guide you through setting up login credentials and configuring the domain name to match the IP used to access the container, or your FQDN if using a reverse proxy.
 
   You can also use environment variables to set various configurations, such as email settings. A list of available environment variables can be found [here](https://github.com/TheSpaghettiDetective/obico-server/blob/release/docker-compose.yml#L13-L40).
 
-  Note: Some assets, such as the database (obico configuration) and media files (such as timelapses), are mounted to `/config` and will persist through container recreation. I am still working on identifying all assets that require persistence."
+  Obico requires that you have Redis setup externally.
+
+  Follow these steps if you need help setting up Redis.
+
+  #### Redis:
+
+  Redis can be ran within the container using a docker-mod or you can use an external Redis server/container.
+
+  If you don't need to use Redis elsewhere add this environment variable: `DOCKER_MODS=imagegenius/mods:universal-redis`, and set `REDIS_URL` to `redis://localhost:6379`.
+
+  Or within a seperate container:
+
+  ```bash
+  docker run -d \
+    --name=redis \
+    -p 6379:6379 \
+    redis
+  ```
 
   Obico do not publish versioning for obico-server, so we use the latest commit hash to identify the current version.
 
 # changelog
 changelogs:
+  - { date: "23.01.23:", desc: "BREAKING: removed redis" }
   - { date: "14.01.23:", desc: "Update to s6v3" }
   - { date: "05.01.23:", desc: "Initial Working Release." }
   - { date: "04.01.23:", desc: "Initial Release." }
