@@ -24,7 +24,6 @@ RUN \
     ffmpeg \
     gcc \
     git \
-    jq \
     libfontconfig1 \
     libpq-dev \
     libsm6 \
@@ -98,7 +97,6 @@ RUN \
     curl \
     gcc \
     git \
-    jq \
     libpq-dev \
     python3.7-dev && \
   apt-get autoremove -y --purge && \
