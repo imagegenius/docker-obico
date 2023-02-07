@@ -34,6 +34,7 @@ grep3.7-1build1
 gzip1.10-4ubuntu4.1
 hostname3.23ubuntu2
 init-system-helpers1.62
+jq1.6-2.1ubuntu3
 libacl12.3.1-1
 libaom33.3.0-1
 libapparmor13.0.4-2ubuntu2.1
@@ -129,6 +130,7 @@ libjack-jackd2-01.9.20~dfsg-1
 libjbig02.1-3.1ubuntu0.22.04.1
 libjpeg88c-2ubuntu10
 libjpeg-turbo82.1.2-0ubuntu1
+libjq11.6-2.1ubuntu3
 libk5crypto31.19.2-2
 libkeyutils11.6.1-2ubuntu3
 libkrb5-31.19.2-2
@@ -156,6 +158,7 @@ libnpth01.6-3build2
 libnsl21.3.0-2build2
 libnuma12.0.14-3ubuntu2
 libogg01.3.5-0ubuntu3
+libonig56.9.7.1-2build1
 libopenal11:1.19.1-2build3
 libopenal-data1:1.19.1-2build3
 libopenjp2-72.4.0-6
