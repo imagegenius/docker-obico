@@ -4,7 +4,7 @@
 project_name: obico
 project_url: "https://www.obico.io/"
 project_logo: "https://www.obico.io/wwwimg/logo.svg"
-project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) - Community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world."
+project_blurb: "Obico is a community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world."
 project_github_repo_url: "https://github.com/imagegenius/docker-{{ project_name }}"
 project_blurb_optional_extras_enabled: false
 
