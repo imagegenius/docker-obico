@@ -17,7 +17,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
 
 RUN \
   echo "**** add python3.7 to apt ****" && \
-  echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list && \
+  echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list.d/python.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys f23c5a6cf475977595c89f51ba6932366a755776 && \
   echo "**** install runtime packages ****" && \
   apt-get update && \
@@ -104,6 +104,7 @@ RUN \
   apt-get autoremove -y --purge && \
   apt-get clean && \
   rm -rf \
+    /etc/apt/sources.list.d/python.list \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/* \
