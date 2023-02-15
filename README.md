@@ -5,7 +5,7 @@
 [![GitHub Release](https://img.shields.io/github/release/imagegenius/docker-obico.svg?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/imagegenius/docker-obico/releases)
 [![GitHub Package Repository](https://shields.io/badge/GitHub%20Package-blue?logo=github&logoColor=ffffff&style=for-the-badge)](https://github.com/imagegenius/docker-obico/packages)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.imagegenius.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-obico%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.imagegenius.io/job/Docker-Pipeline-Builders/job/docker-obico/job/main/)
-[![IG CI](https://img.shields.io/badge/dynamic/yaml?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fobico%2Flatest-main%2Fci-status.yml)](https://ci-tests.imagegenius.io/imagegenius/obico/latest-main/index.html)
+[![IG CI](https://img.shields.io/badge/dynamic/yaml?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fobico%2Flatest-main%2Fci-status.yml)](https://ci-tests.imagegenius.io/obico/latest-main/index.html)
 
 Obico is a community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.
 
@@ -23,6 +23,7 @@ This image supports the following architectures:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
 | arm64 | ❌ | |
+| armhf | ❌ | |
 
 ## Application Setup
 
@@ -71,7 +72,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Australia/Melbourne
+      - TZ=Etc/UTC
       - REDIS_URL=redis://<ip>:<port>
     volumes:
       - path_to_appdata:/config
@@ -87,15 +88,16 @@ docker run -d \
   --name=obico \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Australia/Melbourne \
+  -e TZ=Etc/UTC \
   -e REDIS_URL=redis://<ip>:<port> \
   -p 3334:3334 \
   -v path_to_appdata:/config \
   --restart unless-stopped \
   ghcr.io/imagegenius/obico:latest
+
 ```
 
-## Container Variables
+## Variables
 
 To configure the container, pass variables at runtime using the format `<external>:<internal>`. For instance, `-p 8080:80` exposes port `80` inside the container, making it accessible outside the container via the host's IP on port `8080`.
 
@@ -104,7 +106,7 @@ To configure the container, pass variables at runtime using the format `<externa
 | `-p 3334` | WebUI Port |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Australia/Melbourne` | Specify a timezone to use eg. Australia/Melbourne. |
+| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e REDIS_URL=redis://<ip>:<port>` | Redis URL, eg. `redis://192.168.1.2:6379` |
 | `-v /config` | Contains django database, logs and timelapses |
 
