@@ -55,10 +55,10 @@ RUN \
   pip install \
     -r /tmp/obico-server/ml_api/requirements_x86_64.txt && \
   pip install \
-    importlib-metadata==4.13.0 && \
+    importlib-metadata==4.13.0 \
     inotify-simple==1.3.5 \
     redis==3.2.0 && \
-    tornado==6.2.0 \
+    tornado==6.2.0 && \
   echo "**** move files into place ****" && \
   mkdir -p \
     /app/obico/backend \
