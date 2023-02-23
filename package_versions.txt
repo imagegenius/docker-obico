@@ -323,11 +323,8 @@ python3.7-distutils3.7.16-1+jammy1
 python3.7-lib2to33.7.16-1+jammy1
 python3.7-minimal3.7.16-1+jammy1
 python3-blinker1.4+dfsg1-0.4
-python3-importlib-metadata4.6.4-1
 python3-minimal3.10.6-1~22.04
-python3-more-itertools8.10.0-2
 python3-six1.16.0-3ubuntu1
-python3-zipp1.0.0-3
 readline-common8.1.2-1
 sed4.8-1ubuntu2
 sensible-utils0.0.17
