@@ -31,7 +31,6 @@ RUN \
     libsm6 \
     libxrender1 \
     python3-blinker \
-    python3-importlib-metadata \
     python3-six \
     python3.7 \
     python3.7-dev \
@@ -39,6 +38,7 @@ RUN \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
   pip install --upgrade \
     packaging \
+    pip \
     setuptools \
     wheel && \
   echo "**** install obico ****" && \
@@ -55,11 +55,15 @@ RUN \
   pip install \
     -r /tmp/obico-server/ml_api/requirements_x86_64.txt && \
   pip install \
+    importlib-metadata==4.13.0 && \
+    inotify-simple==1.3.5 \
     redis==3.2.0 && \
+    tornado==6.2.0 \
   echo "**** move files into place ****" && \
   mkdir -p \
     /app/obico/backend \
     /app/obico/ml_api && \
+  git clone https://github.com/Arksine/moonraker.git /app/moonraker && \
   cd /tmp/obico-server/backend && \
   cp -a \
     api \
@@ -109,6 +113,9 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/* \
     /root/.cache
+
+# environment settings
+ENV PYTHONPATH="${PYTHONPATH}:/app/moonraker/moonraker"
 
 # copy local files
 COPY root/ /
