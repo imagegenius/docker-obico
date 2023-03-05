@@ -149,6 +149,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **5.03.23:** - rollback moonraker (breaking upstream update)
 * **23.01.23:** - BREAKING: removed redis
 * **14.01.23:** - Update to s6v3
 * **05.01.23:** - Initial Working Release.
