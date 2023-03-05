@@ -13,7 +13,8 @@ LABEL maintainer="hydazz"
 ENV DEBIAN_FRONTEND="noninteractive" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
-  ML_API_HOST="http://localhost:3333"
+  ML_API_HOST="http://localhost:3333" \
+  MOONRAKER_COMMIT="1e7be45"
 
 RUN \
   echo "**** add python3.7 to apt ****" && \
@@ -59,11 +60,14 @@ RUN \
     inotify-simple==1.3.5 \
     redis==3.2.0 && \
     tornado==6.2.0 && \
+  echo "**** install moonraker ****" && \
+  git clone https://github.com/Arksine/moonraker.git /app/moonraker && \
+  cd /app/moonraker && \
+  git checkout ${MOONRAKER_COMMIT} && \
   echo "**** move files into place ****" && \
   mkdir -p \
     /app/obico/backend \
     /app/obico/ml_api && \
-  git clone https://github.com/Arksine/moonraker.git /app/moonraker && \
   cd /tmp/obico-server/backend && \
   cp -a \
     api \
