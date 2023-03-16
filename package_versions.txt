@@ -86,7 +86,7 @@ gnupg                        2.2.27-3ubuntu2.1                        deb
 gnupg-l10n                   2.2.27-3ubuntu2.1                        deb     
 gnupg-utils                  2.2.27-3ubuntu2.1                        deb     
 google-api-core              1.34.0                                   python  
-google-api-python-client     2.80.0                                   python  
+google-api-python-client     2.81.0                                   python  
 google-auth                  2.16.2                                   python  
 google-auth-httplib2         0.1.0                                    python  
 google-cloud-core            2.3.2                                    python  
@@ -116,7 +116,7 @@ importlib-metadata           4.13.0                                   python
 incremental                  22.10.0                                  python  
 init-system-helpers          1.62                                     deb     
 inotify-simple               1.3.5                                    python  
-ipdb                         0.13.11                                  python  
+ipdb                         0.13.13                                  python  
 ipython                      7.34.0                                   python  
 itsdangerous                 2.1.2                                    python  
 jedi                         0.18.2                                   python  
@@ -125,7 +125,7 @@ jsonfield                    2.0.2                                    python
 kombu                        4.6.11                                   python  
 libacl1                      2.3.1-1                                  deb     
 libaom3                      3.3.0-1                                  deb     
-libapparmor1                 3.0.4-2ubuntu2.1                         deb     
+libapparmor1                 3.0.4-2ubuntu2.2                         deb     
 libapt-pkg6.0                2.4.8                                    deb     
 libasound2                   1.2.6.1-1ubuntu1                         deb     
 libasound2-data              1.2.6.1-1ubuntu1                         deb     
@@ -202,7 +202,7 @@ libglx-mesa0                 22.2.5-0ubuntu0.1~22.04.1                deb
 libglx0                      1.4.0-1                                  deb     
 libgme0                      0.6.3-2                                  deb     
 libgmp10                     2:6.2.1+dfsg-3ubuntu1                    deb     
-libgnutls30                  3.7.3-4ubuntu1.1                         deb     
+libgnutls30                  3.7.3-4ubuntu1.2                         deb     
 libgomp1                     12.1.0-2ubuntu1~22.04                    deb     
 libgpg-error0                1.43-3                                   deb     
 libgraphite2-3               1.3.14-1build2                           deb     
@@ -459,11 +459,11 @@ sentry-sdk                   1.5.10                                   python
 service-identity             21.1.0                                   python  
 setuptools                   67.6.0                                   python  
 shared-mime-info             2.1-2                                    deb     
-simplejson                   3.18.3                                   python  
+simplejson                   3.18.4                                   python  
 six                          1.16.0                                   python  
 sqlparse                     0.4.3                                    python  
 sysvinit-utils               3.01-1ubuntu1                            deb     
-tar                          1.34+dfsg-1build3                        deb     
+tar                          1.34+dfsg-1ubuntu0.1.22.04.1             deb     
 tomli                        2.0.1                                    python  
 traitlets                    5.9.0                                    python  
 twilio                       6.24.1                                   python  
@@ -479,7 +479,7 @@ util-linux                   2.37.2-4ubuntu3                          deb
 vine                         1.3.0                                    python  
 wcwidth                      0.2.6                                    python  
 websocket-client             1.5.1                                    python  
-wheel                        0.38.4                                   python  
+wheel                        0.40.0                                   python  
 whitenoise                   5.3.0                                    python  
 x11-common                   1:7.7+23ubuntu2                          deb     
 xkb-data                     2.33-1                                   deb     
