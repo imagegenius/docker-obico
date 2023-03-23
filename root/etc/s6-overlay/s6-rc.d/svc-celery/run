@@ -1,7 +1,10 @@
 #!/usr/bin/with-contenv bash
-# shellcheck shell=bash
 
-cd /app/obico/backend
-
-exec s6-setuidgid abc \
-	celery -A config worker --beat -l info -c 2 -Q realtime,celery
+exec \
+    cd /app/obico/backend s6-setuidgid abc \
+        celery \
+            -A config worker \
+            --beat \
+            -l info \
+            -c 2 \
+            -Q realtime,celery

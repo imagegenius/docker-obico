@@ -80,7 +80,8 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "5.03.23:", desc: "rollback moonraker (breaking upstream update)" }
+  - { date: "23.03.23:", desc: "add service checks" }
+  - { date: "05.03.23:", desc: "rollback moonraker (breaking upstream update)" }
   - { date: "23.01.23:", desc: "BREAKING: removed redis" }
   - { date: "14.01.23:", desc: "Update to s6v3" }
   - { date: "05.01.23:", desc: "Initial Working Release." }
