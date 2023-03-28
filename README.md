@@ -7,7 +7,7 @@
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.imagegenius.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-obico%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.imagegenius.io/job/Docker-Pipeline-Builders/job/docker-obico/job/main/)
 [![IG CI](https://img.shields.io/badge/dynamic/yaml?color=007EC6&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.imagegenius.io%2Fobico%2Flatest-main%2Fci-status.yml)](https://ci-tests.imagegenius.io/obico/latest-main/index.html)
 
-[Obico](https://www.obico.io/) - is a community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.
+[Obico](https://www.obico.io/) is a community-built, open-source smart 3D printing platform used by makers, enthusiasts, and tinkerers around the world.
 
 [![obico](https://www.obico.io/wwwimg/logo.svg)](https://www.obico.io/)
 
