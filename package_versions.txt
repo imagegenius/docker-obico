@@ -86,8 +86,8 @@ gnupg                        2.2.27-3ubuntu2.1                        deb
 gnupg-l10n                   2.2.27-3ubuntu2.1                        deb     
 gnupg-utils                  2.2.27-3ubuntu2.1                        deb     
 google-api-core              1.34.0                                   python  
-google-api-python-client     2.82.0                                   python  
-google-auth                  2.16.3                                   python  
+google-api-python-client     2.83.0                                   python  
+google-auth                  2.17.0                                   python  
 google-auth-httplib2         0.1.0                                    python  
 google-cloud-core            2.3.2                                    python  
 google-cloud-firestore       2.10.1                                   python  
@@ -269,7 +269,7 @@ libpng16-16                  1.6.37-3build5                           deb
 libpocketsphinx3             0.8.0+real5prealpha+1-14ubuntu1          deb     
 libpostproc55                7:4.4.2-0ubuntu0.22.04.1                 deb     
 libprocps8                   2:3.3.17-6ubuntu2                        deb     
-libpulse0                    1:15.99.1+dfsg1-1ubuntu2                 deb     
+libpulse0                    1:15.99.1+dfsg1-1ubuntu2.1               deb     
 libpython3-stdlib            3.10.6-1~22.04                           deb     
 libpython3.10-minimal        3.10.6-1~22.04.2ubuntu1                  deb     
 libpython3.10-stdlib         3.10.6-1~22.04.2ubuntu1                  deb     
@@ -446,7 +446,7 @@ python3.7                    3.7.16-1+jammy1                          deb
 python3.7-distutils          3.7.16-1+jammy1                          deb     
 python3.7-lib2to3            3.7.16-1+jammy1                          deb     
 python3.7-minimal            3.7.16-1+jammy1                          deb     
-pytz                         2023.2                                   python  
+pytz                         2023.3                                   python  
 qrcode                       7.4.2                                    python  
 readline-common              8.1.2-1                                  deb     
 redis                        3.2.0                                    python  
@@ -457,7 +457,7 @@ sed                          4.8-1ubuntu2                             deb
 sensible-utils               0.0.17                                   deb     
 sentry-sdk                   1.5.10                                   python  
 service-identity             21.1.0                                   python  
-setuptools                   67.6.0                                   python  
+setuptools                   67.6.1                                   python  
 shared-mime-info             2.1-2                                    deb     
 simplejson                   3.18.4                                   python  
 six                          1.16.0                                   python  
