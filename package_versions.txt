@@ -91,7 +91,7 @@ google-auth                  2.17.0                                   python
 google-auth-httplib2         0.1.0                                    python  
 google-cloud-core            2.3.2                                    python  
 google-cloud-firestore       2.10.1                                   python  
-google-cloud-storage         2.7.0                                    python  
+google-cloud-storage         2.8.0                                    python  
 google-crc32c                1.5.0                                    python  
 google-resumable-media       2.4.1                                    python  
 googleapis-common-protos     1.59.0                                   python  
