@@ -416,7 +416,7 @@ pexpect                      4.8.0                                    python
 phonenumbers                 8.10.5                                   python  
 pickleshare                  0.7.5                                    python  
 pinentry-curses              1.1.1-1build2                            deb     
-pip                          23.1                                     python  
+pip                          23.1.1                                   python  
 procps                       2:3.3.17-6ubuntu2                        deb     
 prompt-toolkit               3.0.38                                   python  
 proto-plus                   1.22.2                                   python  
@@ -457,7 +457,7 @@ sed                          4.8-1ubuntu2                             deb
 sensible-utils               0.0.17                                   deb     
 sentry-sdk                   1.5.10                                   python  
 service-identity             21.1.0                                   python  
-setuptools                   67.7.0                                   python  
+setuptools                   67.7.1                                   python  
 shared-mime-info             2.1-2                                    deb     
 simplejson                   3.19.1                                   python  
 six                          1.16.0                                   python  
