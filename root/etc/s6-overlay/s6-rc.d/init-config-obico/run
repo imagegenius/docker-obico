@@ -6,7 +6,7 @@ mkdir -p \
     /run/obico
 
 if [ ! -f "/.setup" ]; then
-    echo "Initialising obico-server (First time setup)"
+    echo "Initialising Obico"
     cd /app/obico/backend
 
     python3.7 manage.py migrate >/dev/null
