@@ -16,16 +16,11 @@ RUN \
   cd / && \
   git clone https://github.com/AlexeyAB/darknet --depth 1 && \
   cd darknet && \
-  git checkout 59c86222c5387bffd9108a21885f80e980ece234 && \
-  sed -i 's/GPU=0/GPU=1/' Makefile && \
-  sed -i 's/CUDNN=0/CUDNN=1/' Makefile && \
-  sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile && \
-  sed -i 's/LIBSO=0/LIBSO=1/' Makefile && \
+  git checkout 59c8622 && \
+  sed -i 's/GPU=0/GPU=1/;s/CUDNN=0/CUDNN=1/;s/CUDNN_HALF=0/CUDNN_HALF=1/;s/LIBSO=0/LIBSO=1/' Makefile && \
   make -j 4 && \
   mv libdarknet.so libdarknet_gpu.so && \
-  sed -i 's/GPU=1/GPU=0/' Makefile && \
-  sed -i 's/CUDNN=1/CUDNN=0/' Makefile && \
-  sed -i 's/CUDNN_HALF=1/CUDNN_HALF=0/' Makefile && \
+  sed -i 's/GPU=1/GPU=0/;s/CUDNN=1/CUDNN=0/;s/CUDNN_HALF=1/CUDNN_HALF=0/' Makefile && \
   make -j 4 && \
   mv libdarknet.so libdarknet_cpu.so
 
@@ -110,7 +105,6 @@ RUN \
     /app/obico/backend && \
   cd /tmp/obico-server/ml_api && \
   cp -a \
-    bin \
     lib \
     model \
     auth.py \
@@ -121,12 +115,11 @@ RUN \
   mv /tmp/obico-server/frontend \
     /app/obico/frontend && \
   echo "**** configure obico ****" && \
-  curl -o \
-    /app/obico/ml_api/model/model-weights.darknet -L \
-    $(cat /app/obico/ml_api/model/model-weights.darknet.url | tr -d '\r') && \
-  curl -o \
-    /app/obico/ml_api/model/model-weights.onnx -L \
-    $(cat /app/obico/ml_api/model/model-weights.onnx.url | tr -d '\r') && \
+  for weight in onnx darknet; do \
+    curl -o \
+      /app/obico/ml_api/model/model-weights.${weight} -L \
+      $(cat /app/obico/ml_api/model/model-weights.${weight}.url | tr -d '\r'); \
+  done && \
   mkdir -p \
     /app/model \
     /app/obico/backend/static_build/ && \
