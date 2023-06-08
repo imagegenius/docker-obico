@@ -55,11 +55,13 @@ RUN \
     libpq-dev \
     libsm6 \
     libxrender1 \
-    python3-blinker \
-    python3-six \
     python3.7 \
     python3.7-dev \
     python3.7-distutils && \
+  curl -o \
+    /tmp/libcudnn.deb -L \
+    https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb && \
+  dpkg -i /tmp/libcudnn.deb && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
   pip install --upgrade \
     packaging \
@@ -80,11 +82,13 @@ RUN \
   pip install \
     -r /tmp/obico-server/ml_api/requirements.txt && \
   pip install \
+    blinker \
     importlib-metadata==4.13.0 \
     inotify-simple==1.3.5 \
     onnxruntime-gpu \
     opencv_python_headless \
     redis==3.2.0 \
+    six \
     tornado==6.2.0 && \
   echo "**** install moonraker ****" && \
   git clone https://github.com/Arksine/moonraker.git /app/moonraker && \
