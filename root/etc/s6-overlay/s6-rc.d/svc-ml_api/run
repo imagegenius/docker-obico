@@ -1,5 +1,8 @@
 #!/usr/bin/with-contenv bash
 
+export DEBUG="True"
+export FLASK_APP="server.py"
+
 exec \
     s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z 127.0.0.1 3333" \
         cd /app/obico/ml_api s6-setuidgid abc \
