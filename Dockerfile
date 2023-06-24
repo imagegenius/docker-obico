@@ -56,6 +56,7 @@ RUN \
     libpq-dev \
     libsm6 \
     libxrender1 \
+    nvidia-cuda-toolkit \
     python3.7 \
     python3.7-dev \
     python3.7-distutils && \
