@@ -146,10 +146,10 @@ pipeline {
         }
       }
     }
-    // If this is a main build use live docker endpoints
+    // If this is a cuda build use live docker endpoints
     stage("Set ENV live build"){
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
       }
       steps {
@@ -169,7 +169,7 @@ pipeline {
     // If this is a dev build use dev docker endpoints
     stage("Set ENV dev build"){
       when {
-        not {branch "main"}
+        not {branch "cuda"}
         environment name: 'CHANGE_ID', value: ''
       }
       steps {
@@ -209,7 +209,7 @@ pipeline {
     // Use helper containers to render templated files
     stage('Update-Templates') {
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
         expression {
           env.CONTAINER_NAME != null
@@ -220,13 +220,13 @@ pipeline {
               set -e
               TEMPDIR=$(mktemp -d)
               docker pull ghcr.io/imagegenius/jenkins-builder:latest
-              docker run --rm -e CONTAINER_NAME=${CONTAINER_NAME} -e GITHUB_BRANCH=main -v ${TEMPDIR}:/ansible/jenkins ghcr.io/imagegenius/jenkins-builder:latest 
+              docker run --rm -e CONTAINER_NAME=${CONTAINER_NAME} -e GITHUB_BRANCH=cuda -v ${TEMPDIR}:/ansible/jenkins ghcr.io/imagegenius/jenkins-builder:latest 
               # Stage 1 - Jenkinsfile update
               if [[ "$(md5sum Jenkinsfile | awk '{ print $1 }')" != "$(md5sum ${TEMPDIR}/docker-${CONTAINER_NAME}/Jenkinsfile | awk '{ print $1 }')" ]]; then
                 mkdir -p ${TEMPDIR}/repo
                 git clone https://github.com/${IG_USER}/${IG_REPO}.git ${TEMPDIR}/repo/${IG_REPO}
                 cd ${TEMPDIR}/repo/${IG_REPO}
-                git checkout -f main
+                git checkout -f cuda
                 cp ${TEMPDIR}/docker-${CONTAINER_NAME}/Jenkinsfile ${TEMPDIR}/repo/${IG_REPO}/
                 git add Jenkinsfile
                 git commit -m 'Bot Updating Templated Files'
@@ -246,7 +246,7 @@ pipeline {
                 mkdir -p ${TEMPDIR}/repo
                 git clone https://github.com/${IG_USER}/${IG_REPO}.git ${TEMPDIR}/repo/${IG_REPO}
                 cd ${TEMPDIR}/repo/${IG_REPO}
-                git checkout -f main
+                git checkout -f cuda
                 cd ${TEMPDIR}/docker-${CONTAINER_NAME}
                 mkdir -p ${TEMPDIR}/repo/${IG_REPO}/.github/workflows
                 mkdir -p ${TEMPDIR}/repo/${IG_REPO}/.github/ISSUE_TEMPLATE
@@ -294,7 +294,7 @@ pipeline {
     // Exit the build if the Templated files were just updated
     stage('Template-exit') {
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
         environment name: 'FILES_UPDATED', value: 'true'
         expression {
@@ -307,10 +307,10 @@ pipeline {
         }
       }
     }
-    // If this is a main build check the S6 service file perms
+    // If this is a cuda build check the S6 service file perms
     stage("Check S6 Service file Permissions"){
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
         environment name: 'EXIT_STATUS', value: ''
       }
@@ -445,7 +445,7 @@ pipeline {
     // Take the image we just built and dump package versions for comparison
     stage('Update-packages') {
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
         environment name: 'EXIT_STATUS', value: ''
       }
@@ -468,7 +468,7 @@ pipeline {
               echo "Package tag sha from current packages in buit container is ${NEW_PACKAGE_TAG} comparing to old ${PACKAGE_TAG} from github"
               if [ "${NEW_PACKAGE_TAG}" != "${PACKAGE_TAG}" ]; then
                 git clone https://github.com/${IG_USER}/${IG_REPO}.git ${TEMPDIR}/${IG_REPO}
-                git --git-dir ${TEMPDIR}/${IG_REPO}/.git checkout -f main
+                git --git-dir ${TEMPDIR}/${IG_REPO}/.git checkout -f cuda
                 cp ${TEMPDIR}/package_versions.txt ${TEMPDIR}/${IG_REPO}/
                 cd ${TEMPDIR}/${IG_REPO}/
                 wait
@@ -493,7 +493,7 @@ pipeline {
     // Exit the build if the package file was just updated
     stage('PACKAGE-exit') {
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
         environment name: 'PACKAGE_UPDATED', value: 'true'
         environment name: 'EXIT_STATUS', value: ''
@@ -514,7 +514,7 @@ pipeline {
     // Exit the build if this is just a package check and there are no changes to push
     stage('PACKAGECHECK-exit') {
       when {
-        branch "main"
+        branch "cuda"
         environment name: 'CHANGE_ID', value: ''
         environment name: 'PACKAGE_UPDATED', value: 'false'
         environment name: 'EXIT_STATUS', value: ''
@@ -570,7 +570,7 @@ pipeline {
                 -e PORT=\"${CI_PORT}\" \
                 -e SSL=\"${CI_SSL}\" \
                 -e BASE=\"${DIST_IMAGE}\" \
-                -e BRANCH=\"main\" \
+                -e BRANCH=\"cuda\" \
                 -e SECRET_KEY=\"${S3_SECRET}\" \
                 -e ACCESS_KEY=\"${S3_KEY}\" \
                 -e DOCKER_ENV=\"${CI_DOCKERENV}\" \
@@ -702,7 +702,7 @@ pipeline {
     // If this is a public release tag it in the IG Github
     stage('Github-Tag-Push-Release') {
       when {
-        branch "main"
+        branch "cuda"
         expression {
           env.IG_RELEASE != env.EXT_RELEASE_CLEAN + '-ig' + env.IG_TAG_NUMBER
         }
@@ -714,14 +714,14 @@ pipeline {
         sh '''curl -H "Authorization: token ${GITHUB_TOKEN}" -X POST https://api.github.com/repos/${IG_USER}/${IG_REPO}/git/tags \
         -d '{"tag":"'${META_TAG}'",\
              "object": "'${COMMIT_SHA}'",\
-             "message": "Tagging Release '${EXT_RELEASE_CLEAN}'-ig'${IG_TAG_NUMBER}' to main",\
+             "message": "Tagging Release '${EXT_RELEASE_CLEAN}'-ig'${IG_TAG_NUMBER}' to cuda",\
              "type": "commit",\
              "tagger": {"name": "ImageGenius Jenkins","email": "ci@imagegenius.io","date": "'${GITHUB_DATE}'"}}' '''
         echo "Pushing New release for Tag"
         sh '''#!/bin/bash
               curl -H "Authorization: token ${GITHUB_TOKEN}" -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/commits/${EXT_RELEASE_CLEAN} | jq '.commit.message' | sed 's:^.\\(.*\\).$:\\1:' > releasebody.json
               echo '{"tag_name":"'${META_TAG}'",\
-                     "target_commitish": "main",\
+                     "target_commitish": "cuda",\
                      "name": "'${META_TAG}'",\
                      "body": "**ImageGenius Changes:**\\n\\n'${IG_RELEASE_NOTES}'\\n\\n**'${EXT_REPO}' Changes:**\\n\\n' > start
               printf '","draft": false,"prerelease": false}' >> releasebody.json
@@ -819,12 +819,12 @@ pipeline {
         }
         else if (currentBuild.currentResult == "SUCCESS"){
           sh ''' curl -X POST -H "Content-Type: application/json" --data '{"avatar_url": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jenkins-avatar.png","embeds": [{"color": 1681177,\
-                 "description": "**'${IG_REPO}' Build '${BUILD_NUMBER}' (main)**\\n**CI Results:**  '${CI_URL}'\\n**Job:** '${RUN_DISPLAY_URL}'\\n**Changes:** '${CODE_URL}'\\n**External Release:** '${RELEASE_LINK}'\\n"}],\
+                 "description": "**'${IG_REPO}' Build '${BUILD_NUMBER}' (cuda)**\\n**CI Results:**  '${CI_URL}'\\n**Job:** '${RUN_DISPLAY_URL}'\\n**Changes:** '${CODE_URL}'\\n**External Release:** '${RELEASE_LINK}'\\n"}],\
                  "username": "Jenkins"}' ${BUILDS_DISCORD} '''
         }
         else {
           sh ''' curl -X POST -H "Content-Type: application/json" --data '{"avatar_url": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/jenkins-avatar.png","embeds": [{"color": 16711680,\
-                 "description": "**'${IG_REPO}' Build '${BUILD_NUMBER}' Failed! (main)**\\n**CI Results:**  '${CI_URL}'\\n**Job:** '${RUN_DISPLAY_URL}'\\n**Change:** '${CODE_URL}'\\n**External Release:** '${RELEASE_LINK}'\\n"}],\
+                 "description": "**'${IG_REPO}' Build '${BUILD_NUMBER}' Failed! (cuda)**\\n**CI Results:**  '${CI_URL}'\\n**Job:** '${RUN_DISPLAY_URL}'\\n**Change:** '${CODE_URL}'\\n**External Release:** '${RELEASE_LINK}'\\n"}],\
                  "username": "Jenkins"}' ${BUILDS_DISCORD} '''
           // Clean up images if CI tests fail
           sh ''' if [ "${MULTIARCH}" == "true" ] && [ "${PACKAGE_CHECK}" == "false" ]; then
