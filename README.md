@@ -15,7 +15,7 @@
 
 We use Docker manifest for cross-platform compatibility. More details can be found on [Docker's website](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list).
 
-To obtain the appropriate image for your architecture, simply pull `ghcr.io/imagegenius/obico:latest`. Alternatively, you can also obtain specific architecture images by using tags.
+To obtain the appropriate image for your architecture, simply pull `ghcr.io/imagegenius/obico:cuda`. Alternatively, you can also obtain specific architecture images by using tags.
 
 This image supports the following architectures:
 
@@ -67,7 +67,7 @@ Example snippets to start creating a container:
 version: "2.1"
 services:
   obico:
-    image: ghcr.io/imagegenius/obico:latest
+    image: ghcr.io/imagegenius/obico:cuda
     container_name: obico
     environment:
       - PUID=1000
@@ -93,7 +93,7 @@ docker run -d \
   -p 3334:3334 \
   -v path_to_appdata:/config \
   --restart unless-stopped \
-  ghcr.io/imagegenius/obico:latest
+  ghcr.io/imagegenius/obico:cuda
 
 ```
 
@@ -141,7 +141,7 @@ Instructions for updating containers:
 
 ### Via Docker Run
 
-* Update the image: `docker pull ghcr.io/imagegenius/obico:latest`
+* Update the image: `docker pull ghcr.io/imagegenius/obico:cuda`
 * Stop the running container: `docker stop obico`
 * Delete the container: `docker rm obico`
 * Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
