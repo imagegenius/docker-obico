@@ -18,7 +18,8 @@ RUN \
   git clone https://github.com/AlexeyAB/darknet && \
   cd darknet && \
   git checkout 59c8622 && \
-  make -j 4 && \
+  sed -i 's/LIBSO=0/LIBSO=1/' Makefile && \
+  make && \
   mv libdarknet.so libdarknet_cpu.so
 
 FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
