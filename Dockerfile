@@ -20,7 +20,7 @@ RUN \
   git checkout 59c8622 && \
   sed -i 's/GPU=0/GPU=1/;s/CUDNN=0/CUDNN=1/;s/CUDNN_HALF=0/CUDNN_HALF=1/;s/LIBSO=0/LIBSO=1/' Makefile && \
   make -j 4 && \
-  mv libdarknet.so libdarknet_gpu.so && \
+  mv libdarknet.so libdarknet_gpu.so
 
 FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
 
