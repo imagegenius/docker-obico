@@ -25,6 +25,14 @@ This image supports the following architectures:
 | arm64 | ❌ | |
 | armhf | ❌ | |
 
+## Version Tags
+
+This image offers different versions via tags. Be cautious when using unstable or development tags, and read their descriptions carefully.
+
+| Tag | Available | Description |
+| :----: | :----: |--- |
+| latest | ✅ | Latest obico-server release, only supports CPU for machine learning. |
+| cuda | ✅ | Latest obico-server release with support for GPU (CUDA) acceleration. |
 ## Application Setup
 
 The WebUI can be found at `http://your-ip:3334`.
@@ -149,6 +157,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **29.06.23:** - create seperate cuda branch
 * **23.03.23:** - add service checks
 * **05.03.23:** - rollback moonraker (breaking upstream update)
 * **23.01.23:** - BREAKING: removed redis
