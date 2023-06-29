@@ -96,11 +96,11 @@ gnupg-l10n                   2.2.27-3ubuntu2.1                        deb
 gnupg-utils                  2.2.27-3ubuntu2.1                        deb     
 google-api-core              1.34.0                                   python  
 google-api-python-client     2.90.0                                   python  
-google-auth                  2.20.0                                   python  
+google-auth                  2.21.0                                   python  
 google-auth-httplib2         0.1.0                                    python  
 google-cloud-core            2.3.2                                    python  
 google-cloud-firestore       2.11.1                                   python  
-google-cloud-storage         2.9.0                                    python  
+google-cloud-storage         2.10.0                                   python  
 google-crc32c                1.5.0                                    python  
 google-resumable-media       2.5.0                                    python  
 googleapis-common-protos     1.59.1                                   python  
@@ -186,7 +186,6 @@ libcub-dev                   1.15.0-3                                 deb
 libcublas11                  11.7.4.6~11.5.1-1ubuntu1                 deb     
 libcublaslt11                11.7.4.6~11.5.1-1ubuntu1                 deb     
 libcudart11.0                11.5.117~11.5.1-1ubuntu1                 deb     
-libcudnn8                    8.2.4.15-1+cuda11.4                      deb     
 libcufft10                   11.1.1+~10.6.0.107~11.5.1-1ubuntu1       deb     
 libcufftw10                  11.1.1+~10.6.0.107~11.5.1-1ubuntu1       deb     
 libcuinj64-11.5              11.5.114~11.5.1-1ubuntu1                 deb     
@@ -444,7 +443,7 @@ libzmq5                      4.3.4-2                                  deb
 libzstd1                     1.4.8+dfsg-3build1                       deb     
 libzvbi-common               0.2.35-19                                deb     
 libzvbi0                     0.2.35-19                                deb     
-linux-libc-dev               5.15.0-75.82                             deb     
+linux-libc-dev               5.15.0-76.83                             deb     
 locales                      2.35-0ubuntu3.1                          deb     
 login                        1:4.8.1-2ubuntu2.1                       deb     
 logsave                      1.46.5-2ubuntu1.1                        deb     
@@ -535,7 +534,7 @@ tornado                      6.2                                      python
 traitlets                    5.9.0                                    python  
 twilio                       6.24.1                                   python  
 txaio                        23.1.1                                   python  
-typing_extensions            4.6.3                                    python  
+typing_extensions            4.7.0                                    python  
 tzdata                       2023c-0ubuntu0.22.04.2                   deb     
 ubuntu-keyring               2021.03.26                               deb     
 ucf                          3.0043                                   deb     
