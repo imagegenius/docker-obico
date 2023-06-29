@@ -13,7 +13,10 @@ available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest" }
 
 # development version
-development_versions: false
+development_versions: true
+development_versions_items:
+  - { tag: "latest", desc: "Latest obico-server release, only supports CPU for machine learning." }
+  - { tag: "cuda", desc: "Latest obico-server release with support for GPU (CUDA) acceleration." }
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -77,6 +80,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "29.06.23:", desc: "create seperate cuda branch" }
   - { date: "23.03.23:", desc: "add service checks" }
   - { date: "05.03.23:", desc: "rollback moonraker (breaking upstream update)" }
   - { date: "23.01.23:", desc: "BREAKING: removed redis" }

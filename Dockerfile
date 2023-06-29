@@ -18,10 +18,6 @@ RUN \
   git clone https://github.com/AlexeyAB/darknet && \
   cd darknet && \
   git checkout 59c8622 && \
-  sed -i 's/GPU=0/GPU=1/;s/CUDNN=0/CUDNN=1/;s/CUDNN_HALF=0/CUDNN_HALF=1/;s/LIBSO=0/LIBSO=1/' Makefile && \
-  make -j 4 && \
-  mv libdarknet.so libdarknet_gpu.so && \
-  sed -i 's/GPU=1/GPU=0/;s/CUDNN=1/CUDNN=0/;s/CUDNN_HALF=1/CUDNN_HALF=0/' Makefile && \
   make -j 4 && \
   mv libdarknet.so libdarknet_cpu.so
 
