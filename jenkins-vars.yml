@@ -5,7 +5,7 @@ project_name: docker-obico
 external_type: github_commit
 release_type: stable
 release_tag: latest
-ig_branch: main
+ig_branch: cuda
 repo_vars:
   - EXT_GIT_BRANCH = 'release'
   - EXT_USER = 'TheSpaghettiDetective'
