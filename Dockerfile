@@ -87,26 +87,9 @@ RUN \
   cd /app/moonraker && \
   git checkout ${MOONRAKER_COMMIT} && \
   echo "**** move files into place ****" && \
-  mkdir -p \
-    /app/obico/backend \
-    /app/obico/ml_api && \
-  cd /tmp/obico-server/backend && \
-  cp -a \
-    api \
-    app \
-    config \
-    lib \
-    manage.py \
-    notifications \
+  mv /tmp/obico-server/backend \
     /app/obico/backend && \
-  cd /tmp/obico-server/ml_api && \
-  cp -a \
-    lib \
-    model \
-    auth.py \
-    detect.py \
-    server.py \
-    wsgi.py \
+  mv /tmp/obico-server/ml_api \
     /app/obico/ml_api && \
   mv /tmp/obico-server/frontend \
     /app/obico/frontend && \
