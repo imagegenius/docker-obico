@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
 
+# from https://github.com/TheSpaghettiDetective/obico-server/blob/release/ml_api/Dockerfile.base_amd64
 FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-devel-ubuntu20.04 as darknet_builder
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -52,18 +53,12 @@ RUN \
     gcc \
     git \
     libfontconfig1 \
-    nvidia-cuda-toolkit \
     libpq-dev \
     libsm6 \
     libxrender1 \
-    nvidia-cuda-toolkit \
     python3.7 \
     python3.7-dev \
     python3.7-distutils && \
-  curl -o \
-    /tmp/libcudnn.deb -L \
-    https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb && \
-  dpkg -i /tmp/libcudnn.deb && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
   pip install --upgrade \
     packaging \
@@ -79,10 +74,8 @@ RUN \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   cd /tmp/obico-server && \
   git checkout ${OBICO_VERSION} && \
-  pip install \
-    -r /tmp/obico-server/backend/requirements.txt && \
-  pip install \
-    -r /tmp/obico-server/ml_api/requirements.txt && \
+  pip install -r /tmp/obico-server/backend/requirements.txt && \
+  pip install -r /tmp/obico-server/ml_api/requirements.txt && \
   pip install \
     blinker \
     importlib-metadata==4.13.0 \
