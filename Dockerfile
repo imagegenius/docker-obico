@@ -60,6 +60,10 @@ RUN \
     python3.7 \
     python3.7-dev \
     python3.7-distutils && \
+  curl -o \
+    /tmp/libcudnn.deb -L \
+    https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb && \
+  dpkg -i /tmp/libcudnn.deb && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
   pip install --upgrade \
     packaging \
@@ -115,7 +119,6 @@ RUN \
     find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \
   done && \
   apt-get remove -y --purge \
-    curl \
     gcc \
     git \
     libpq-dev \

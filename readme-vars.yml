@@ -73,6 +73,29 @@ app_setup_block: |
     redis
   ```
 
+  ## Enabling GPU Acceleration with this container
+
+  To start this image with GPU support, you need to modify your Docker settings.
+
+  If you're using the Docker CLI, add the `--gpus=all` flag to your command.
+
+  ```sh
+  docker run --gpus=all ...
+  ```
+
+  If you're using Docker Compose, add the following under your service:
+
+  ```yaml
+      deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                capabilities: [gpu]
+  ```
+
+  This will reserve all available GPUs for your container, using the NVIDIA driver.
+
   Obico do not publish versioning for obico-server, so we use the latest commit hash to identify the current version.
 
 # changelog
