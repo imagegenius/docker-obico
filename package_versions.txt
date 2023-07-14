@@ -43,7 +43,7 @@ channels                     2.4.0                                    python
 channels-redis               3.0.1                                    python  
 chardet                      3.0.4                                    python  
 charset-normalizer           3.2.0                                    python  
-click                        8.1.4                                    python  
+click                        8.1.5                                    python  
 coloredlogs                  15.0.1                                   python  
 colorlog                     6.7.0                                    python  
 constantly                   15.1.0                                   python  
