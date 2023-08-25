@@ -18,8 +18,8 @@ Werkzeug                     2.2.3                                    python
 adduser                      3.118ubuntu5                             deb     
 aioredis                     1.3.1                                    python  
 amqp                         2.6.1                                    python  
-apt                          2.4.9                                    deb     
-apt-utils                    2.4.9                                    deb     
+apt                          2.4.10                                   deb     
+apt-utils                    2.4.10                                   deb     
 asgiref                      3.2.10                                   python  
 async-timeout                4.0.3                                    python  
 attrs                        23.1.0                                   python  
@@ -43,7 +43,7 @@ channels                     2.4.0                                    python
 channels-redis               3.0.1                                    python  
 chardet                      3.0.4                                    python  
 charset-normalizer           3.2.0                                    python  
-click                        8.1.6                                    python  
+click                        8.1.7                                    python  
 coloredlogs                  15.0.1                                   python  
 colorlog                     6.7.0                                    python  
 constantly                   15.1.0                                   python  
@@ -91,7 +91,7 @@ gnupg                        2.2.27-3ubuntu2.1                        deb
 gnupg-l10n                   2.2.27-3ubuntu2.1                        deb     
 gnupg-utils                  2.2.27-3ubuntu2.1                        deb     
 google-api-core              1.34.0                                   python  
-google-api-python-client     2.96.0                                   python  
+google-api-python-client     2.97.0                                   python  
 google-auth                  2.22.0                                   python  
 google-auth-httplib2         0.1.0                                    python  
 google-cloud-core            2.3.3                                    python  
@@ -132,7 +132,7 @@ kombu                        4.6.11                                   python
 libacl1                      2.3.1-1                                  deb     
 libaom3                      3.3.0-1                                  deb     
 libapparmor1                 3.0.4-2ubuntu2.2                         deb     
-libapt-pkg6.0                2.4.9                                    deb     
+libapt-pkg6.0                2.4.10                                   deb     
 libasound2                   1.2.6.1-1ubuntu1                         deb     
 libasound2-data              1.2.6.1-1ubuntu1                         deb     
 libass9                      1:0.15.2-1                               deb     
@@ -232,8 +232,8 @@ libkrb5-3                    1.19.2-2ubuntu0.2                        deb
 libkrb5support0              1.19.2-2ubuntu0.2                        deb     
 libksba8                     1.6.0-2ubuntu0.2                         deb     
 liblapack3                   3.10.0-2ubuntu1                          deb     
-libldap-2.5-0                2.5.15+dfsg-0ubuntu0.22.04.1             deb     
-libldap-common               2.5.15+dfsg-0ubuntu0.22.04.1             deb     
+libldap-2.5-0                2.5.16+dfsg-0ubuntu0.22.04.1             deb     
+libldap-common               2.5.16+dfsg-0ubuntu0.22.04.1             deb     
 liblilv-0-0                  0.24.12-2                                deb     
 libllvm15                    1:15.0.7-0ubuntu0.22.04.3                deb     
 liblz4-1                     1.9.3-2build2                            deb     
@@ -324,7 +324,7 @@ libtasn1-6                   4.18.0-4build1                           deb
 libthai-data                 0.1.29-1build1                           deb     
 libthai0                     0.1.29-1build1                           deb     
 libtheora0                   1.1.1+dfsg.1-15ubuntu4                   deb     
-libtiff5                     4.3.0-6ubuntu0.4                         deb     
+libtiff5                     4.3.0-6ubuntu0.5                         deb     
 libtinfo6                    6.3-2ubuntu0.1                           deb     
 libtirpc-common              1.3.2-2ubuntu0.1                         deb     
 libtirpc3                    1.3.2-2ubuntu0.1                         deb     
@@ -437,7 +437,6 @@ pyasn1-modules               0.3.0                                    python
 pycparser                    2.21                                     python  
 pyparsing                    3.1.1                                    python  
 pypng                        0.20220715.0                             python  
-python                       3.7.17                                   binary  
 python-dateutil              2.8.2                                    python  
 python-magic                 0.4.27                                   python  
 python3-openid               3.2.0                                    python  
@@ -480,7 +479,7 @@ util-linux                   2.37.2-4ubuntu3                          deb
 vine                         1.3.0                                    python  
 wcwidth                      0.2.6                                    python  
 websocket-client             1.6.1                                    python  
-wheel                        0.41.1                                   python  
+wheel                        0.41.2                                   python  
 whitenoise                   5.3.0                                    python  
 x11-common                   1:7.7+23ubuntu2                          deb     
 xkb-data                     2.33-1                                   deb     
