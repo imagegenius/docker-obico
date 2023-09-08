@@ -1,6 +1,6 @@
 NAME                         VERSION                                  TYPE   
 Automat                      22.10.0                                  python  
-Brotli                       1.0.9                                    python  
+Brotli                       1.1.0                                    python  
 CacheControl                 0.13.1                                   python  
 Django                       2.2.27                                   python  
 Flask                        2.2.5                                    python  
@@ -109,7 +109,7 @@ gpgconf                      2.2.27-3ubuntu2.1                        deb
 gpgsm                        2.2.27-3ubuntu2.1                        deb     
 gpgv                         2.2.27-3ubuntu2.1                        deb     
 grep                         3.7-1build1                              deb     
-grpcio                       1.57.0                                   python  
+grpcio                       1.58.0                                   python  
 grpcio-status                1.48.2                                   python  
 gunicorn                     19.9.0                                   python  
 gzip                         1.10-4ubuntu4.1                          deb     
