@@ -157,6 +157,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **29.09.23:** - precompile darknet
 * **29.06.23:** - create seperate cuda branch
 * **23.03.23:** - add service checks
 * **05.03.23:** - rollback moonraker (breaking upstream update)
