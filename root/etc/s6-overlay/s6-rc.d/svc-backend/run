@@ -1,5 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-exec \
-    cd /app/obico/backend s6-setuidgid abc \
-        python3.7 manage.py runserver --nostatic --noreload 0.0.0.0:3334

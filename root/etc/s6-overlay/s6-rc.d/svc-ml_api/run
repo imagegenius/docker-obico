@@ -1,5 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-exec \
-    cd /app/obico/ml_api s6-setuidgid abc \
-        gunicorn --bind 0.0.0.0:3333 --workers 1 wsgi
