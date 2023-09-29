@@ -172,6 +172,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **29.09.23:** - precompile darknet
 * **23.03.23:** - add service checks
 * **05.03.23:** - rollback moonraker (breaking upstream update)
 * **23.01.23:** - BREAKING: removed redis
