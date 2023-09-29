@@ -1,29 +1,6 @@
 # syntax=docker/dockerfile:1
 
-# from https://github.com/TheSpaghettiDetective/obico-server/blob/release/ml_api/Dockerfile.base_amd64
-FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-devel-ubuntu20.04 as darknet_builder
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN \
-  apt update && \
-  apt install -y \
-    ca-certificates \
-    build-essential \
-    gcc \
-    g++ \
-    cmake \
-    git && \
-  cd / && \
-  git clone https://github.com/AlexeyAB/darknet && \
-  cd darknet && \
-  git checkout 59c8622 && \
-  sed -i 's/LIBSO=0/LIBSO=1/' Makefile && \
-  make && \
-  mv libdarknet.so libdarknet_cpu.so && \  
-  sed -i 's/GPU=0/GPU=1/;s/CUDNN=0/CUDNN=1/;s/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile && \
-  make && \
-  mv libdarknet.so libdarknet_gpu.so
+FROM ghcr.io/imagegenius/obico-darknet:latest as darknet
 
 FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
 
@@ -119,6 +96,7 @@ RUN \
     find /usr/local/lib/python3.* /usr/lib/python3.* -name "${cleanfiles}" -delete; \
   done && \
   apt-get remove -y --purge \
+    curl \
     gcc \
     git \
     libpq-dev \
@@ -137,7 +115,9 @@ ENV PYTHONPATH="${PYTHONPATH}:/app/moonraker/moonraker"
 
 # copy local files
 COPY root/ /
-COPY --from=darknet_builder /darknet /darknet
+
+# add darknet libraries
+COPY --from=darknet /darknet-gpu /darknet
 
 # ports and volumes
 EXPOSE 3334
