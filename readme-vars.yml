@@ -80,6 +80,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "29.09.23:", desc: "precompile darknet" }
   - { date: "29.06.23:", desc: "create seperate cuda branch" }
   - { date: "23.03.23:", desc: "add service checks" }
   - { date: "05.03.23:", desc: "rollback moonraker (breaking upstream update)" }
