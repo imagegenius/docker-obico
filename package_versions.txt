@@ -46,7 +46,7 @@ cffi                         1.15.1                                   python
 channels                     2.4.0                                    python  
 channels-redis               3.0.1                                    python  
 chardet                      3.0.4                                    python  
-charset-normalizer           3.3.1                                    python  
+charset-normalizer           3.3.2                                    python  
 click                        8.1.7                                    python  
 coloredlogs                  15.0.1                                   python  
 colorlog                     6.7.0                                    python  
@@ -99,12 +99,12 @@ gnupg                        2.2.27-3ubuntu2.1                        deb
 gnupg-l10n                   2.2.27-3ubuntu2.1                        deb     
 gnupg-utils                  2.2.27-3ubuntu2.1                        deb     
 google-api-core              1.34.0                                   python  
-google-api-python-client     2.105.0                                  python  
-google-auth                  2.23.3                                   python  
+google-api-python-client     2.106.0                                  python  
+google-auth                  2.23.4                                   python  
 google-auth-httplib2         0.1.1                                    python  
 google-cloud-core            2.3.3                                    python  
 google-cloud-firestore       2.13.0                                   python  
-google-cloud-storage         2.12.0                                   python  
+google-cloud-storage         2.13.0                                   python  
 google-crc32c                1.5.0                                    python  
 google-resumable-media       2.6.0                                    python  
 googleapis-common-protos     1.61.0                                   python  
@@ -116,7 +116,7 @@ gpgconf                      2.2.27-3ubuntu2.1                        deb
 gpgsm                        2.2.27-3ubuntu2.1                        deb     
 gpgv                         2.2.27-3ubuntu2.1                        deb     
 grep                         3.7-1build1                              deb     
-grpcio                       1.59.0                                   python  
+grpcio                       1.59.2                                   python  
 grpcio-status                1.48.2                                   python  
 gunicorn                     19.9.0                                   python  
 gzip                         1.10-4ubuntu4.1                          deb     
@@ -303,8 +303,8 @@ libnsl2                      1.3.0-2build2                            deb
 libnuma1                     2.0.14-3ubuntu2                          deb     
 libnvblas11                  11.7.4.6~11.5.1-1ubuntu1                 deb     
 libnvidia-compute-495        510.108.03-0ubuntu0.22.04.1              deb     
-libnvidia-compute-510        525.125.06-0ubuntu0.22.04.1              deb     
-libnvidia-compute-525        525.125.06-0ubuntu0.22.04.1              deb     
+libnvidia-compute-510        525.147.05-0ubuntu0.22.04.1              deb     
+libnvidia-compute-525        525.147.05-0ubuntu0.22.04.1              deb     
 libnvidia-ml-dev             11.5.50~11.5.1-1ubuntu1                  deb     
 libnvjpeg11                  11.5.4.107~11.5.1-1ubuntu1               deb     
 libnvrtc-builtins11.5        11.5.119~11.5.1-1ubuntu1                 deb     
@@ -363,7 +363,7 @@ libslang2                    2.3.2-5build4                            deb
 libsm6                       2:1.2.3-1build2                          deb     
 libsmartcols1                2.37.2-4ubuntu3                          deb     
 libsnappy1v5                 1.1.8-1build3                            deb     
-libsndfile1                  1.0.31-2build1                           deb     
+libsndfile1                  1.0.31-2ubuntu0.1                        deb     
 libsndio7.0                  1.8.1-1.1                                deb     
 libsodium23                  1.0.18-1build2                           deb     
 libsord-0-0                  0.16.8-2                                 deb     
@@ -452,7 +452,7 @@ libzmq5                      4.3.4-2                                  deb
 libzstd1                     1.4.8+dfsg-3build1                       deb     
 libzvbi-common               0.2.35-19                                deb     
 libzvbi0                     0.2.35-19                                deb     
-linux-libc-dev               5.15.0-87.97                             deb     
+linux-libc-dev               5.15.0-88.98                             deb     
 locales                      2.35-0ubuntu3.4                          deb     
 login                        1:4.8.1-2ubuntu2.1                       deb     
 logsave                      1.46.5-2ubuntu1.1                        deb     
@@ -484,7 +484,7 @@ onnxruntime-gpu              1.14.1                                   python
 opencl-c-headers             3.0~2022.01.04-1                         deb     
 opencl-clhpp-headers         3.0~2.0.15-1ubuntu1                      deb     
 opencv-python-headless       4.8.1.78                                 python  
-openssl                      3.0.2-0ubuntu1.10                        deb     
+openssl                      3.0.2-0ubuntu1.12                        deb     
 packaging                    23.0                                     python  
 parso                        0.8.3                                    python  
 passwd                       1:4.8.1-2ubuntu2.1                       deb     
@@ -551,9 +551,9 @@ urllib3                      1.24.3                                   python
 usrmerge                     25ubuntu2                                deb     
 util-linux                   2.37.2-4ubuntu3                          deb     
 vine                         1.3.0                                    python  
-wcwidth                      0.2.8                                    python  
+wcwidth                      0.2.9                                    python  
 websocket-client             1.6.1                                    python  
-wheel                        0.41.2                                   python  
+wheel                        0.41.3                                   python  
 whitenoise                   5.3.0                                    python  
 x11-common                   1:7.7+23ubuntu2                          deb     
 xkb-data                     2.33-1                                   deb     
