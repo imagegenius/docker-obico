@@ -54,7 +54,7 @@ constantly                   15.1.0                                   python
 coreutils                    8.32-4.1ubuntu1                          deb     
 cpp-11                       11.4.0-1ubuntu1~22.04                    deb     
 cron                         3.0pl1-137ubuntu3                        deb     
-cryptography                 41.0.5                                   python  
+cryptography                 41.0.7                                   python  
 daphne                       2.5.0                                    python  
 dash                         0.5.11+git20210903+057cd650a4ed-3build1  deb     
 debconf                      1.5.79ubuntu1                            deb     
@@ -100,8 +100,8 @@ gnupg                        2.2.27-3ubuntu2.1                        deb
 gnupg-l10n                   2.2.27-3ubuntu2.1                        deb     
 gnupg-utils                  2.2.27-3ubuntu2.1                        deb     
 google-api-core              1.34.0                                   python  
-google-api-python-client     2.108.0                                  python  
-google-auth                  2.23.4                                   python  
+google-api-python-client     2.109.0                                  python  
+google-auth                  2.24.0                                   python  
 google-auth-httplib2         0.1.1                                    python  
 google-cloud-core            2.3.3                                    python  
 google-cloud-firestore       2.13.1                                   python  
@@ -330,7 +330,7 @@ libpangoft2-1.0-0            1.50.6+ds-2ubuntu1                       deb
 libpciaccess0                0.16-3                                   deb     
 libpcre2-8-0                 10.39-3ubuntu0.1                         deb     
 libpcre3                     2:8.39-13ubuntu0.22.04.1                 deb     
-libperl5.34                  5.34.0-3ubuntu1.2                        deb     
+libperl5.34                  5.34.0-3ubuntu1.3                        deb     
 libpgm-5.3-0                 5.3.128~dfsg-2                           deb     
 libpixman-1-0                0.40.0-1ubuntu0.22.04.1                  deb     
 libpng16-16                  1.6.37-3build5                           deb     
@@ -489,10 +489,10 @@ openssl                      3.0.2-0ubuntu1.12                        deb
 packaging                    23.0                                     python  
 parso                        0.8.3                                    python  
 passwd                       1:4.8.1-2ubuntu2.1                       deb     
-perl                         5.34.0-3ubuntu1.2                        deb     
-perl-base                    5.34.0-3ubuntu1.2                        deb     
-perl-modules-5.34            5.34.0-3ubuntu1.2                        deb     
-pexpect                      4.8.0                                    python  
+perl                         5.34.0-3ubuntu1.3                        deb     
+perl-base                    5.34.0-3ubuntu1.3                        deb     
+perl-modules-5.34            5.34.0-3ubuntu1.3                        deb     
+pexpect                      4.9.0                                    python  
 phonenumbers                 8.10.5                                   python  
 pickleshare                  0.7.5                                    python  
 pinentry-curses              1.1.1-1build2                            deb     
@@ -554,7 +554,7 @@ util-linux                   2.37.2-4ubuntu3                          deb
 vine                         1.3.0                                    python  
 wcwidth                      0.2.12                                   python  
 websocket-client             1.6.1                                    python  
-wheel                        0.41.3                                   python  
+wheel                        0.42.0                                   python  
 whitenoise                   5.3.0                                    python  
 x11-common                   1:7.7+23ubuntu2                          deb     
 xkb-data                     2.33-1                                   deb     
