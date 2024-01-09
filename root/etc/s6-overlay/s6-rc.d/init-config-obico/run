@@ -9,8 +9,8 @@ if [ ! -f "/.setup" ]; then
     echo "Initialising Obico"
     cd /app/obico/backend
 
-    python3.7 manage.py migrate >/dev/null
-    python3.7 manage.py collectstatic -v 2 --noinput >/dev/null
+    python3.10 manage.py migrate >/dev/null
+    python3.10 manage.py collectstatic -v 2 --noinput >/dev/null
 
     touch "/.setup"
 fi
