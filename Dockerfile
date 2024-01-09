@@ -19,7 +19,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   MOONRAKER_COMMIT="1e7be45"
 
 RUN \
-  echo "**** add python3.7 to apt ****" && \
+  echo "**** add python3.10 to apt ****" && \
   echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list.d/python.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys f23c5a6cf475977595c89f51ba6932366a755776 && \
   echo "**** install runtime packages ****" && \
@@ -33,10 +33,10 @@ RUN \
     libpq-dev \
     libsm6 \
     libxrender1 \
-    python3.7 \
-    python3.7-dev \
-    python3.7-distutils && \
-  curl -s https://bootstrap.pypa.io/get-pip.py | python3.7 && \
+    python3.10 \
+    python3.10-dev \
+    python3.10-distutils && \
+  curl -s https://bootstrap.pypa.io/get-pip.py | python3.10 && \
   pip install --upgrade \
     packaging \
     pip \
@@ -95,7 +95,7 @@ RUN \
     gcc \
     git \
     libpq-dev \
-    python3.7-dev && \
+    python3.10-dev && \
   apt-get autoremove -y --purge && \
   apt-get clean && \
   rm -rf \
