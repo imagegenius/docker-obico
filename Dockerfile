@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 FROM ghcr.io/imagegenius/obico-darknet:latest as darknet
-
+# runtime
 FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
 
 # set version label
@@ -16,7 +16,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333" \
-  MOONRAKER_COMMIT="1e7be45"
+  MOONRAKER_COMMIT="55e852cd8792c9d158b8b5647bec530cbee1f43a"
 
 RUN \
   echo "**** add python3.10 to apt ****" && \
@@ -32,41 +32,38 @@ RUN \
     libfontconfig1 \
     libpq-dev \
     libsm6 \
+    postgresql \
     libxrender1 \
     python3.10 \
     python3.10-dev \
     python3.10-distutils && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.10 && \
-  pip install --upgrade \
+  pip3 install --upgrade \
     packaging \
     pip \
     setuptools \
     wheel && \
   echo "**** install obico ****" && \
-  mkdir -p \
-    /app/obico && \
   if [ -z ${OBICO_VERSION+x} ]; then \
     OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | jq -r '.[0].sha' | cut -c1-8); \
   fi && \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
-  cd /tmp/obico-server && \
-  git checkout ${OBICO_VERSION} && \
-  pip install -r /tmp/obico-server/backend/requirements.txt && \
-  pip install -r /tmp/obico-server/ml_api/requirements.txt && \
-  pip install \
+  git -C /tmp/obico-server  checkout ${OBICO_VERSION} && \
+  pip3 install \
     blinker \
     importlib-metadata==4.13.0 \
     inotify-simple==1.3.5 \
     onnxruntime-gpu \
     opencv_python_headless \
-    redis==3.2.0 \
     six \
     tornado==6.2.0 && \
+  pip3 install -r /tmp/obico-server/ml_api/requirements.txt && \
+  pip3 install -r /tmp/obico-server/backend/requirements.txt && \
   echo "**** install moonraker ****" && \
   git clone https://github.com/Arksine/moonraker.git /app/moonraker && \
-  cd /app/moonraker && \
-  git checkout ${MOONRAKER_COMMIT} && \
+  git -C /app/moonraker checkout ${MOONRAKER_COMMIT} && \
   echo "**** move files into place ****" && \
+  mkdir -p /app/obico && \
   mv /tmp/obico-server/backend \
     /app/obico/backend && \
   mv /tmp/obico-server/ml_api \
@@ -93,13 +90,11 @@ RUN \
   apt-get remove -y --purge \
     curl \
     gcc \
-    git \
     libpq-dev \
     python3.10-dev && \
   apt-get autoremove -y --purge && \
   apt-get clean && \
   rm -rf \
-    /etc/apt/sources.list.d/python.list \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/* \
