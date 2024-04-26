@@ -2,4 +2,4 @@
 
 exec \
     cd /app/obico/backend s6-setuidgid abc \
-        python3.10 manage.py runserver --nostatic --noreload 0.0.0.0:3334
+        daphne -b 0.0.0.0 -p 3334 config.routing:application
