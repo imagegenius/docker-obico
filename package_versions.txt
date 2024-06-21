@@ -436,7 +436,7 @@ oauth2client                    4.1.3                                    python
 oauthlib                        3.2.2                                    python                   
 ocl-icd-libopencl1              2.2.14-3                                 deb                      
 onnxruntime-gpu                 1.18.0                                   python                   
-opencv-python-headless          4.10.0.82                                python                   
+opencv-python-headless          4.10.0.84                                python                   
 openssl                         3.0.2-0ubuntu1.15                        deb                      
 packaging                       23.2                                     python                   
 parso                           0.8.3                                    python                   
@@ -447,7 +447,7 @@ perl-modules-5.34               5.34.0-3ubuntu1.3                        deb
 pexpect                         4.9.0                                    python                   
 phonenumbers                    8.13.24                                  python                   
 pinentry-curses                 1.1.1-1build2                            deb                      
-pip                             24.0                                     python                   
+pip                             24.1                                     python                   
 postgresql                      14+238                                   deb                      
 postgresql-14                   14.12-0ubuntu0.22.04.1                   deb                      
 postgresql-client-14            14.12-0ubuntu0.22.04.1                   deb                      
