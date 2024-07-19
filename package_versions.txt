@@ -512,7 +512,7 @@ twilio                          8.10.0                                   python
 txaio                           23.1.1                                   python                   
 typing_extensions               4.8.0                                    python                   
 tzdata                          2024.1                                   python                   
-tzdata                          2024a-0ubuntu0.22.04                     deb                      
+tzdata                          2024a-0ubuntu0.22.04.1                   deb                      
 ubuntu-keyring                  2021.03.26                               deb                      
 ucf                             3.0043                                   deb                      
 uritemplate                     4.1.1                                    python                   
@@ -531,4 +531,4 @@ yarl                            1.9.2                                    python
 zipp                            3.19.2                                   python                   
 zlib1g                          1:1.2.11.dfsg-2ubuntu9.2                 deb                      
 zope.interface                  6.1                                      python                   
-zstandard                       0.22.0                                   python                   
+zstandard                       0.23.0                                   python                   
