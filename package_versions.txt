@@ -251,8 +251,8 @@ libkrb5-3                       1.19.2-2ubuntu0.3                        deb
 libkrb5support0                 1.19.2-2ubuntu0.3                        deb                      
 libksba8                        1.6.0-2ubuntu0.2                         deb                      
 liblapack3                      3.10.0-2ubuntu1                          deb                      
-libldap-2.5-0                   2.5.17+dfsg-0ubuntu0.22.04.1             deb                      
-libldap-common                  2.5.17+dfsg-0ubuntu0.22.04.1             deb                      
+libldap-2.5-0                   2.5.18+dfsg-0ubuntu0.22.04.1             deb                      
+libldap-common                  2.5.18+dfsg-0ubuntu0.22.04.1             deb                      
 liblilv-0-0                     0.24.12-2                                deb                      
 libllvm14                       1:14.0.0-1ubuntu1.1                      deb                      
 libllvm15                       1:15.0.7-0ubuntu0.22.04.3                deb                      
@@ -502,7 +502,7 @@ six                             1.16.0                                   python
 sqlparse                        0.4.4                                    python                   
 ssl-cert                        1.1.2                                    deb                      
 stack-data                      0.6.3                                    python                   
-sympy                           1.13.0                                   python                   
+sympy                           1.13.1                                   python                   
 sysvinit-utils                  3.01-1ubuntu1                            deb                      
 tar                             1.34+dfsg-1ubuntu0.1.22.04.2             deb                      
 tomli                           2.0.1                                    python                   
