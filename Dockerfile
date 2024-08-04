@@ -53,15 +53,11 @@ RUN \
     OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | jq -r '.[0].sha' | cut -c1-8); \
   fi && \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
-  git -C /tmp/obico-server  checkout ${OBICO_VERSION} && \
+  git -C /tmp/obico-server checkout ${OBICO_VERSION} && \
   pip3 install \
-    blinker \
-    importlib-metadata==4.13.0 \
-    inotify-simple==1.3.5 \
-    onnxruntime-gpu \
-    opencv_python_headless \
-    six \
-    tornado==6.2.0 && \
+  onnxruntime-gpu \
+  opencv_python_headless \
+  pipenv==2022.12.19 && \
   pip3 install -r /tmp/obico-server/ml_api/requirements.txt && \
   pip3 install -r /tmp/obico-server/backend/requirements.txt && \
   echo "**** install moonraker ****" && \
@@ -106,7 +102,7 @@ RUN \
     /root/.cache
 
 # environment settings
-ENV PYTHONPATH="${PYTHONPATH}:/app/moonraker/moonraker"
+ENV PYTHONPATH="/app/moonraker/moonraker"
 
 # copy local files
 COPY root/ /
