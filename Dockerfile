@@ -2,7 +2,7 @@
 
 FROM ghcr.io/imagegenius/obico-darknet:latest as darknet
 # runtime
-FROM ghcr.io/imagegenius/baseimage-ubuntu:jammy
+FROM ghcr.io/imagegenius/baseimage-ubuntu:noble
 
 # set version label
 ARG BUILD_DATE
@@ -20,7 +20,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
 
 RUN \
   echo "**** add python3.10 to apt ****" && \
-  echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy main" >>/etc/apt/sources.list.d/python.list && \
+  echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu noble main" >>/etc/apt/sources.list.d/python.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys f23c5a6cf475977595c89f51ba6932366a755776 && \
   echo "**** install runtime packages ****" && \
   apt-get update && \
