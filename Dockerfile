@@ -55,9 +55,9 @@ RUN \
   git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
   git -C /tmp/obico-server checkout ${OBICO_VERSION} && \
   pip3 install \
-  onnxruntime-gpu \
-  opencv_python_headless \
-  pipenv==2022.12.19 && \
+    onnxruntime-gpu \
+    opencv_python_headless \
+    pipenv==2022.12.19 && \
   pip3 install -r /tmp/obico-server/ml_api/requirements.txt && \
   pip3 install -r /tmp/obico-server/backend/requirements.txt && \
   echo "**** install moonraker ****" && \
