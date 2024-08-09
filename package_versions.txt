@@ -183,7 +183,7 @@ libcjson1                       1.7.17-1                           deb
 libcodec2-1.2                   1.2.0-2build1                      deb                       
 libcom-err2                     1.47.0-2.4~exp1ubuntu4             deb                       
 libcrypt1                       1:4.4.36-4build1                   deb                       
-libcurl3t64-gnutls              8.5.0-2ubuntu10.1                  deb                       
+libcurl3t64-gnutls              8.5.0-2ubuntu10.2                  deb                       
 libdatrie1                      0.2.13-3build1                     deb                       
 libdav1d7                       1.4.1-1build1                      deb                       
 libdb5.3t64                     5.3.28+dfsg2-7                     deb                       
@@ -533,7 +533,7 @@ virtualenv-clone                0.5.7                              python
 wcwidth                         0.2.9                              python                    
 websocket-client                1.6.4                              python                    
 werkzeug                        3.0.3                              python                    
-wheel                           0.43.0                             python                    
+wheel                           0.44.0                             python                    
 whitenoise                      6.6.0                              python                    
 wrapt                           1.16.0                             python                    
 x11-common                      1:7.7+23ubuntu3                    deb                       
