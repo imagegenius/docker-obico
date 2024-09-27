@@ -278,7 +278,7 @@ libogg0                         1.3.5-3build1                      deb
 libonig5                        6.9.9-1build1                      deb                       
 libopenal-data                  1:1.23.1-4build1                   deb                       
 libopenal1                      1:1.23.1-4build1                   deb                       
-libopenjp2-7                    2.5.0-2build3                      deb                       
+libopenjp2-7                    2.5.0-2ubuntu0.1                   deb                       
 libopenmpt0t64                  0.7.3-1.1build3                    deb                       
 libopus0                        1.4-1build1                        deb                       
 libp11-kit0                     0.25.3-4ubuntu2.1                  deb                       
@@ -520,7 +520,7 @@ twilio                          8.10.0                             python
 twisted                         23.10.0                            python                    
 txaio                           23.1.1                             python                    
 typing-extensions               4.8.0                              python                    
-tzdata                          2024.1                             python                    
+tzdata                          2024.2                             python                    
 tzdata                          2024a-3ubuntu1.1                   deb                       
 ubuntu-keyring                  2023.11.28.1                       deb                       
 ucf                             3.0043+nmu1                        deb                       
