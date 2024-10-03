@@ -4,5 +4,6 @@ export DEBUG="True"
 export FLASK_APP="server.py"
 
 exec \
-    cd /app/obico/ml_api s6-setuidgid abc \
-        gunicorn --bind 0.0.0.0:3333 --workers 1 wsgi
+    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z 127.0.0.1 3333" \
+        cd /app/obico/ml_api s6-setuidgid abc \
+            gunicorn --bind 0.0.0.0:3333 --workers 1 wsgi
