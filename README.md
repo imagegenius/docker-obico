@@ -25,6 +25,15 @@ This image supports the following architectures:
 | arm64 | ❌ | |
 | armhf | ❌ | |
 
+## Version Tags
+
+This image offers different versions via tags. Be cautious when using unstable or development tags, and read their descriptions carefully.
+
+| Tag | Available | Description |
+| :----: | :----: |--- |
+| latest | ✅ | Latest obico-server release, only supports CPU for machine learning. |
+| cuda | ✅ | Latest obico-server release with support for GPU (CUDA) acceleration. |
+
 ## Application Setup
 
 The WebUI can be found at `http://your-ip:3334`.
@@ -96,6 +105,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
       - REDIS_URL=redis://<ip>:<port>
+      - HOST_IP=192.168.0.5/example.com
     volumes:
       - path_to_appdata:/config
     ports:
@@ -112,6 +122,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
   -e REDIS_URL=redis://<ip>:<port> \
+  -e HOST_IP=192.168.0.5/example.com \
   -p 3334:3334 \
   -v path_to_appdata:/config \
   --restart unless-stopped \
@@ -129,6 +140,7 @@ To configure the container, pass variables at runtime using the format `<externa
 | `-e PGID=1000` | GID for permissions - see below for explanation |
 | `-e TZ=Etc/UTC` | Specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e REDIS_URL=redis://<ip>:<port>` | Redis URL, eg. `redis://192.168.1.2:6379` |
+| `-e HOST_IP=192.168.0.5/example.com` | Domain/IP used to access the frontend |
 | `-v /config` | Contains django database, logs and timelapses |
 
 ## Umask for running applications
