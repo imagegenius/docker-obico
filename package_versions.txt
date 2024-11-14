@@ -532,8 +532,8 @@ virtualenv                      20.27.1                            python
 virtualenv-clone                0.5.7                              python                    
 wcwidth                         0.2.9                              python                    
 websocket-client                1.6.4                              python                    
-werkzeug                        3.1.2                              python                    
-wheel                           0.44.0                             python                    
+werkzeug                        3.1.3                              python                    
+wheel                           0.45.0                             python                    
 whitenoise                      6.6.0                              python                    
 wrapt                           1.16.0                             python                    
 x11-common                      1:7.7+23ubuntu3                    deb                       
