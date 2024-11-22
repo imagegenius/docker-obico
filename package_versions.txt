@@ -212,7 +212,7 @@ libcuinj64-12.0                 12.0.146~12.0.1-4build4            deb
 libcupti-dev                    12.0.146~12.0.1-4build4            deb                       
 libcupti12                      12.0.146~12.0.1-4build4            deb                       
 libcurand10                     11.1.1+~10.3.1.124~12.0.1-4build4  deb                       
-libcurl3t64-gnutls              8.5.0-2ubuntu10.4                  deb                       
+libcurl3t64-gnutls              8.5.0-2ubuntu10.5                  deb                       
 libcusolver11                   11.4.3.1~12.0.1-4build4            deb                       
 libcusolvermg11                 11.4.3.1~12.0.1-4build4            deb                       
 libcusparse12                   12.0.1.140~12.0.1-4build4          deb                       
@@ -254,7 +254,7 @@ libgfortran5                    14.2.0-4ubuntu2~24.04              deb
 libgl1                          1.7.0-1build1                      deb                       
 libgl1-mesa-dri                 24.0.9-0ubuntu0.2                  deb                       
 libglapi-mesa                   24.0.9-0ubuntu0.2                  deb                       
-libglib2.0-0t64                 2.80.0-6ubuntu3.1                  deb                       
+libglib2.0-0t64                 2.80.0-6ubuntu3.2                  deb                       
 libglvnd0                       1.7.0-1build1                      deb                       
 libglx-mesa0                    24.0.9-0ubuntu0.2                  deb                       
 libglx0                         1.7.0-1build1                      deb                       
@@ -487,7 +487,7 @@ libzmq5                         4.3.5-1build2                      deb
 libzstd1                        1.5.5+dfsg2-2build1.1              deb                       
 libzvbi-common                  0.2.42-2                           deb                       
 libzvbi0t64                     0.2.42-2                           deb                       
-linux-libc-dev                  6.8.0-48.48                        deb                       
+linux-libc-dev                  6.8.0-49.49                        deb                       
 locales                         2.39-0ubuntu8.3                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -514,7 +514,7 @@ oauth2client                    4.1.3                              python
 oauthlib                        3.2.2                              python                    
 ocl-icd-libopencl1              2.3.2-1build1                      deb                       
 ocl-icd-opencl-dev              2.3.2-1build1                      deb                       
-onnxruntime-gpu                 1.20.0                             python                    
+onnxruntime-gpu                 1.20.1                             python                    
 opencl-c-headers                3.0~2023.12.14-1                   deb                       
 opencl-clhpp-headers            3.0~2023.12.14-1ubuntu1            deb                       
 opencv-python-headless          4.10.0.84                          python                    
