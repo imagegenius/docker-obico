@@ -201,7 +201,7 @@ libdrm2                         2.4.120-2build1                    deb
 libedit2                        3.1-20230828-1build1               deb                       
 libelf1t64                      0.190-1.1build4                    deb                       
 liberror-perl                   0.17029-2                          deb                       
-libexpat1                       2.6.1-2ubuntu0.1                   deb                       
+libexpat1                       2.6.1-2ubuntu0.2                   deb                       
 libext2fs2t64                   1.47.0-2.4~exp1ubuntu4.1           deb                       
 libffi8                         3.4.6-1build1                      deb                       
 libfftw3-double3                3.3.10-1ubuntu3                    deb                       
@@ -210,7 +210,7 @@ libflite1                       2.2-6build3                        deb
 libfontconfig1                  2.15.0-1.1ubuntu2                  deb                       
 libfreetype6                    2.13.2+dfsg-1build3                deb                       
 libfribidi0                     1.0.13-3build1                     deb                       
-libgbm1                         24.0.9-0ubuntu0.2                  deb                       
+libgbm1                         24.0.9-0ubuntu0.3                  deb                       
 libgcc-s1                       14.2.0-4ubuntu2~24.04              deb                       
 libgcrypt20                     1.10.3-2build1                     deb                       
 libgdbm-compat4t64              1.23-5.1build1                     deb                       
@@ -219,11 +219,11 @@ libgdk-pixbuf-2.0-0             2.42.10+dfsg-3ubuntu3.1            deb
 libgdk-pixbuf2.0-common         2.42.10+dfsg-3ubuntu3.1            deb                       
 libgfortran5                    14.2.0-4ubuntu2~24.04              deb                       
 libgl1                          1.7.0-1build1                      deb                       
-libgl1-mesa-dri                 24.0.9-0ubuntu0.2                  deb                       
-libglapi-mesa                   24.0.9-0ubuntu0.2                  deb                       
+libgl1-mesa-dri                 24.0.9-0ubuntu0.3                  deb                       
+libglapi-mesa                   24.0.9-0ubuntu0.3                  deb                       
 libglib2.0-0t64                 2.80.0-6ubuntu3.2                  deb                       
 libglvnd0                       1.7.0-1build1                      deb                       
-libglx-mesa0                    24.0.9-0ubuntu0.2                  deb                       
+libglx-mesa0                    24.0.9-0ubuntu0.3                  deb                       
 libglx0                         1.7.0-1build1                      deb                       
 libgme0                         0.6.3-7build1                      deb                       
 libgmp10                        2:6.3.0+dfsg-2ubuntu6              deb                       
