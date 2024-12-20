@@ -183,7 +183,7 @@ libcjson1                       1.7.17-1                           deb
 libcodec2-1.2                   1.2.0-2build1                      deb                       
 libcom-err2                     1.47.0-2.4~exp1ubuntu4.1           deb                       
 libcrypt1                       1:4.4.36-4build1                   deb                       
-libcurl3t64-gnutls              8.5.0-2ubuntu10.5                  deb                       
+libcurl3t64-gnutls              8.5.0-2ubuntu10.6                  deb                       
 libdatrie1                      0.2.13-3build1                     deb                       
 libdav1d7                       1.4.1-1build1                      deb                       
 libdb5.3t64                     5.3.28+dfsg2-7                     deb                       
