@@ -25,7 +25,7 @@ param_usage_include_net: false
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "REDIS_URL", env_value: "redis://<ip>:<port>", desc: "Redis URL, eg. `redis://192.168.1.2:6379`" }
-  - { env_var: "HOST_IP", env_value: "192.168.0.5/example.com", desc: "Domain/IP used to access the frontend" }
+  - { env_var: "HOST_IP", env_value: "192.168.0.5:3334/example.com", desc: "Domain/IP+Port used to access the frontend" }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "path_to_appdata", desc: "Contains django database, logs and timelapses" }
