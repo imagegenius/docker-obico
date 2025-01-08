@@ -98,7 +98,7 @@ RUN \
     /root/.cache
 
 # environment settings
-ENV PYTHONPATH="/app/moonraker/moonraker"
+ENV PYTHONPATH="/app/moonraker/"
 
 # copy local files
 COPY root/ /
