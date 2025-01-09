@@ -25,7 +25,7 @@ param_usage_include_net: false
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "REDIS_URL", env_value: "redis://<ip>:<port>", desc: "Redis URL, eg. `redis://192.168.1.2:6379`" }
-  - { env_var: "HOST_IP", env_value: "192.168.0.5:3334/example.com", desc: "Domain/IP+Port used to access the frontend" }
+  - { env_var: "HOST_IP", env_value: "<192.168.0.5:3334>/<example.com>", desc: "Domain/IP+Port used to access the frontend, if incorrect you will get an error 500!" }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "path_to_appdata", desc: "Contains django database, logs and timelapses" }
@@ -81,6 +81,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "09.01.25:", desc: "improve HOST_IP instructions" }
   - { date: "29.09.23:", desc: "precompile darknet" }
   - { date: "29.06.23:", desc: "create seperate cuda branch" }
   - { date: "23.03.23:", desc: "add service checks" }
