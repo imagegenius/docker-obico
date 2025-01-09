@@ -17,10 +17,10 @@ from django.contrib.sites.models import Site
 if Site.objects.exists():
     site = Site.objects.first()
     site.domain = '${HOST_IP}'
-    site.name = 'site'
+    site.name = '${HOST_IP}'
     site.save()
 else:
-    Site.objects.create(domain='${HOST_IP}', name='site')
+    Site.objects.create(domain='${HOST_IP}', name='${HOST_IP}')
 EOF
 
     touch "/.setup"
