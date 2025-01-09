@@ -16,7 +16,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333" \
-  MOONRAKER_COMMIT="55e852cd8792c9d158b8b5647bec530cbee1f43a"
+  MOONRAKER_COMMIT="f735c0419444848b59342a98ad3532eef123ea46"
 
 RUN \
   echo "**** add python3.10 to apt ****" && \
@@ -56,6 +56,7 @@ RUN \
   git -C /tmp/obico-server checkout ${OBICO_VERSION} && \
   pip3 install \
     onnxruntime-gpu \
+    importlib_metadata==8.2.0 \
     opencv_python_headless \
     pipenv==2022.12.19 && \
   pip3 install -r /tmp/obico-server/ml_api/requirements.txt && \
@@ -102,7 +103,7 @@ RUN \
     /root/.cache
 
 # environment settings
-ENV PYTHONPATH="/app/moonraker/moonraker"
+ENV PYTHONPATH="/app/moonraker/"
 
 # copy local files
 COPY root/ /
