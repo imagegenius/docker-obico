@@ -83,7 +83,7 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
       - REDIS_URL=redis://<ip>:<port>
-      - HOST_IP=192.168.0.5/example.com
+      - HOST_IP=<192.168.0.5:3334>/<example.com>
     volumes:
       - path_to_appdata:/config
     ports:
@@ -100,7 +100,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
   -e REDIS_URL=redis://<ip>:<port> \
-  -e HOST_IP=192.168.0.5/example.com \
+  -e HOST_IP=<192.168.0.5:3334>/<example.com> \
   -p 3334:3334 \
   -v path_to_appdata:/config \
   --restart unless-stopped \
@@ -118,7 +118,7 @@ To configure the container, pass variables at runtime using the format `<externa
 | `-e PGID=1000` | GID for permissions - see below for explanation |
 | `-e TZ=Etc/UTC` | Specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e REDIS_URL=redis://<ip>:<port>` | Redis URL, eg. `redis://192.168.1.2:6379` |
-| `-e HOST_IP=192.168.0.5/example.com` | Domain/IP used to access the frontend |
+| `-e HOST_IP=<192.168.0.5:3334>/<example.com>` | Domain/IP+Port used to access the frontend, if incorrect you will get an error 500! |
 | `-v /config` | Contains django database, logs and timelapses |
 
 ## Umask for running applications
@@ -161,6 +161,7 @@ Instructions for updating containers:
 
 ## Versions
 
+* **09.01.25:** - improve HOST_IP instructions
 * **29.09.23:** - precompile darknet
 * **29.06.23:** - create seperate cuda branch
 * **23.03.23:** - add service checks
