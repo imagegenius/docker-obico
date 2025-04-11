@@ -136,7 +136,7 @@ inflect                      7.3.1                              python
 init-system-helpers          1.66ubuntu1                        deb                     
 inotify-simple               1.3.5                              python                  
 ipdb                         0.13.13                            python                  
-ipython                      8.34.0                             python                  
+ipython                      8.35.0                             python                  
 itsdangerous                 2.2.0                              python                  
 jaraco-collections           5.1.0                              python                  
 jaraco-context               5.3.0                              python                  
@@ -207,7 +207,7 @@ libdrm2                      2.4.122-1~ubuntu0.24.04.1          deb
 libedit2                     3.1-20230828-1build1               deb                     
 libelf1t64                   0.190-1.1ubuntu0.1                 deb                     
 liberror-perl                0.17029-2                          deb                     
-libexpat1                    2.6.1-2ubuntu0.2                   deb                     
+libexpat1                    2.6.1-2ubuntu0.3                   deb                     
 libext2fs2t64                1.47.0-2.4~exp1ubuntu4.1           deb                     
 libffi8                      3.4.6-1build1                      deb                     
 libfftw3-double3             3.3.10-1ubuntu3                    deb                     
@@ -279,7 +279,6 @@ libnettle8t64                3.9.1-2.2build1.1                  deb
 libnghttp2-14                1.59.0-1ubuntu0.2                  deb                     
 libnorm1t64                  1.5.9+dfsg-3.1build1               deb                     
 libnpth0t64                  1.6-3.1build1                      deb                     
-libnsl2                      1.3.0-3build3                      deb                     
 libnuma1                     2.0.18-1build1                     deb                     
 libogg0                      1.3.5-3build1                      deb                     
 libonig5                     6.9.9-1build1                      deb                     
@@ -309,8 +308,8 @@ libpq5                       16.8-0ubuntu0.24.04.1              deb
 libproc2-0                   2:4.0.4-4ubuntu3.2                 deb                     
 libpsl5t64                   0.21.2-1.1build1                   deb                     
 libpulse0                    1:16.1+dfsg1-2ubuntu10.1           deb                     
-libpython3.10-minimal        3.10.16-1+noble1                   deb                     
-libpython3.10-stdlib         3.10.16-1+noble1                   deb                     
+libpython3.10-minimal        3.10.17-1+noble1                   deb                     
+libpython3.10-stdlib         3.10.17-1+noble1                   deb                     
 librabbitmq4                 0.11.0-1build2                     deb                     
 librav1e0                    0.7.1-2                            deb                     
 libraw1394-11                2.1.2-2build3                      deb                     
@@ -363,8 +362,6 @@ libthai0                     0.1.29-2build1                     deb
 libtheora0                   1.1.1+dfsg.1-16.1build3            deb                     
 libtiff6                     4.5.1+git230720-4ubuntu2.2         deb                     
 libtinfo6                    6.4+20240113-1ubuntu2              deb                     
-libtirpc-common              1.3.4+ds-1.1build1                 deb                     
-libtirpc3t64                 1.3.4+ds-1.1build1                 deb                     
 libtwolame0                  0.4.0-2build3                      deb                     
 libudev1                     255.4-1ubuntu8.6                   deb                     
 libudfread0                  1.1.2-1build1                      deb                     
@@ -498,10 +495,10 @@ pytelegrambotapi             4.26.0                             python
 python-dateutil              2.9.0.post0                        python                  
 python-ipware                3.0.0                              python                  
 python-magic                 0.4.27                             python                  
-python3.10                   3.10.16-1+noble1                   deb                     
-python3.10-distutils         3.10.16-1+noble1                   deb                     
-python3.10-lib2to3           3.10.16-1+noble1                   deb                     
-python3.10-minimal           3.10.16-1+noble1                   deb                     
+python3.10                   3.10.17-1+noble1                   deb                     
+python3.10-distutils         3.10.17-1+noble1                   deb                     
+python3.10-lib2to3           3.10.17-1+noble1                   deb                     
+python3.10-minimal           3.10.17-1+noble1                   deb                     
 pytz                         2024.2                             python                  
 readline-common              8.2-4build1                        deb                     
 redis                        5.2.1                              python                  
