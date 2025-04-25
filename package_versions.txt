@@ -521,7 +521,7 @@ oauth2client                 4.1.3                              python
 oauthlib                     3.2.2                              python                  
 ocl-icd-libopencl1           2.3.2-1build1                      deb                     
 ocl-icd-opencl-dev           2.3.2-1build1                      deb                     
-onnxruntime-gpu              1.21.0                             python                  
+onnxruntime-gpu              1.21.1                             python                  
 opencl-c-headers             3.0~2023.12.14-1                   deb                     
 opencl-clhpp-headers         3.0~2023.12.14-1ubuntu1            deb                     
 opencv-python-headless       4.11.0.86                          python                  
