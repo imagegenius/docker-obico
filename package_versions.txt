@@ -153,7 +153,7 @@ inflect                         7.3.1                              python
 init-system-helpers             1.66ubuntu1                        deb                       
 inotify-simple                  1.3.5                              python                    
 ipdb                            0.13.13                            python                    
-ipython                         8.36.0                             python                    
+ipython                         8.37.0                             python                    
 itsdangerous                    2.2.0                              python                    
 jaraco-collections              5.1.0                              python                    
 jaraco-context                  5.3.0                              python                    
@@ -378,8 +378,8 @@ libpq5                          16.9-0ubuntu0.24.04.1              deb
 libproc2-0                      2:4.0.4-4ubuntu3.2                 deb                       
 libpsl5t64                      0.21.2-1.1build1                   deb                       
 libpulse0                       1:16.1+dfsg1-2ubuntu10.1           deb                       
-libpython3.10-minimal           3.10.17-1+noble1                   deb                       
-libpython3.10-stdlib            3.10.17-1+noble1                   deb                       
+libpython3.10-minimal           3.10.18-1+noble1                   deb                       
+libpython3.10-stdlib            3.10.18-1+noble1                   deb                       
 libquadmath0                    14.2.0-4ubuntu2~24.04              deb                       
 librabbitmq4                    0.11.0-1build2                     deb                       
 librav1e0                       0.7.1-2                            deb                       
@@ -416,7 +416,7 @@ libsord-0-0                     0.16.16-2build1                    deb
 libsoxr0                        0.1.3-4build3                      deb                       
 libspeex1                       1.2.1-2ubuntu2.24.04.1             deb                       
 libsphinxbase3t64               0.8+5prealpha+1-17build2           deb                       
-libsqlite3-0                    3.45.1-1ubuntu2.1                  deb                       
+libsqlite3-0                    3.45.1-1ubuntu2.3                  deb                       
 libsratom-0-0                   0.6.16-1build1                     deb                       
 libsrt1.5-gnutls                1.5.3-1build2                      deb                       
 libss2                          1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -454,7 +454,7 @@ libvorbis0a                     1.3.7-1build3                      deb
 libvorbisenc2                   1.3.7-1build3                      deb                       
 libvorbisfile3                  1.3.7-1build3                      deb                       
 libvpl2                         2023.3.0-1build1                   deb                       
-libvpx9                         1.14.0-1ubuntu2.1                  deb                       
+libvpx9                         1.14.0-1ubuntu2.2                  deb                       
 libvulkan1                      1.3.275.0-1build1                  deb                       
 libwayland-client0              1.22.0-2.1build1                   deb                       
 libwayland-cursor0              1.22.0-2.1build1                   deb                       
@@ -579,10 +579,10 @@ pytelegrambotapi                4.26.0                             python
 python-dateutil                 2.9.0.post0                        python                    
 python-ipware                   3.0.0                              python                    
 python-magic                    0.4.27                             python                    
-python3.10                      3.10.17-1+noble1                   deb                       
-python3.10-distutils            3.10.17-1+noble1                   deb                       
-python3.10-lib2to3              3.10.17-1+noble1                   deb                       
-python3.10-minimal              3.10.17-1+noble1                   deb                       
+python3.10                      3.10.18-1+noble1                   deb                       
+python3.10-distutils            3.10.18-1+noble1                   deb                       
+python3.10-lib2to3              3.10.18-1+noble1                   deb                       
+python3.10-minimal              3.10.18-1+noble1                   deb                       
 pytz                            2024.2                             python                    
 readline-common                 8.2-4build1                        deb                       
 redis                           5.2.1                              python                    
