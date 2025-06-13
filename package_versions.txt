@@ -7,6 +7,7 @@ aiohttp-retry                   2.8.3                              python
 aiosignal                       1.3.2                              python                    
 amqp                            5.3.1                              python                    
 annotated-types                 0.7.0                              python                    
+anyio                           4.9.0                              python                    
 apt                             2.7.14build2                       deb                       
 apt-utils                       2.7.14build2                       deb                       
 asgiref                         3.8.1                              python                    
@@ -62,6 +63,7 @@ diffutils                       1:3.10-1build1                     deb
 dirmngr                         2.4.4-2ubuntu17.2                  deb                       
 discord-webhook                 1.3.1                              python                    
 distlib                         0.3.9                              python                    
+distro                          1.9.0                              python                    
 dj-database-url                 2.2.0                              python                    
 django                          4.0.10                             python                    
 django-allauth                  0.62.1                             python                    
@@ -83,6 +85,7 @@ django-slick-reporting          1.3.1                              python
 django-webpack-loader           3.1.1                              python                    
 django-widget-tweaks            1.5.0                              python                    
 djangorestframework             3.15.1                             python                    
+docstring-parser                0.16                               python                    
 dpkg                            1.22.6ubuntu6.1                    deb                       
 e2fsprogs                       1.47.0-2.4~exp1ubuntu4.1           deb                       
 exceptiongroup                  1.3.0                              python                    
@@ -131,10 +134,13 @@ gui-64                          UNKNOWN                            binary
 gui-arm64                       UNKNOWN                            binary                    
 gunicorn                        23.0.0                             python                    
 gzip                            1.12-1ubuntu3                      deb                       
+h11                             0.16.0                             python                    
 h2                              4.1.0                              python                    
 hostname                        3.23+nmu2ubuntu2                   deb                       
 hpack                           4.0.0                              python                    
+httpcore                        1.0.9                              python                    
 httplib2                        0.22.0                             python                    
+httpx                           0.28.1                             python                    
 humanfriendly                   10.0                               python                    
 hyperframe                      6.0.1                              python                    
 hyperlink                       21.0.0                             python                    
@@ -145,6 +151,7 @@ incremental                     24.7.2                             python
 inflect                         7.3.1                              python                    
 init-system-helpers             1.66ubuntu1                        deb                       
 inotify-simple                  1.3.5                              python                    
+instructor                      1.5.1                              python                    
 ipdb                            0.13.13                            python                    
 ipython                         8.37.0                             python                    
 itsdangerous                    2.2.0                              python                    
@@ -154,12 +161,14 @@ jaraco-functools                4.0.1                              python
 jaraco-text                     3.12.1                             python                    
 jedi                            0.19.2                             python                    
 jinja2                          3.1.6                              python                    
+jiter                           0.5.0                              python                    
 jq                              1.7.1-3build1                      deb                       
 jsonfield                       3.1.0                              python                    
 jwcrypto                        1.5.6                              python                    
 keyboxd                         2.4.4-2ubuntu17.2                  deb                       
 kombu                           5.4.2                              python                    
 krb5-locales                    1.20.1-6ubuntu2.5                  deb                       
+langfuse                        2.57.6                             python                    
 libacl1                         2.3.2-1build1.1                    deb                       
 libaom3                         3.8.2-2ubuntu0.1                   deb                       
 libapparmor1                    4.0.1really4.0.1-0ubuntu0.24.04.4  deb                       
@@ -438,9 +447,11 @@ libzvbi0t64                     0.2.42-2                           deb
 locales                         2.39-0ubuntu8.4                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
+markdown-it-py                  3.0.0                              python                    
 markupsafe                      3.0.2                              python                    
 matplotlib-inline               0.1.7                              python                    
 mawk                            1.3.4.20240123-1build1             deb                       
+mdurl                           0.1.2                              python                    
 media-types                     10.1.0                             deb                       
 mesa-libgallium                 24.2.8-1ubuntu1~24.04.1            deb                       
 more-itertools                  10.3.0                             python                    
@@ -460,6 +471,7 @@ oauth2client                    4.1.3                              python
 oauthlib                        3.2.2                              python                    
 ocl-icd-libopencl1              2.3.2-1build1                      deb                       
 onnxruntime-gpu                 1.22.0                             python                    
+openai                          1.57.2                             python                    
 opencv-python-headless          4.11.0.86                          python                    
 openssl                         3.0.13-0ubuntu3.5                  deb                       
 packaging                       24.2                               python  (+1 duplicate)    
@@ -514,6 +526,7 @@ readline-common                 8.2-4build1                        deb
 redis                           5.2.1                              python                    
 requests                        2.32.3                             python                    
 requests-toolbelt               1.0.0                              python                    
+rich                            13.9.4                             python                    
 rsa                             4.9                                python                    
 sed                             4.9-2build1                        deb                       
 segno                           1.6.1                              python                    
@@ -522,8 +535,10 @@ sentry-sdk                      2.20.0                             python
 service-identity                24.2.0                             python                    
 setuptools                      75.8.0                             python                    
 shared-mime-info                2.4-4                              deb                       
+shellingham                     1.5.4                              python                    
 simplejson                      3.19.3                             python                    
 six                             1.17.0                             python                    
+sniffio                         1.3.1                              python                    
 sqlparse                        0.5.3                              python                    
 ssl-cert                        1.1.2ubuntu1                       deb                       
 stack-data                      0.6.3                              python                    
@@ -531,13 +546,16 @@ sympy                           1.14.0                             python
 systemd-standalone-sysusers     255.4-1ubuntu8.6                   deb                       
 sysvinit-utils                  3.08-6ubuntu3                      deb                       
 tar                             1.35+dfsg-3build1                  deb                       
+tenacity                        8.5.0                              python                    
 tomli                           2.0.1                              python                    
 tomli                           2.2.1                              python                    
+tqdm                            4.67.1                             python                    
 traitlets                       5.14.3                             python                    
 twilio                          9.4.3                              python                    
 twisted                         24.11.0                            python                    
 txaio                           23.1.1                             python                    
 typeguard                       4.3.0                              python                    
+typer                           0.16.0                             python                    
 typing-extensions               4.11.0                             python                    
 typing-extensions               4.12.2                             python                    
 tzdata                          2024.2                             python                    
@@ -557,11 +575,12 @@ werkzeug                        3.1.3                              python
 wheel                           0.43.0                             python                    
 wheel                           0.45.1                             python                    
 whitenoise                      6.8.2                              python                    
+wrapt                           1.17.2                             python                    
 x11-common                      1:7.7+23ubuntu3                    deb                       
 xkb-data                        2.41-2ubuntu1.1                    deb                       
 yarl                            1.18.3                             python                    
 zipp                            3.19.2                             python                    
-zipp                            3.22.0                             python                    
+zipp                            3.23.0                             python                    
 zlib1g                          1:1.3.dfsg-3.1ubuntu2.1            deb                       
 zope-interface                  7.2                                python                    
 zstandard                       0.23.0                             python                    
