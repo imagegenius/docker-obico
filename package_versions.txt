@@ -8,8 +8,8 @@ aiosignal                       1.3.2                              python
 amqp                            5.3.1                              python                    
 annotated-types                 0.7.0                              python                    
 anyio                           4.9.0                              python                    
-apt                             2.7.14build2                       deb                       
-apt-utils                       2.7.14build2                       deb                       
+apt                             2.8.3                              deb                       
+apt-utils                       2.8.3                              deb                       
 asgiref                         3.8.1                              python                    
 asttokens                       3.0.0                              python                    
 async-timeout                   4.0.3                              python                    
@@ -174,13 +174,13 @@ jsonfield                       3.1.0                              python
 jwcrypto                        1.5.6                              python                    
 keyboxd                         2.4.4-2ubuntu17.2                  deb                       
 kombu                           5.4.2                              python                    
-krb5-locales                    1.20.1-6ubuntu2.5                  deb                       
+krb5-locales                    1.20.1-6ubuntu2.6                  deb                       
 langfuse                        2.57.6                             python                    
 libaccinj64-12.0                12.0.146~12.0.1-4build4            deb                       
 libacl1                         2.3.2-1build1.1                    deb                       
 libaom3                         3.8.2-2ubuntu0.1                   deb                       
 libapparmor1                    4.0.1really4.0.1-0ubuntu0.24.04.4  deb                       
-libapt-pkg6.0t64                2.7.14build2                       deb                       
+libapt-pkg6.0t64                2.8.3                              deb                       
 libasan8                        14.2.0-4ubuntu2~24.04              deb                       
 libasound2-data                 1.2.11-1build2                     deb                       
 libasound2t64                   1.2.11-1build2                     deb                       
@@ -291,7 +291,7 @@ libgpg-error0                   1.47-3build2.1                     deb
 libgprofng0                     2.42-4ubuntu2.5                    deb                       
 libgraphite2-3                  1.3.14-2build1                     deb                       
 libgsm1                         1.0.22-1build1                     deb                       
-libgssapi-krb5-2                1.20.1-6ubuntu2.5                  deb                       
+libgssapi-krb5-2                1.20.1-6ubuntu2.6                  deb                       
 libharfbuzz0b                   8.3.0-2build2                      deb                       
 libhogweed6t64                  3.9.1-2.2build1.1                  deb                       
 libhwy1t64                      1.0.7-8.1build1                    deb                       
@@ -309,10 +309,10 @@ libjpeg8                        8c-2ubuntu11                       deb
 libjq1                          1.7.1-3build1                      deb                       
 libjson-perl                    4.10000-1                          deb                       
 libjxl0.7                       0.7.0-10.2ubuntu6                  deb                       
-libk5crypto3                    1.20.1-6ubuntu2.5                  deb                       
+libk5crypto3                    1.20.1-6ubuntu2.6                  deb                       
 libkeyutils1                    1.6.3-3build1                      deb                       
-libkrb5-3                       1.20.1-6ubuntu2.5                  deb                       
-libkrb5support0                 1.20.1-6ubuntu2.5                  deb                       
+libkrb5-3                       1.20.1-6ubuntu2.6                  deb                       
+libkrb5support0                 1.20.1-6ubuntu2.6                  deb                       
 libksba8                        1.6.6-1build1                      deb                       
 liblapack3                      3.12.0-3build1.1                   deb                       
 liblcms2-2                      2.14-2build1                       deb                       
@@ -437,7 +437,7 @@ libstdc++6                      14.2.0-4ubuntu2~24.04              deb
 libsvtav1enc1d1                 1.7.0+dfsg-2build1                 deb                       
 libswresample4                  7:6.1.1-3ubuntu5                   deb                       
 libswscale7                     7:6.1.1-3ubuntu5                   deb                       
-libsystemd0                     255.4-1ubuntu8.6                   deb                       
+libsystemd0                     255.4-1ubuntu8.8                   deb                       
 libtasn1-6                      4.19.0-3ubuntu0.24.04.1            deb                       
 libthai-data                    0.1.29-2build1                     deb                       
 libthai0                        0.1.29-2build1                     deb                       
@@ -448,7 +448,7 @@ libtinfo6                       6.4+20240113-1ubuntu2              deb
 libtsan2                        14.2.0-4ubuntu2~24.04              deb                       
 libtwolame0                     0.4.0-2build3                      deb                       
 libubsan1                       14.2.0-4ubuntu2~24.04              deb                       
-libudev1                        255.4-1ubuntu8.6                   deb                       
+libudev1                        255.4-1ubuntu8.8                   deb                       
 libudfread0                     1.1.2-1build1                      deb                       
 libunibreak5                    5.1-2build1                        deb                       
 libunistring5                   1.1-2build1.1                      deb                       
@@ -510,7 +510,7 @@ libzmq5                         4.3.5-1build2                      deb
 libzstd1                        1.5.5+dfsg2-2build1.1              deb                       
 libzvbi-common                  0.2.42-2                           deb                       
 libzvbi0t64                     0.2.42-2                           deb                       
-linux-libc-dev                  6.8.0-60.63                        deb                       
+linux-libc-dev                  6.8.0-62.65                        deb                       
 locales                         2.39-0ubuntu8.4                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -618,7 +618,7 @@ sqlparse                        0.5.3                              python
 ssl-cert                        1.1.2ubuntu1                       deb                       
 stack-data                      0.6.3                              python                    
 sympy                           1.14.0                             python                    
-systemd-standalone-sysusers     255.4-1ubuntu8.6                   deb                       
+systemd-standalone-sysusers     255.4-1ubuntu8.8                   deb                       
 sysvinit-utils                  3.08-6ubuntu3                      deb                       
 tar                             1.35+dfsg-3build1                  deb                       
 tenacity                        8.5.0                              python                    
@@ -634,7 +634,7 @@ typer                           0.16.0                             python
 typing-extensions               4.11.0                             python                    
 typing-extensions               4.12.2                             python                    
 tzdata                          2024.2                             python                    
-tzdata                          2025b-0ubuntu0.24.04               deb                       
+tzdata                          2025b-0ubuntu0.24.04.1             deb                       
 ubuntu-keyring                  2023.11.28.1                       deb                       
 ucf                             3.0043+nmu1                        deb                       
 unminimize                      0.2.1                              deb                       
