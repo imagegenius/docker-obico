@@ -104,8 +104,8 @@ fonts-dejavu-mono               2.37-8                             deb
 frontend                        0.1.0                              npm                       
 frozenlist                      1.5.0                              python                    
 gcc-14-base                     14.2.0-4ubuntu2~24.04              deb                       
-git                             1:2.43.0-1ubuntu7.2                deb                       
-git-man                         1:2.43.0-1ubuntu7.2                deb                       
+git                             1:2.43.0-1ubuntu7.3                deb                       
+git-man                         1:2.43.0-1ubuntu7.3                deb                       
 gnupg                           2.4.4-2ubuntu17.2                  deb                       
 gnupg-l10n                      2.4.4-2ubuntu17.2                  deb                       
 gnupg-utils                     2.4.4-2ubuntu17.2                  deb                       
@@ -367,8 +367,8 @@ libsqlite3-0                    3.45.1-1ubuntu2.3                  deb
 libsratom-0-0                   0.6.16-1build1                     deb                       
 libsrt1.5-gnutls                1.5.3-1build2                      deb                       
 libss2                          1.47.0-2.4~exp1ubuntu4.1           deb                       
-libssh-4                        0.10.6-2build2                     deb                       
-libssh-gcrypt-4                 0.10.6-2build2                     deb                       
+libssh-4                        0.10.6-2ubuntu0.1                  deb                       
+libssh-gcrypt-4                 0.10.6-2ubuntu0.1                  deb                       
 libssl3t64                      3.0.13-0ubuntu3.5                  deb                       
 libstdc++6                      14.2.0-4ubuntu2~24.04              deb                       
 libsvtav1enc1d1                 1.7.0+dfsg-2build1                 deb                       
@@ -472,7 +472,7 @@ oauthlib                        3.2.2                              python
 ocl-icd-libopencl1              2.3.2-1build1                      deb                       
 onnxruntime-gpu                 1.22.0                             python                    
 openai                          1.57.2                             python                    
-opencv-python-headless          4.11.0.86                          python                    
+opencv-python-headless          4.12.0.88                          python                    
 openssl                         3.0.13-0ubuntu3.5                  deb                       
 packaging                       24.2                               python  (+1 duplicate)    
 parso                           0.8.4                              python                    
