@@ -376,7 +376,7 @@ libpangocairo-1.0-0             1.52.1+ds-1build1                  deb
 libpangoft2-1.0-0               1.52.1+ds-1build1                  deb                       
 libpciaccess0                   0.17-3ubuntu0.24.04.2              deb                       
 libpcre2-8-0                    10.42-4ubuntu2.1                   deb                       
-libperl5.38t64                  5.38.2-3.2ubuntu0.1                deb                       
+libperl5.38t64                  5.38.2-3.2ubuntu0.2                deb                       
 libpgm-5.3-0t64                 5.3.128~dfsg-2.1build1             deb                       
 libpixman-1-0                   0.42.2-1build1                     deb                       
 libplacebo338                   6.338.2-2build1                    deb                       
@@ -510,7 +510,7 @@ libzmq5                         4.3.5-1build2                      deb
 libzstd1                        1.5.5+dfsg2-2build1.1              deb                       
 libzvbi-common                  0.2.42-2                           deb                       
 libzvbi0t64                     0.2.42-2                           deb                       
-linux-libc-dev                  6.8.0-64.67                        deb                       
+linux-libc-dev                  6.8.0-71.71                        deb                       
 locales                         2.39-0ubuntu8.5                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -551,14 +551,14 @@ openssl                         3.0.13-0ubuntu3.5                  deb
 packaging                       24.2                               python  (+1 duplicate)    
 parso                           0.8.4                              python                    
 passwd                          1:4.13+dfsg1-4ubuntu3.2            deb                       
-perl                            5.38.2-3.2ubuntu0.1                deb                       
-perl-base                       5.38.2-3.2ubuntu0.1                deb                       
-perl-modules-5.38               5.38.2-3.2ubuntu0.1                deb                       
+perl                            5.38.2-3.2ubuntu0.2                deb                       
+perl-base                       5.38.2-3.2ubuntu0.2                deb                       
+perl-modules-5.38               5.38.2-3.2ubuntu0.2                deb                       
 pexpect                         4.9.0                              python                    
 phonenumbers                    8.13.53                            python                    
 pillow                          11.1.0                             python                    
 pinentry-curses                 1.2.1-3ubuntu5                     deb                       
-pip                             25.1.1                             python                    
+pip                             25.2                               python                    
 pipenv                          2022.12.19                         python                    
 platformdirs                    4.2.2                              python                    
 platformdirs                    4.3.8                              python                    
