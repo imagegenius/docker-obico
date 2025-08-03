@@ -40,7 +40,7 @@ RUN \
     python3.10-distutils && \
   curl -o \
     /tmp/libcudnn.deb -L \
-    https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/libcudnn8_8.2.4.15-1+cuda11.4_amd64.deb && \
+    https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/libcudnn9-static-cuda-12_9.10.2.21-1_amd64.deb && \
   dpkg -i /tmp/libcudnn.deb && \
   curl -s https://bootstrap.pypa.io/get-pip.py | python3.10 && \
   pip3 install --upgrade \
