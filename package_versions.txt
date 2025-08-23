@@ -441,7 +441,7 @@ libthai-data                    0.1.29-2build1                     deb
 libthai0                        0.1.29-2build1                     deb                       
 libtheora0                      1.1.1+dfsg.1-16.1build3            deb                       
 libthrust-dev                   2.0.1-2                            deb                       
-libtiff6                        4.5.1+git230720-4ubuntu2.2         deb                       
+libtiff6                        4.5.1+git230720-4ubuntu2.3         deb                       
 libtinfo6                       6.4+20240113-1ubuntu2              deb                       
 libtsan2                        14.2.0-4ubuntu2~24.04              deb                       
 libtwolame0                     0.4.0-2build3                      deb                       
@@ -491,7 +491,7 @@ libxext6                        2:1.3.4-1build2                    deb
 libxfixes3                      1:6.0.0-2build1                    deb                       
 libxi6                          2:1.8.1-1build1                    deb                       
 libxkbcommon0                   1.6.0-1build1                      deb                       
-libxml2                         2.9.14+dfsg-1.3ubuntu3.3           deb                       
+libxml2                         2.9.14+dfsg-1.3ubuntu3.4           deb                       
 libxrandr2                      2:1.5.2-2build1                    deb                       
 libxrender1                     1:0.9.10-1.1build1                 deb                       
 libxshmfence1                   1.3-1build5                        deb                       
@@ -507,7 +507,7 @@ libzmq5                         4.3.5-1build2                      deb
 libzstd1                        1.5.5+dfsg2-2build1.1              deb                       
 libzvbi-common                  0.2.42-2                           deb                       
 libzvbi0t64                     0.2.42-2                           deb                       
-linux-libc-dev                  6.8.0-71.71                        deb                       
+linux-libc-dev                  6.8.0-78.78                        deb                       
 locales                         2.39-0ubuntu8.5                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -627,7 +627,7 @@ twilio                          9.4.3                              python
 twisted                         24.11.0                            python                    
 txaio                           23.1.1                             python                    
 typeguard                       4.3.0                              python                    
-typer                           0.16.0                             python                    
+typer                           0.16.1                             python                    
 typing-extensions               4.11.0                             python                    
 typing-extensions               4.12.2                             python                    
 tzdata                          2024.2                             python                    
@@ -655,4 +655,4 @@ zipp                            3.19.2                             python
 zipp                            3.23.0                             python                    
 zlib1g                          1:1.3.dfsg-3.1ubuntu2.1            deb                       
 zope-interface                  7.2                                python                    
-zstandard                       0.23.0                             python                    
+zstandard                       0.24.0                             python                    
