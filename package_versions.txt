@@ -53,7 +53,7 @@ coloredlogs                     15.0.1                             python
 colorlog                        6.9.0                              python                    
 constantly                      23.10.4                            python                    
 coreutils                       9.4-3ubuntu6                       deb                       
-cpp-12                          12.3.0-17ubuntu1                   deb                       
+cpp-12                          12.4.0-2ubuntu1~24.04              deb                       
 crispy-bootstrap4               2022.1                             python                    
 cron                            3.0pl1-184ubuntu2                  deb                       
 cron-daemon-common              3.0pl1-184ubuntu2                  deb                       
@@ -107,9 +107,9 @@ fonts-dejavu-core               2.37-8                             deb
 fonts-dejavu-mono               2.37-8                             deb                       
 frontend                        0.1.0                              npm                       
 frozenlist                      1.5.0                              python                    
-g++-12                          12.3.0-17ubuntu1                   deb                       
-gcc-12                          12.3.0-17ubuntu1                   deb                       
-gcc-12-base                     12.3.0-17ubuntu1                   deb                       
+g++-12                          12.4.0-2ubuntu1~24.04              deb                       
+gcc-12                          12.4.0-2ubuntu1~24.04              deb                       
+gcc-12-base                     12.4.0-2ubuntu1~24.04              deb                       
 gcc-14-base                     14.2.0-4ubuntu2~24.04              deb                       
 git                             1:2.43.0-1ubuntu7.3                deb                       
 git-man                         1:2.43.0-1ubuntu7.3                deb                       
@@ -267,7 +267,7 @@ libfontconfig1                  2.15.0-1.1ubuntu2                  deb
 libfreetype6                    2.13.2+dfsg-1build3                deb                       
 libfribidi0                     1.0.13-3build1                     deb                       
 libgbm1                         25.0.7-0ubuntu0.24.04.1            deb                       
-libgcc-12-dev                   12.3.0-17ubuntu1                   deb                       
+libgcc-12-dev                   12.4.0-2ubuntu1~24.04              deb                       
 libgcc-s1                       14.2.0-4ubuntu2~24.04              deb                       
 libgcrypt20                     1.10.3-2build1                     deb                       
 libgdbm-compat4t64              1.23-5.1build1                     deb                       
@@ -430,7 +430,7 @@ libss2                          1.47.0-2.4~exp1ubuntu4.1           deb
 libssh-4                        0.10.6-2ubuntu0.1                  deb                       
 libssh-gcrypt-4                 0.10.6-2ubuntu0.1                  deb                       
 libssl3t64                      3.0.13-0ubuntu3.5                  deb                       
-libstdc++-12-dev                12.3.0-17ubuntu1                   deb                       
+libstdc++-12-dev                12.4.0-2ubuntu1~24.04              deb                       
 libstdc++6                      14.2.0-4ubuntu2~24.04              deb                       
 libsvtav1enc1d1                 1.7.0+dfsg-2build1                 deb                       
 libswresample4                  7:6.1.1-3ubuntu5                   deb                       
@@ -507,7 +507,7 @@ libzmq5                         4.3.5-1build2                      deb
 libzstd1                        1.5.5+dfsg2-2build1.1              deb                       
 libzvbi-common                  0.2.42-2                           deb                       
 libzvbi0t64                     0.2.42-2                           deb                       
-linux-libc-dev                  6.8.0-78.78                        deb                       
+linux-libc-dev                  6.8.0-79.79                        deb                       
 locales                         2.39-0ubuntu8.5                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -558,7 +558,7 @@ pinentry-curses                 1.2.1-3ubuntu5                     deb
 pip                             25.2                               python                    
 pipenv                          2022.12.19                         python                    
 platformdirs                    4.2.2                              python                    
-platformdirs                    4.3.8                              python                    
+platformdirs                    4.4.0                              python                    
 postgresql                      16+257build1.1                     deb                       
 postgresql-16                   16.9-0ubuntu0.24.04.1              deb                       
 postgresql-client-16            16.9-0ubuntu0.24.04.1              deb                       
