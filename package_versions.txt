@@ -321,7 +321,7 @@ libplacebo338                   6.338.2-2build1                    deb
 libpng16-16t64                  1.6.43-5build1                     deb                       
 libpocketsphinx3                0.8.0+real5prealpha+1-15ubuntu5    deb                       
 libpostproc57                   7:6.1.1-3ubuntu5                   deb                       
-libpq5                          16.9-0ubuntu0.24.04.1              deb                       
+libpq5                          16.10-0ubuntu0.24.04.1             deb                       
 libproc2-0                      2:4.0.4-4ubuntu3.2                 deb                       
 libpsl5t64                      0.21.2-1.1build1                   deb                       
 libpulse0                       1:16.1+dfsg1-2ubuntu10.1           deb                       
@@ -425,7 +425,7 @@ libxext6                        2:1.3.4-1build2                    deb
 libxfixes3                      1:6.0.0-2build1                    deb                       
 libxi6                          2:1.8.1-1build1                    deb                       
 libxkbcommon0                   1.6.0-1build1                      deb                       
-libxml2                         2.9.14+dfsg-1.3ubuntu3.4           deb                       
+libxml2                         2.9.14+dfsg-1.3ubuntu3.5           deb                       
 libxrandr2                      2:1.5.2-2build1                    deb                       
 libxrender1                     1:0.9.10-1.1build1                 deb                       
 libxshmfence1                   1.3-1build5                        deb                       
@@ -486,8 +486,8 @@ pipenv                          2022.12.19                         python
 platformdirs                    4.2.2                              python                    
 platformdirs                    4.4.0                              python                    
 postgresql                      16+257build1.1                     deb                       
-postgresql-16                   16.9-0ubuntu0.24.04.1              deb                       
-postgresql-client-16            16.9-0ubuntu0.24.04.1              deb                       
+postgresql-16                   16.10-0ubuntu0.24.04.1             deb                       
+postgresql-client-16            16.10-0ubuntu0.24.04.1             deb                       
 postgresql-client-common        257build1.1                        deb                       
 postgresql-common               257build1.1                        deb                       
 priority                        1.3.0                              python                    
@@ -552,7 +552,7 @@ twilio                          9.4.3                              python
 twisted                         24.11.0                            python                    
 txaio                           23.1.1                             python                    
 typeguard                       4.3.0                              python                    
-typer                           0.17.3                             python                    
+typer                           0.17.4                             python                    
 typing-extensions               4.11.0                             python                    
 typing-extensions               4.12.2                             python                    
 tzdata                          2024.2                             python                    
