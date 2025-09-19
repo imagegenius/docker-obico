@@ -52,7 +52,7 @@ click-repl                      0.3.0                              python
 coloredlogs                     15.0.1                             python                    
 colorlog                        6.9.0                              python                    
 constantly                      23.10.4                            python                    
-coreutils                       9.4-3ubuntu6                       deb                       
+coreutils                       9.4-3ubuntu6.1                     deb                       
 cpp-12                          12.4.0-2ubuntu1~24.04              deb                       
 crispy-bootstrap4               2022.1                             python                    
 cron                            3.0pl1-184ubuntu2                  deb                       
@@ -361,7 +361,7 @@ libogg0                         1.3.5-3build1                      deb
 libonig5                        6.9.9-1build1                      deb                       
 libopenal-data                  1:1.23.1-4build1                   deb                       
 libopenal1                      1:1.23.1-4build1                   deb                       
-libopenjp2-7                    2.5.0-2ubuntu0.3                   deb                       
+libopenjp2-7                    2.5.0-2ubuntu0.4                   deb                       
 libopenmpt0t64                  0.7.3-1.1build3                    deb                       
 libopus0                        1.4-1build1                        deb                       
 libp11-kit0                     0.25.3-4ubuntu2.1                  deb                       
@@ -507,7 +507,7 @@ libzmq5                         4.3.5-1build2                      deb
 libzstd1                        1.5.5+dfsg2-2build1.1              deb                       
 libzvbi-common                  0.2.42-2                           deb                       
 libzvbi0t64                     0.2.42-2                           deb                       
-linux-libc-dev                  6.8.0-79.79                        deb                       
+linux-libc-dev                  6.8.0-83.83                        deb                       
 locales                         2.39-0ubuntu8.5                    deb                       
 login                           1:4.13+dfsg1-4ubuntu3.2            deb                       
 logsave                         1.47.0-2.4~exp1ubuntu4.1           deb                       
@@ -655,4 +655,4 @@ zipp                            3.19.2                             python
 zipp                            3.23.0                             python                    
 zlib1g                          1:1.3.dfsg-3.1ubuntu2.1            deb                       
 zope-interface                  7.2                                python                    
-zstandard                       0.24.0                             python                    
+zstandard                       0.25.0                             python                    
