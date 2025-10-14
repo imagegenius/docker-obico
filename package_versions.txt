@@ -91,7 +91,7 @@ e2fsprogs                       1.47.0-2.4~exp1ubuntu4.1           deb
 exceptiongroup                  1.3.0                              python                    
 executing                       2.1.0                              python                    
 ffmpeg                          7:6.1.1-3ubuntu5                   deb                       
-filelock                        3.19.1                             python                    
+filelock                        3.20.0                             python                    
 findutils                       4.9.0-5build1                      deb                       
 firebase-admin                  6.6.0                              python                    
 flask                           2.3.3                              python                    
@@ -325,8 +325,8 @@ libpq5                          16.10-0ubuntu0.24.04.1             deb
 libproc2-0                      2:4.0.4-4ubuntu3.2                 deb                       
 libpsl5t64                      0.21.2-1.1build1                   deb                       
 libpulse0                       1:16.1+dfsg1-2ubuntu10.1           deb                       
-libpython3.10-minimal           3.10.18-1+noble1                   deb                       
-libpython3.10-stdlib            3.10.18-1+noble1                   deb                       
+libpython3.10-minimal           3.10.19-1+noble1                   deb                       
+libpython3.10-stdlib            3.10.19-1+noble1                   deb                       
 librabbitmq4                    0.11.0-1build2                     deb                       
 librav1e0                       0.7.1-2                            deb                       
 libraw1394-11                   2.1.2-2build3                      deb                       
@@ -484,7 +484,7 @@ pinentry-curses                 1.2.1-3ubuntu5                     deb
 pip                             25.2                               python                    
 pipenv                          2022.12.19                         python                    
 platformdirs                    4.2.2                              python                    
-platformdirs                    4.4.0                              python                    
+platformdirs                    4.5.0                              python                    
 postgresql                      16+257build1.1                     deb                       
 postgresql-16                   16.10-0ubuntu0.24.04.1             deb                       
 postgresql-client-16            16.10-0ubuntu0.24.04.1             deb                       
@@ -514,10 +514,10 @@ pytelegrambotapi                4.26.0                             python
 python-dateutil                 2.9.0.post0                        python                    
 python-ipware                   3.0.0                              python                    
 python-magic                    0.4.27                             python                    
-python3.10                      3.10.18-1+noble1                   deb                       
-python3.10-distutils            3.10.18-1+noble1                   deb                       
-python3.10-lib2to3              3.10.18-1+noble1                   deb                       
-python3.10-minimal              3.10.18-1+noble1                   deb                       
+python3.10                      3.10.19-1+noble1                   deb                       
+python3.10-distutils            3.10.19-1+noble1                   deb                       
+python3.10-lib2to3              3.10.19-1+noble1                   deb                       
+python3.10-minimal              3.10.19-1+noble1                   deb                       
 pytz                            2024.2                             python                    
 readline-common                 8.2-4build1                        deb                       
 redis                           5.2.1                              python                    
@@ -545,7 +545,7 @@ sysvinit-utils                  3.08-6ubuntu3                      deb
 tar                             1.35+dfsg-3build1                  deb                       
 tenacity                        8.5.0                              python                    
 tomli                           2.0.1                              python                    
-tomli                           2.2.1                              python                    
+tomli                           2.3.0                              python                    
 tqdm                            4.67.1                             python                    
 traitlets                       5.14.3                             python                    
 twilio                          9.4.3                              python                    
@@ -564,7 +564,7 @@ uritemplate                     4.1.1                              python
 urllib3                         2.3.0                              python                    
 util-linux                      2.39.3-9ubuntu6.3                  deb                       
 vine                            5.1.0                              python                    
-virtualenv                      20.34.0                            python                    
+virtualenv                      20.35.3                            python                    
 virtualenv-clone                0.5.7                              python                    
 wcwidth                         0.2.13                             python                    
 websocket-client                1.8.0                              python                    
