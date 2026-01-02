@@ -435,7 +435,7 @@ libstdc++6                      14.2.0-4ubuntu2~24.04              deb
 libsvtav1enc1d1                 1.7.0+dfsg-2build1                 deb                       
 libswresample4                  7:6.1.1-3ubuntu5                   deb                       
 libswscale7                     7:6.1.1-3ubuntu5                   deb                       
-libsystemd0                     255.4-1ubuntu8.11                  deb                       
+libsystemd0                     255.4-1ubuntu8.12                  deb                       
 libtasn1-6                      4.19.0-3ubuntu0.24.04.1            deb                       
 libthai-data                    0.1.29-2build1                     deb                       
 libthai0                        0.1.29-2build1                     deb                       
@@ -446,7 +446,7 @@ libtinfo6                       6.4+20240113-1ubuntu2              deb
 libtsan2                        14.2.0-4ubuntu2~24.04              deb                       
 libtwolame0                     0.4.0-2build3                      deb                       
 libubsan1                       14.2.0-4ubuntu2~24.04              deb                       
-libudev1                        255.4-1ubuntu8.11                  deb                       
+libudev1                        255.4-1ubuntu8.12                  deb                       
 libudfread0                     1.1.2-1build1                      deb                       
 libunibreak5                    5.1-2build1                        deb                       
 libunistring5                   1.1-2build1.1                      deb                       
@@ -615,7 +615,7 @@ sqlparse                        0.5.3                              python
 ssl-cert                        1.1.2ubuntu1                       deb                       
 stack-data                      0.6.3                              python                    
 sympy                           1.14.0                             python                    
-systemd-standalone-sysusers     255.4-1ubuntu8.11                  deb                       
+systemd-standalone-sysusers     255.4-1ubuntu8.12                  deb                       
 sysvinit-utils                  3.08-6ubuntu3                      deb                       
 tar                             1.35+dfsg-3build1                  deb                       
 tenacity                        8.5.0                              python                    
