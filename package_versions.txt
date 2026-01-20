@@ -543,7 +543,7 @@ onnxruntime-gpu                 1.23.2                             python
 openai                          1.57.2                             python                    
 opencl-c-headers                3.0~2023.12.14-1                   deb                       
 opencl-clhpp-headers            3.0~2023.12.14-1ubuntu1            deb                       
-opencv-python-headless          4.12.0.88                          python                    
+opencv-python-headless          4.13.0.90                          python                    
 openssl                         3.0.13-0ubuntu3.6                  deb                       
 packaging                       24.2                               python  (+1 duplicate)    
 parso                           0.8.4                              python                    
