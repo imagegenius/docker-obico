@@ -50,7 +50,7 @@ click-repl                      0.3.0                              python
 coloredlogs                     15.0.1                             python                    
 colorlog                        6.9.0                              python                    
 constantly                      23.10.4                            python                    
-coreutils                       9.4-3ubuntu6.1                     deb                       
+coreutils                       9.4-3ubuntu6.2                     deb                       
 crispy-bootstrap4               2022.1                             python                    
 cron                            3.0pl1-184ubuntu2                  deb                       
 cron-daemon-common              3.0pl1-184ubuntu2                  deb                       
@@ -154,7 +154,7 @@ init-system-helpers             1.66ubuntu1                        deb
 inotify-simple                  1.3.5                              python                    
 instructor                      1.5.1                              python                    
 ipdb                            0.13.13                            python                    
-ipython                         8.38.0                             python                    
+ipython                         8.39.0                             python                    
 itsdangerous                    2.2.0                              python                    
 jaraco-collections              5.1.0                              python                    
 jaraco-context                  5.3.0                              python                    
@@ -373,7 +373,7 @@ libstdc++6                      14.2.0-4ubuntu2~24.04.1            deb
 libsvtav1enc1d1                 1.7.0+dfsg-2build1                 deb                       
 libswresample4                  7:6.1.1-3ubuntu5                   deb                       
 libswscale7                     7:6.1.1-3ubuntu5                   deb                       
-libsystemd0                     255.4-1ubuntu8.12                  deb                       
+libsystemd0                     255.4-1ubuntu8.14                  deb                       
 libtasn1-6                      4.19.0-3ubuntu0.24.04.2            deb                       
 libthai-data                    0.1.29-2build1                     deb                       
 libthai0                        0.1.29-2build1                     deb                       
@@ -381,7 +381,7 @@ libtheora0                      1.1.1+dfsg.1-16.1build3            deb
 libtiff6                        4.5.1+git230720-4ubuntu2.5         deb                       
 libtinfo6                       6.4+20240113-1ubuntu2              deb                       
 libtwolame0                     0.4.0-2build3                      deb                       
-libudev1                        255.4-1ubuntu8.12                  deb                       
+libudev1                        255.4-1ubuntu8.14                  deb                       
 libudfread0                     1.1.2-1build1                      deb                       
 libunibreak5                    5.1-2build1                        deb                       
 libunistring5                   1.1-2build1.1                      deb                       
@@ -541,7 +541,7 @@ sqlparse                        0.5.3                              python
 ssl-cert                        1.1.2ubuntu1                       deb                       
 stack-data                      0.6.3                              python                    
 sympy                           1.14.0                             python                    
-systemd-standalone-sysusers     255.4-1ubuntu8.12                  deb                       
+systemd-standalone-sysusers     255.4-1ubuntu8.14                  deb                       
 sysvinit-utils                  3.08-6ubuntu3                      deb                       
 tar                             1.35+dfsg-3build1                  deb                       
 tenacity                        8.5.0                              python                    
@@ -569,7 +569,7 @@ virtualenv                      21.2.0                             python
 virtualenv-clone                0.5.7                              python                    
 wcwidth                         0.2.13                             python                    
 websocket-client                1.8.0                              python                    
-werkzeug                        3.1.7                              python                    
+werkzeug                        3.1.8                              python                    
 wheel                           0.43.0                             python                    
 wheel                           0.46.3                             python                    
 whitenoise                      6.8.2                              python                    
