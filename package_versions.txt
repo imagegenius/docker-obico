@@ -92,7 +92,7 @@ e2fsprogs                       1.47.0-2.4~exp1ubuntu4.1           deb
 exceptiongroup                  1.3.1                              python                    
 executing                       2.1.0                              python                    
 ffmpeg                          7:6.1.1-3ubuntu5                   deb                       
-filelock                        3.28.0                             python                    
+filelock                        3.29.0                             python                    
 findutils                       4.9.0-5build1                      deb                       
 firebase-admin                  6.6.0                              python                    
 flask                           2.3.3                              python                    
@@ -373,7 +373,7 @@ libstdc++6                      14.2.0-4ubuntu2~24.04.1            deb
 libsvtav1enc1d1                 1.7.0+dfsg-2build1                 deb                       
 libswresample4                  7:6.1.1-3ubuntu5                   deb                       
 libswscale7                     7:6.1.1-3ubuntu5                   deb                       
-libsystemd0                     255.4-1ubuntu8.14                  deb                       
+libsystemd0                     255.4-1ubuntu8.15                  deb                       
 libtasn1-6                      4.19.0-3ubuntu0.24.04.2            deb                       
 libthai-data                    0.1.29-2build1                     deb                       
 libthai0                        0.1.29-2build1                     deb                       
@@ -381,7 +381,7 @@ libtheora0                      1.1.1+dfsg.1-16.1build3            deb
 libtiff6                        4.5.1+git230720-4ubuntu2.5         deb                       
 libtinfo6                       6.4+20240113-1ubuntu2              deb                       
 libtwolame0                     0.4.0-2build3                      deb                       
-libudev1                        255.4-1ubuntu8.14                  deb                       
+libudev1                        255.4-1ubuntu8.15                  deb                       
 libudfread0                     1.1.2-1build1                      deb                       
 libunibreak5                    5.1-2build1                        deb                       
 libunistring5                   1.1-2build1.1                      deb                       
@@ -541,7 +541,7 @@ sqlparse                        0.5.3                              python
 ssl-cert                        1.1.2ubuntu1                       deb                       
 stack-data                      0.6.3                              python                    
 sympy                           1.14.0                             python                    
-systemd-standalone-sysusers     255.4-1ubuntu8.14                  deb                       
+systemd-standalone-sysusers     255.4-1ubuntu8.15                  deb                       
 sysvinit-utils                  3.08-6ubuntu3                      deb                       
 tar                             1.35+dfsg-3build1                  deb                       
 tenacity                        8.5.0                              python                    
@@ -571,7 +571,7 @@ wcwidth                         0.2.13                             python
 websocket-client                1.8.0                              python                    
 werkzeug                        3.1.8                              python                    
 wheel                           0.43.0                             python                    
-wheel                           0.46.3                             python                    
+wheel                           0.47.0                             python                    
 whitenoise                      6.8.2                              python                    
 wrapt                           1.17.3                             python                    
 x11-common                      1:7.7+23ubuntu3                    deb                       
