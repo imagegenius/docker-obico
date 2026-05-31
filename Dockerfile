@@ -1,15 +1,15 @@
 # syntax=docker/dockerfile:1
+# check=skip=InvalidDefaultArgInFrom
 
-FROM ghcr.io/imagegenius/obico-darknet:latest as darknet
+FROM ghcr.io/imagegenius/obico-darknet:latest AS darknet
 # runtime
-FROM ghcr.io/imagegenius/baseimage-ubuntu:noble
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 # set version label
-ARG BUILD_DATE
 ARG VERSION
-ARG OBICO_VERSION
-LABEL build_version="ImageGenius Version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="hydazz"
+LABEL org.opencontainers.image.authors="hydazz"
 
 # environment settings
 ENV DEBIAN_FRONTEND="noninteractive" \
@@ -19,9 +19,15 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   MOONRAKER_COMMIT="f735c0419444848b59342a98ad3532eef123ea46"
 
 RUN \
+  echo "**** install repo setup packages ****" && \
+  apt-get update && \
+  apt-get install -y --no-install-recommends \
+    ca-certificates \
+    gnupg && \
   echo "**** add python3.10 to apt ****" && \
-  echo "deb https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu noble main" >>/etc/apt/sources.list.d/python.list && \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys f23c5a6cf475977595c89f51ba6932366a755776 && \
+  gpg --batch --keyserver keyserver.ubuntu.com --recv-keys f23c5a6cf475977595c89f51ba6932366a755776 && \
+  gpg --batch --export f23c5a6cf475977595c89f51ba6932366a755776 > /usr/share/keyrings/deadsnakes.gpg && \
+  echo "deb [signed-by=/usr/share/keyrings/deadsnakes.gpg] https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu noble main" > /etc/apt/sources.list.d/python.list && \
   echo "**** install runtime packages ****" && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -44,11 +50,10 @@ RUN \
     setuptools \
     wheel && \
   echo "**** install obico ****" && \
-  if [ -z ${OBICO_VERSION+x} ]; then \
-    OBICO_VERSION=$(curl -sL "https://api.github.com/repos/TheSpaghettiDetective/obico-server/commits?ref=release" | jq -r '.[0].sha' | cut -c1-8); \
-  fi && \
-  git clone -b release https://github.com/TheSpaghettiDetective/obico-server.git /tmp/obico-server && \
-  git -C /tmp/obico-server checkout ${OBICO_VERSION} && \
+  git init /tmp/obico-server && \
+  git -C /tmp/obico-server remote add origin https://github.com/TheSpaghettiDetective/obico-server.git && \
+  git -C /tmp/obico-server fetch --depth 1 origin "${VERSION}" && \
+  git -C /tmp/obico-server checkout FETCH_HEAD && \
   pip3 install \
     onnxruntime-gpu \
     pipenv==2022.12.19 \
@@ -87,6 +92,7 @@ RUN \
   apt-get remove -y --purge \
     curl \
     gcc \
+    gnupg \
     libpq-dev \
     python3.10-dev && \
   apt-get autoremove -y --purge && \
@@ -98,7 +104,7 @@ RUN \
     /root/.cache
 
 # environment settings
-ENV PYTHONPATH="/app/moonraker/"
+ENV PYTHONPATH="/app/moonraker/moonraker"
 
 # copy local files
 COPY root/ /

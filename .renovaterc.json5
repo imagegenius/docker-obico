@@ -1,0 +1,26 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: ["github>imagegenius/renovate-config"],
+  customManagers: [
+    {
+      customType: "regex",
+      description: "Process Annotations in Docker Bake",
+      managerFilePatterns: ["/(^|/)docker-bake\\.hcl$/"],
+      matchStrings: [
+        'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( packageName=(?<packageName>\\S+))?( currentValue=(?<currentValue>\\S+))?( versioning=(?<versioning>\\S+))?\\n.+ = "(?<currentDigest>[^"]+)"',
+        'datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\\n.+ = "(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+      packageNameTemplate: "{{#if packageName}}{{{packageName}}}{{else}}{{{depName}}}{{/if}}",
+    },
+  ],
+  packageRules: [
+    {
+      description: ["Release Rules for Image Updates"],
+      commitMessageExtra: "( {{currentVersion}} -> {{newVersion}} )",
+      commitMessageTopic: "{{depName}}",
+      matchFileNames: ["docker-bake.hcl", "Dockerfile"],
+      semanticCommitType: "release",
+    },
+  ],
+}

@@ -1,0 +1,31 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: Bake Vars
+description: Reads app, platforms, and version from docker-bake.hcl
+
+outputs:
+  app:
+    description: Container image name
+    value: ${{ steps.opts.outputs.app }}
+  platforms:
+    description: Platforms array as JSON string
+    value: ${{ steps.opts.outputs.platforms }}
+  version:
+    description: Upstream version
+    value: ${{ steps.opts.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - id: opts
+      shell: bash
+      run: |-
+        BAKE=$(docker buildx bake image --print --progress=quiet)
+        APP=$(jq --raw-output '.target.image.args.APP' <<<"$BAKE")
+        PLATFORMS=$(jq --raw-output --compact-output '.target.image.platforms' <<<"$BAKE")
+        VERSION=$(jq --raw-output '.target.image.args.VERSION' <<<"$BAKE" | sed 's/^v//')
+        {
+          echo "app=${APP}"
+          echo "platforms=${PLATFORMS}"
+          echo "version=${VERSION}"
+        } >>"$GITHUB_OUTPUT"
