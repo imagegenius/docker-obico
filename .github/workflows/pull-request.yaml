@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: Image
+    name: ${{ matrix.variant }}
     uses: ./.github/workflows/build.yaml
     permissions:
       attestations: write
@@ -20,7 +20,14 @@ jobs:
       id-token: write
       packages: write
     secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        variant:
+          - main
+          - cuda
     with:
+      variant: ${{ matrix.variant }}
       release: false
 
   status:
@@ -32,4 +39,4 @@ jobs:
       - if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
       - if: ${{ !(contains(needs.*.result, 'failure')) }}
-        run: echo "Build passed"
+        run: echo "All builds passed"

@@ -14,6 +14,13 @@ on:
       - '.github/**'
   workflow_dispatch:
     inputs:
+      variant:
+        type: choice
+        options:
+          - main
+          - cuda
+          - all
+        default: all
       release:
         type: boolean
         default: true
@@ -24,7 +31,7 @@ concurrency:
 
 jobs:
   build:
-    name: Image
+    name: ${{ matrix.variant }}
     uses: ./.github/workflows/build.yaml
     permissions:
       artifact-metadata: write
@@ -34,7 +41,17 @@ jobs:
       packages: write
       security-events: write
     secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: >-
+          ${{
+            github.event_name == 'workflow_dispatch' && inputs.variant != 'all'
+            && fromJSON(format('["{0}"]', inputs.variant))
+            || fromJSON('["main","cuda"]')
+          }}
     with:
+      variant: ${{ matrix.variant }}
       release: ${{ github.event_name == 'workflow_dispatch' && inputs.release || github.event_name == 'push' }}
 
   status:
@@ -46,4 +63,4 @@ jobs:
       - if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1
       - if: ${{ !(contains(needs.*.result, 'failure')) }}
-        run: echo "Release passed"
+        run: echo "All releases passed"

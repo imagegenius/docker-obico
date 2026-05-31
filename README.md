@@ -9,12 +9,28 @@ Obico is a community-built, open-source smart 3D printing platform used by maker
 
 ## Variants
 
-| Tag      | Description                           | Platforms |
-| -------- | ------------------------------------- | --------- |
-| `latest` | Ubuntu + Obico server and ML API      | amd64     |
-| `cuda`   | Legacy CUDA-capable branch/image line | amd64     |
+| Tag      | Description                                      | Platforms |
+| -------- | ------------------------------------------------ | --------- |
+| `latest` | Ubuntu + Obico server, ML API, and CPU Darknet   | amd64     |
+| `cuda`   | `latest` plus NVIDIA CUDA runtime and GPU Darknet | amd64     |
 
 Obico Server does not publish semver releases. This image pins the upstream `release` branch commit in `docker-bake.hcl`.
+
+### NVIDIA GPU Acceleration
+
+Use the `cuda` tag with the NVIDIA Container Toolkit and pass through the GPU.
+
+```yaml
+services:
+  obico:
+    image: ghcr.io/imagegenius/obico:cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+```
 
 ## Requirements
 
@@ -98,6 +114,8 @@ This repo is built with GitHub Actions, based on the workflow shape from [home-o
 
 - The container starts from [linuxserver/docker-baseimage-ubuntu](https://github.com/linuxserver/docker-baseimage-ubuntu).
 - Obico Server is fetched from the upstream `release` branch commit pinned in [`docker-bake.hcl`](docker-bake.hcl).
-- The backend, ML API, frontend, Moonraker, model weights, and s6 services are assembled in this Dockerfile.
+- Darknet is built from the same upstream-pinned AlexeyAB commit used by Obico's current ML base image.
+- The backend, ML API, frontend, Moonraker, model weights, Darknet libraries, and s6 services are assembled in this Dockerfile.
+- `latest` and `cuda` are Dockerfile targets, not separate branches.
 - s6-overlay bits live under [`root/`](root).
-- Renovate tracks the base image and upstream commit from the bake annotations.
+- Renovate tracks the upstream Obico commit from the bake annotations.

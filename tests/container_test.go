@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"os"
 	"testing"
 	"time"
 
@@ -15,7 +16,11 @@ import (
 
 func Test(t *testing.T) {
 	ctx := context.Background()
-	image := testhelpers.GetTestImage("obico:local")
+	variant := os.Getenv("VARIANT")
+	if variant == "" {
+		variant = "main"
+	}
+	image := testhelpers.GetTestImage("obico:local-" + variant)
 	t.Logf("testing image: %s", image)
 
 	net, err := network.New(ctx)

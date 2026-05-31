@@ -9,33 +9,55 @@ variable "VERSION" {
   default = "9b73caa7b373e89fd23bf2fed646e629ee602640"
 }
 
+variable "DARKNET_VERSION" {
+  # Matches obico-server ml_api/Dockerfile.base_amd64
+  default = "59c86222c5387bffd9108a21885f80e980ece234"
+}
+
 variable "SOURCE" {
   default = "https://github.com/TheSpaghettiDetective/obico-server"
 }
 
 group "default" {
-  targets = ["image-local"]
+  targets = ["image-main-local"]
 }
 
-target "image-base" {
+target "image" {
   inherits = ["docker-metadata-action"]
   args = {
-    APP     = "${APP}"
-    VERSION = "${VERSION}"
+    APP             = "${APP}"
+    DARKNET_VERSION = "${DARKNET_VERSION}"
+    VERSION         = "${VERSION}"
   }
   labels = {
     "org.opencontainers.image.source" = "${SOURCE}"
   }
 }
 
-target "image" {
-  inherits  = ["image-base"]
+target "image-main" {
+  inherits  = ["image"]
+  target    = "final-main"
   platforms = ["linux/amd64"]
 }
 
-target "image-local" {
-  inherits  = ["image-base"]
+target "image-main-local" {
+  inherits  = ["image"]
+  target    = "final-main"
   output    = ["type=docker"]
   platforms = ["linux/amd64"]
-  tags      = ["${APP}:local"]
+  tags      = ["${APP}:local-main"]
+}
+
+target "image-cuda" {
+  inherits  = ["image"]
+  target    = "final-cuda"
+  platforms = ["linux/amd64"]
+}
+
+target "image-cuda-local" {
+  inherits  = ["image"]
+  target    = "final-cuda"
+  output    = ["type=docker"]
+  platforms = ["linux/amd64"]
+  tags      = ["${APP}:local-cuda"]
 }
