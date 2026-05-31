@@ -1,10 +1,8 @@
 # syntax=docker/dockerfile:1
-# check=skip=InvalidDefaultArgInFrom
 
 FROM ghcr.io/imagegenius/obico-darknet:latest AS darknet
 # runtime
-ARG BASE_IMAGE
-FROM ${BASE_IMAGE}
+FROM ghcr.io/linuxserver/baseimage-ubuntu:noble
 
 # set version label
 ARG VERSION

@@ -19,7 +19,7 @@
       description: ["Release Rules for Image Updates"],
       commitMessageExtra: "( {{currentVersion}} -> {{newVersion}} )",
       commitMessageTopic: "{{depName}}",
-      matchFileNames: ["docker-bake.hcl", "Dockerfile"],
+      matchFileNames: ["docker-bake.hcl"],
       semanticCommitType: "release",
     },
   ],
