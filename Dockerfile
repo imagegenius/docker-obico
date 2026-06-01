@@ -27,6 +27,8 @@ RUN \
     -e 's/CUDNN=0/CUDNN=1/' \
     -e 's/CUDNN_HALF=0/CUDNN_HALF=1/' \
     -e 's/LIBSO=0/LIBSO=1/' \
+    -e 's/^ARCH=.*/ARCH= -gencode arch=compute_50,code=[sm_50,compute_50] \\/' \
+    -e '/^[[:space:]]*-gencode arch=compute_50/d' \
     Makefile && \
   make -j"$(nproc)" && \
   mv libdarknet.so libdarknet_gpu.so && \
@@ -116,14 +118,17 @@ RUN \
   mv /tmp/obico-server/frontend \
     /app/obico/frontend && \
   echo "**** configure obico ****" && \
-  for weight in onnx darknet; do \
-    curl -o \
-      /app/obico/ml_api/model/model-weights.${weight} -L \
-      $(cat /app/obico/ml_api/model/model-weights.${weight}.url | tr -d '\r'); \
-  done && \
   mkdir -p \
     /app/model \
-    /app/obico/backend/static_build/ && \
+    /app/obico/backend/static_build/ \
+    /model_cache/ml_api/darknet \
+    /model_cache/ml_api/onnx && \
+  curl -o \
+    /model_cache/ml_api/darknet/model-weights.darknet -L \
+    $(cat /app/obico/ml_api/model/model-weights.darknet.url | tr -d '\r') && \
+  curl -o \
+    /model_cache/ml_api/onnx/model-weights.onnx -L \
+    $(cat /app/obico/ml_api/model/model-weights.onnx.url | tr -d '\r') && \
   mv /app/obico/ml_api/model/names /app/model/ && \
   ln -s \
     /config/media \
@@ -147,7 +152,7 @@ RUN \
     /root/.cache
 
 # environment settings
-ENV PYTHONPATH="/app/moonraker/moonraker"
+ENV PYTHONPATH="/app/moonraker"
 
 # copy local files
 COPY root/ /
