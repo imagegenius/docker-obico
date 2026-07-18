@@ -9,9 +9,9 @@ on:
     paths:
       - Dockerfile
       - docker-bake.hcl
-      - 'root/**'
-      - 'tests/**'
-      - '.github/**'
+      - "root/**"
+      - "tests/**"
+      - ".github/**"
   workflow_dispatch:
     inputs:
       variant:
@@ -24,6 +24,9 @@ on:
       release:
         type: boolean
         default: true
+
+permissions:
+  contents: read
 
 concurrency:
   group: release-${{ github.ref }}
@@ -40,7 +43,6 @@ jobs:
       id-token: write
       packages: write
       security-events: write
-    secrets: inherit
     strategy:
       fail-fast: false
       matrix:
@@ -58,7 +60,8 @@ jobs:
     if: ${{ !cancelled() }}
     name: Release Success
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions: {}
     steps:
       - if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1

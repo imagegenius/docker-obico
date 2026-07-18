@@ -6,6 +6,9 @@ on:
   pull_request:
   merge_group:
 
+permissions:
+  contents: read
+
 concurrency:
   group: pr-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -19,7 +22,6 @@ jobs:
       contents: read
       id-token: write
       packages: write
-    secrets: inherit
     strategy:
       fail-fast: false
       matrix:
@@ -34,7 +36,8 @@ jobs:
     if: ${{ !cancelled() }}
     name: Build Success
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions: {}
     steps:
       - if: ${{ contains(needs.*.result, 'failure') }}
         run: exit 1

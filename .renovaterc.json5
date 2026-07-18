@@ -1,6 +1,6 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["github>home-operations/renovate-config"],
+  extends: ["github>hydazz/renovate-config"],
   customManagers: [
     {
       customType: "regex",
@@ -17,10 +17,17 @@
   packageRules: [
     {
       description: ["Release Rules for Image Updates"],
-      commitMessageExtra: "( {{currentVersion}} -> {{newVersion}} )",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
       commitMessageTopic: "{{depName}}",
       matchFileNames: ["docker-bake.hcl"],
       semanticCommitType: "release",
+    },
+    {
+      description: ["Auto-merge Bake Updates"],
+      matchFileNames: ["docker-bake.hcl"],
+      automerge: true,
+      automergeType: "pr",
+      ignoreTests: false,
     },
   ],
 }
