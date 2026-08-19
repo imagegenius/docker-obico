@@ -11,7 +11,7 @@ import (
 	"github.com/testcontainers/testcontainers-go/network"
 	"github.com/testcontainers/testcontainers-go/wait"
 
-	"github.com/imagegenius/docker-obico/tests/testhelpers"
+	helpers "github.com/hydazz/containers/tests"
 )
 
 func Test(t *testing.T) {
@@ -20,7 +20,7 @@ func Test(t *testing.T) {
 	if variant == "" {
 		variant = "main"
 	}
-	image := testhelpers.GetTestImage("obico:local-" + variant)
+	image := helpers.GetTestImage("obico:local-" + variant)
 	t.Logf("testing image: %s", image)
 
 	net, err := network.New(ctx)
