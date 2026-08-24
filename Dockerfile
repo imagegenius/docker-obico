@@ -5,7 +5,7 @@ FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-devel-ubuntu20.04 AS darknet-builder
 ARG DARKNET_VERSION
 ENV DEBIAN_FRONTEND="noninteractive"
 
-WORKDIR /
+WORKDIR /darknet
 
 RUN \
   echo "**** install darknet build packages ****" && \
@@ -18,10 +18,9 @@ RUN \
     gcc \
     git && \
   echo "**** download darknet ****" && \
-  git clone https://github.com/AlexeyAB/darknet.git /darknet && \
+  git clone https://github.com/AlexeyAB/darknet.git . && \
   git -C /darknet checkout "${DARKNET_VERSION}" && \
   echo "**** build gpu darknet ****" && \
-  cd /darknet && \
   sed -i \
     -e 's/GPU=0/GPU=1/' \
     -e 's/CUDNN=0/CUDNN=1/' \
@@ -63,7 +62,8 @@ ENV DEBIAN_FRONTEND="noninteractive" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
   ML_API_HOST="http://localhost:3333" \
-  MOONRAKER_COMMIT="f735c0419444848b59342a98ad3532eef123ea46"
+  MOONRAKER_COMMIT="f735c0419444848b59342a98ad3532eef123ea46" \
+  PIP_NO_CACHE_DIR=1
 
 RUN \
   echo "**** install repo setup packages ****" && \
@@ -110,7 +110,7 @@ RUN \
   python3.10 -m pip install -r /tmp/obico-server/backend/requirements.txt && \
   echo "**** install moonraker ****" && \
   git clone https://github.com/Arksine/moonraker.git /app/moonraker && \
-  git -C /app/moonraker checkout ${MOONRAKER_COMMIT} && \
+  git -C /app/moonraker checkout "${MOONRAKER_COMMIT}" && \
   echo "**** move files into place ****" && \
   mkdir -p /app/obico && \
   mv /tmp/obico-server/backend \
@@ -127,10 +127,10 @@ RUN \
     /model_cache/ml_api/onnx && \
   curl -o \
     /model_cache/ml_api/darknet/model-weights.darknet -L \
-    $(cat /app/obico/ml_api/model/model-weights.darknet.url | tr -d '\r') && \
+    "$(tr -d '\r' < /app/obico/ml_api/model/model-weights.darknet.url)" && \
   curl -o \
     /model_cache/ml_api/onnx/model-weights.onnx -L \
-    $(cat /app/obico/ml_api/model/model-weights.onnx.url | tr -d '\r') && \
+    "$(tr -d '\r' < /app/obico/ml_api/model/model-weights.onnx.url)" && \
   mv /app/obico/ml_api/model/names /app/model/ && \
   ln -s \
     /config/media \
