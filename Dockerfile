@@ -49,6 +49,8 @@ FROM scratch AS darknet
 COPY --from=darknet-builder /darknet-cpu /darknet-cpu
 COPY --from=darknet-builder /darknet-gpu /darknet-gpu
 
+FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-runtime-ubuntu20.04 AS cuda-runtime
+
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS obico-base
 
 # set version label
@@ -168,22 +170,32 @@ COPY --from=darknet /darknet-cpu /darknet
 FROM obico-base AS final-cuda
 
 RUN \
-  echo "**** install cuda runtime packages ****" && \
-  apt-get update && \
-  apt-get install -y --no-install-recommends \
-    curl \
-    nvidia-cuda-toolkit && \
-  curl -o \
-    /tmp/libcudnn.deb -L \
-    https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/libcudnn9-cuda-11_9.3.0.75-1_amd64.deb && \
-  dpkg -i /tmp/libcudnn.deb && \
-  apt-get remove -y --purge \
-    curl && \
-  apt-get autoremove -y --purge && \
-  apt-get clean && \
-  rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/*
+  mkdir -p \
+    /usr/local/cuda-11.4/targets/x86_64-linux \
+    /usr/lib/x86_64-linux-gnu
+
+COPY --from=cuda-runtime /usr/local/cuda-11.4/compat /usr/local/cuda-11.4/compat
+COPY --from=cuda-runtime /usr/local/cuda-11.4/targets/x86_64-linux/lib /usr/local/cuda-11.4/targets/x86_64-linux/lib
+COPY --from=cuda-runtime /usr/lib/x86_64-linux-gnu/libcudnn.so.8.2.4 /usr/lib/x86_64-linux-gnu/libcudnn.so.8.2.4
+
+RUN \
+  ln -sfn \
+    /usr/local/cuda-11.4 \
+    /usr/local/cuda && \
+  ln -sfn \
+    /usr/local/cuda-11.4 \
+    /usr/local/cuda-11 && \
+  ln -sfn \
+    libcudnn.so.8.2.4 \
+    /usr/lib/x86_64-linux-gnu/libcudnn.so.8 && \
+  echo "/usr/local/nvidia/lib" > /etc/ld.so.conf.d/nvidia.conf && \
+  echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf && \
+  echo "/usr/local/cuda/compat" > /etc/ld.so.conf.d/cuda-compat.conf && \
+  echo "/usr/local/cuda/targets/x86_64-linux/lib" > /etc/ld.so.conf.d/cuda.conf && \
+  ldconfig
+
+ENV LD_LIBRARY_PATH="/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/compat:/usr/local/cuda/targets/x86_64-linux/lib:/usr/lib/x86_64-linux-gnu" \
+  NVIDIA_DRIVER_CAPABILITIES="compute,utility" \
+  NVIDIA_VISIBLE_DEVICES="all"
 
 COPY --from=darknet /darknet-gpu /darknet
