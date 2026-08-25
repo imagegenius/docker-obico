@@ -60,9 +60,18 @@ LABEL org.opencontainers.image.authors="hydazz"
 # environment settings
 ENV DEBIAN_FRONTEND="noninteractive" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
+  DEFAULT_FROM_EMAIL="changeme@example.com" \
+  EMAIL_PORT="587" \
+  EMAIL_USE_TLS="True" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
+  JUSPRIN_BRAND_NAME="JusPrin" \
+  LLM_BASE_URL="https://api.openai.com/v1" \
+  LLM_MODEL_NAME="gpt-4o" \
   ML_API_HOST="http://localhost:3333" \
   MOONRAKER_COMMIT="f735c0419444848b59342a98ad3532eef123ea46" \
+  OCTOPRINT_TUNNEL_PORT_RANGE="0-0" \
+  VLM_BASE_URL="https://api.openai.com/v1" \
+  VLM_MODEL_NAME="gpt-4o" \
   PIP_NO_CACHE_DIR=1
 
 RUN \
@@ -190,12 +199,13 @@ RUN \
     /usr/lib/x86_64-linux-gnu/libcudnn.so.8 && \
   echo "/usr/local/nvidia/lib" > /etc/ld.so.conf.d/nvidia.conf && \
   echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf && \
-  echo "/usr/local/cuda/compat" > /etc/ld.so.conf.d/cuda-compat.conf && \
   echo "/usr/local/cuda/targets/x86_64-linux/lib" > /etc/ld.so.conf.d/cuda.conf && \
   ldconfig
 
-ENV LD_LIBRARY_PATH="/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/compat:/usr/local/cuda/targets/x86_64-linux/lib:/usr/lib/x86_64-linux-gnu" \
+ENV CUDA_VERSION="11.4.3" \
+  LD_LIBRARY_PATH="/usr/local/nvidia/lib:/usr/local/nvidia/lib64" \
   NVIDIA_DRIVER_CAPABILITIES="compute,utility" \
+  NVIDIA_REQUIRE_CUDA="cuda>=11.4" \
   NVIDIA_VISIBLE_DEVICES="all"
 
 COPY --from=darknet /darknet-gpu /darknet
