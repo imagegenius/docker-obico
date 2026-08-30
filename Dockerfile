@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-devel-ubuntu20.04 AS darknet-builder
+FROM nvcr.io/nvidia/cuda:12.2.2-cudnn8-devel-ubuntu20.04 AS darknet-builder
 
 ARG DARKNET_VERSION
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -48,7 +48,7 @@ FROM scratch AS darknet
 COPY --from=darknet-builder /darknet-cpu /darknet-cpu
 COPY --from=darknet-builder /darknet-gpu /darknet-gpu
 
-FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-runtime-ubuntu20.04 AS cuda-runtime
+FROM nvcr.io/nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu20.04 AS cuda-runtime
 
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS obico-base
 
