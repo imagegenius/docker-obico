@@ -2,32 +2,15 @@
 
 # make folders
 mkdir -p \
-    /config/media \
-    /run/obico
+    /config/media
 
-if [ ! -f "/.setup" ]; then
-    echo "Initialising Obico"
-    cd /app/obico/backend
+echo "Initialising Obico"
+cd /app/obico/backend || exit 1
 
-    python3.10 manage.py migrate
-    python3.10 manage.py collectstatic -v 2 --noinput
-
-    python3.10 manage.py shell <<EOF
-from django.contrib.sites.models import Site
-if Site.objects.exists():
-    site = Site.objects.first()
-    site.domain = '${HOST_IP}'
-    site.name = '${HOST_IP}'
-    site.save()
-else:
-    Site.objects.create(domain='${HOST_IP}', name='${HOST_IP}')
-EOF
-
-    touch "/.setup"
-fi
+python3.10 manage.py migrate
+python3.10 manage.py collectstatic -v 2 --noinput
 
 # permissions
 chown -R abc:abc \
     /config \
-    /app \
-    /run/obico
+    /app

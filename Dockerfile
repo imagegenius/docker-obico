@@ -50,6 +50,16 @@ COPY --from=darknet-builder /darknet-gpu /darknet-gpu
 
 FROM nvcr.io/nvidia/cuda:11.4.3-cudnn8-runtime-ubuntu20.04 AS cuda-runtime
 
+# Collect the complete vendor runtime while preserving its library symlinks.
+RUN \
+  mkdir /runtime && \
+  cp -a --parents \
+    /usr/local/cuda-11.4 \
+    /usr/lib/x86_64-linux-gnu/libcudnn*.so.* \
+    /usr/lib/x86_64-linux-gnu/libnccl.so.* \
+    /NGC-DL-CONTAINER-LICENSE \
+    /runtime
+
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS obico-base
 
 # set version label
@@ -60,9 +70,18 @@ LABEL org.opencontainers.image.authors="hydazz"
 # environment settings
 ENV DEBIAN_FRONTEND="noninteractive" \
   DATABASE_URL="sqlite:////config/db.sqlite3" \
+  DEFAULT_FROM_EMAIL="changeme@example.com" \
+  EMAIL_PORT="587" \
+  EMAIL_USE_TLS="True" \
   INTERNAL_MEDIA_HOST="http://localhost:3334" \
+  JUSPRIN_BRAND_NAME="JusPrin" \
+  LLM_BASE_URL="https://api.openai.com/v1" \
+  LLM_MODEL_NAME="gpt-4o" \
   ML_API_HOST="http://localhost:3333" \
   MOONRAKER_COMMIT="f735c0419444848b59342a98ad3532eef123ea46" \
+  OCTOPRINT_TUNNEL_PORT_RANGE="0-0" \
+  VLM_BASE_URL="https://api.openai.com/v1" \
+  VLM_MODEL_NAME="gpt-4o" \
   PIP_NO_CACHE_DIR=1
 
 RUN \
@@ -154,7 +173,8 @@ RUN \
     /root/.cache
 
 # environment settings
-ENV PYTHONPATH="/app/moonraker"
+ENV HOME="/config" \
+  PYTHONPATH="/app/moonraker"
 
 # copy local files
 COPY root/ /
@@ -169,14 +189,8 @@ COPY --from=darknet /darknet-cpu /darknet
 
 FROM obico-base AS final-cuda
 
-RUN \
-  mkdir -p \
-    /usr/local/cuda-11.4/targets/x86_64-linux \
-    /usr/lib/x86_64-linux-gnu
-
-COPY --from=cuda-runtime /usr/local/cuda-11.4/compat /usr/local/cuda-11.4/compat
-COPY --from=cuda-runtime /usr/local/cuda-11.4/targets/x86_64-linux/lib /usr/local/cuda-11.4/targets/x86_64-linux/lib
-COPY --from=cuda-runtime /usr/lib/x86_64-linux-gnu/libcudnn.so.8.2.4 /usr/lib/x86_64-linux-gnu/libcudnn.so.8.2.4
+# Preserve the complete NVIDIA runtime used by upstream ml_api/Dockerfile.base_amd64.
+COPY --from=cuda-runtime /runtime/ /
 
 RUN \
   ln -sfn \
@@ -185,17 +199,15 @@ RUN \
   ln -sfn \
     /usr/local/cuda-11.4 \
     /usr/local/cuda-11 && \
-  ln -sfn \
-    libcudnn.so.8.2.4 \
-    /usr/lib/x86_64-linux-gnu/libcudnn.so.8 && \
   echo "/usr/local/nvidia/lib" > /etc/ld.so.conf.d/nvidia.conf && \
   echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf && \
-  echo "/usr/local/cuda/compat" > /etc/ld.so.conf.d/cuda-compat.conf && \
   echo "/usr/local/cuda/targets/x86_64-linux/lib" > /etc/ld.so.conf.d/cuda.conf && \
   ldconfig
 
-ENV LD_LIBRARY_PATH="/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/compat:/usr/local/cuda/targets/x86_64-linux/lib:/usr/lib/x86_64-linux-gnu" \
+ENV CUDA_VERSION="11.4.3" \
+  LD_LIBRARY_PATH="/usr/local/nvidia/lib:/usr/local/nvidia/lib64" \
   NVIDIA_DRIVER_CAPABILITIES="compute,utility" \
+  NVIDIA_REQUIRE_CUDA="cuda>=11.4" \
   NVIDIA_VISIBLE_DEVICES="all"
 
 COPY --from=darknet /darknet-gpu /darknet

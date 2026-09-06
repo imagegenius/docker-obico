@@ -9,9 +9,9 @@ Obico is a community-built, open-source smart 3D printing platform used by maker
 
 ## Variants
 
-| Tag      | Description                                      | Platforms |
-| -------- | ------------------------------------------------ | --------- |
-| `latest` | Ubuntu + Obico server, ML API, and CPU Darknet   | amd64     |
+| Tag      | Description                                       | Platforms |
+| -------- | ------------------------------------------------- | --------- |
+| `latest` | Ubuntu + Obico server, ML API, and CPU Darknet    | amd64     |
 | `cuda`   | `latest` plus NVIDIA CUDA runtime and GPU Darknet | amd64     |
 
 Obico Server does not publish semver releases. This image pins the upstream `release` branch commit in `docker-bake.hcl`.
@@ -22,20 +22,19 @@ Use the `cuda` tag with the NVIDIA Container Toolkit and pass through the GPU.
 
 ```yaml
 services:
-  obico:
-    image: ghcr.io/imagegenius/obico:cuda
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              capabilities: [gpu]
+    obico:
+        image: ghcr.io/imagegenius/obico:cuda
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          capabilities: [gpu]
 ```
 
 ## Requirements
 
 - **Redis**: External or via docker mod (see below).
-- **HOST_IP**: Set this to the host, IP:port, or DNS name used to access Obico.
 
 ### Docker Mod for Redis
 
@@ -49,39 +48,37 @@ services:
 ```yaml
 ---
 services:
-  obico:
-    image: ghcr.io/imagegenius/obico:latest
-    container_name: obico
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - REDIS_URL=redis://192.168.1.x:6379
-      - HOST_IP=192.168.1.x:3334
-    volumes:
-      - path_to_appdata:/config
-    ports:
-      - 3334:3334
-    restart: unless-stopped
+    obico:
+        image: ghcr.io/imagegenius/obico:latest
+        container_name: obico
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Etc/UTC
+            - REDIS_URL=redis://192.168.1.x:6379
+        volumes:
+            - path_to_appdata:/config
+        ports:
+            - 3334:3334
+        restart: unless-stopped
 
-  redis:
-    image: redis:7-alpine
-    container_name: redis
-    ports:
-      - 6379:6379
+    redis:
+        image: redis:7-alpine
+        container_name: redis
+        ports:
+            - 6379:6379
 ```
 
 ## Parameters
 
-| Parameter                         | Function                                                                                     |
-| --------------------------------- | -------------------------------------------------------------------------------------------- |
-| `-p 3334`                         | WebUI port                                                                                   |
-| `-e PUID=1000`                    | UID for permissions — see below                                                              |
-| `-e PGID=1000`                    | GID for permissions — see below                                                              |
-| `-e TZ=Etc/UTC`                   | Timezone, see [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) |
-| `-e REDIS_URL=redis://<ip>:6379`  | Redis URL                                                                                    |
-| `-e HOST_IP=192.168.1.x:3334`     | Host, IP:port, or DNS name used to access Obico                                              |
-| `-v /config`                      | Django database, logs, media, and timelapses                                                 |
+| Parameter                          | Function                                                                                     |
+| ---------------------------------- | -------------------------------------------------------------------------------------------- |
+| `-p 3334`                          | WebUI port                                                                                   |
+| `-e PUID=1000`                     | UID for permissions — see below                                                              |
+| `-e PGID=1000`                     | GID for permissions — see below                                                              |
+| `-e TZ=Etc/UTC`                    | Timezone, see [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) |
+| `-e REDIS_URL=redis://<ip>:6379`   | Redis URL                                                                                    |
+| `-v /config`                       | Django database, logs, media, and timelapses                                                 |
 | `DOCKER_MODS=imagegenius/mods:...` | Optional Redis docker mod                                                                    |
 
 ## Application Setup
