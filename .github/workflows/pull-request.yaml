@@ -36,7 +36,7 @@ jobs:
     if: ${{ !cancelled() }}
     name: Build Success
     needs: build
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions: {}
     steps:
       - if: ${{ contains(needs.*.result, 'failure') }}
