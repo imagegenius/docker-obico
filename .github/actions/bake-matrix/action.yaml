@@ -1,0 +1,44 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: Bake Matrix
+description: Group selected Bake targets by native platform
+
+inputs:
+  variant:
+    description: Variant name or all
+    default: all
+
+outputs:
+  matrix:
+    description: Platform jobs with their supported variants
+    value: ${{ steps.matrix.outputs.matrix }}
+  variants:
+    description: Selected variants for metadata and publication
+    value: ${{ steps.matrix.outputs.variants }}
+
+runs:
+  using: composite
+  steps:
+    - id: matrix
+      shell: bash
+      env:
+        VARIANT: ${{ inputs.variant }}
+      run: |-
+        bake=$(docker buildx bake "image-${VARIANT}" --print --progress=quiet)
+        variants=$(jq -ce '[.target | keys[] | sub("^image-"; "")] | select(length > 0)' <<<"$bake")
+        matrix=$(jq -ce '
+          [.target | to_entries[] | .key as $target | .value.platforms[]
+            | {platform: ., variant: ($target | sub("^image-"; ""))}]
+          | group_by(.platform)
+          | map({
+              platform: .[0].platform,
+              arch: (.[0].platform | split("/") | last),
+              runner: (if .[0].platform == "linux/arm64" then "ubuntu-24.04-arm" else "ubuntu-24.04" end),
+              variants: map(.variant)
+            })
+          | select(length > 0)
+        ' <<<"$bake")
+        {
+          echo "variants=$variants"
+          echo "matrix=$matrix"
+        } >>"$GITHUB_OUTPUT"

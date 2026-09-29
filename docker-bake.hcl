@@ -61,3 +61,7 @@ target "image-cuda-local" {
   platforms = ["linux/amd64"]
   tags      = ["${APP}:local-cuda"]
 }
+
+group "image-all" {
+  targets = ["image-main", "image-cuda"]
+}

@@ -15,21 +15,14 @@ concurrency:
 
 jobs:
   build:
-    name: ${{ matrix.variant }}
-    uses: ./.github/workflows/build.yaml
+    uses: $/.github/workflows/build.yaml
     permissions:
       attestations: write
       contents: read
       id-token: write
       packages: write
-    strategy:
-      fail-fast: false
-      matrix:
-        variant:
-          - main
-          - cuda
     with:
-      variant: ${{ matrix.variant }}
+      variant: all
       release: false
 
   status:
@@ -39,7 +32,7 @@ jobs:
     runs-on: ubuntu-26.04
     permissions: {}
     steps:
-      - if: ${{ contains(needs.*.result, 'failure') }}
-        run: exit 1
-      - if: ${{ !(contains(needs.*.result, 'failure')) }}
-        run: echo "All builds passed"
+      - name: Check Build Result
+        env:
+          RESULT: ${{ needs.build.result }}
+        run: test "$RESULT" = success
