@@ -6,7 +6,7 @@ variable "APP" {
 
 variable "VERSION" {
   # renovate: datasource=git-refs depName=obico-server packageName=https://github.com/TheSpaghettiDetective/obico-server currentValue=release
-  default = "6f938964c63892df2b6d5b68d99ea783fc1a7c78"
+  default = "df8190ef7500459599ebf398c3d1f653754792fd"
 }
 
 variable "DARKNET_VERSION" {
