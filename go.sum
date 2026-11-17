@@ -98,6 +98,8 @@ github.com/hydazz/containers v0.0.0-20261110083712-a90110bf486e h1:nrivNiwDUWk+J
 github.com/hydazz/containers v0.0.0-20261110083712-a90110bf486e/go.mod h1:CdCCO4tGPtudsyRDift9ZuY4WuN++EcSKNWPRuTKdQE=
 github.com/hydazz/containers v0.0.0-20261114175935-997b218e6907 h1:OC3VbxakwwiCItaDO8mi/2DQlEbVO1U0ksDGGW6MUbc=
 github.com/hydazz/containers v0.0.0-20261114175935-997b218e6907/go.mod h1:3Gd7xKM/Y3FDRJ1NvrX+dIobDUm/F+3rSPsFXRf0wZk=
+github.com/hydazz/containers v0.0.0-20261116003636-d99d67ab8623 h1:X8WzYFHiMvfDQlIFhOpVHriPAMF5WUgztwTzYkjqll8=
+github.com/hydazz/containers v0.0.0-20261116003636-d99d67ab8623/go.mod h1:3Gd7xKM/Y3FDRJ1NvrX+dIobDUm/F+3rSPsFXRf0wZk=
 github.com/klauspost/compress v1.19.2 h1:hMRETovs/pu/dVWN7zIT1PGG8t509MwT6bO7XSi26R8=
 github.com/klauspost/compress v1.19.2/go.mod h1:cwPg85FWrGar70rWktvGQj8/hthj3wpl0PGDogxkrSQ=
 github.com/lufia/plan9stats v0.0.0-20260802145828-341c2f0c90b5 h1:eveIIGn4BGM3qknO74omf6HYr30/exH+eVUTuAgwjZ0=
